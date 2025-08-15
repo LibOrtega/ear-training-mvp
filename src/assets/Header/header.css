@@ -3,17 +3,19 @@
   justify-content: space-between;
   align-items: center;
   padding: 12px 24px;
-  background-color: #222;
-  color: white;
+  background-color: #ffffff;
+  color: #2d3748;
   font-family: sans-serif;
   width: 100%;
   box-sizing: border-box;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .logo {
   font-size: 20px;
   font-weight: bold;
-  flex-shrink: 0;
+  color: #0056d6;
 }
 
 .menu {
@@ -25,26 +27,47 @@
 .menu-button {
   padding: 6px 12px;
   background-color: transparent;
-  border: 1px solid white;
-  color: white;
+  border: 1px solid #0056d6;
+  color: #0056d6;
   cursor: pointer;
   border-radius: 4px;
   white-space: nowrap;
+  transition: all 0.2s ease;
 }
 
 .menu-button:hover {
-  background-color: white;
-  color: #222;
+  background-color: #0056d6;
+  color: white;
 }
 
 .menu-button.premium {
-  background-color: gold;
-  color: black;
+  background-color: #0056d6;
+  color: white;
   border: none;
 }
 
 .menu-button.premium:hover {
-  background-color: darkorange;
+  background-color: #004494;
+}
+
+/* Estilos especiales para el botón de volver - misma estética que los botones principales */
+.menu-button.back-button {
+  padding: 12px 24px;
+  background-color: #718096;
+  border: none;
+  color: white;
+  font-weight: 600;
+  border-radius: 12px;
+  font-size: 14px;
+  min-height: 50px;
+  box-shadow: 0 4px 8px rgba(113,128,150,0.3);
+  transition: all 0.3s ease;
+}
+
+.menu-button.back-button:hover {
+  background-color: #4a5568;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(113,128,150,0.4);
 }
 
 /* Responsive Design */
@@ -64,6 +87,12 @@
   .menu-button {
     padding: 5px 10px;
     font-size: 14px;
+  }
+  
+  .menu-button.back-button {
+    padding: 10px 20px;
+    font-size: 13px;
+    min-height: 45px;
   }
 }
 
@@ -86,6 +115,12 @@
   .menu-button {
     padding: 4px 8px;
     font-size: 12px;
+  }
+  
+  .menu-button.back-button {
+    padding: 8px 16px;
+    font-size: 12px;
+    min-height: 40px;
   }
 }
   

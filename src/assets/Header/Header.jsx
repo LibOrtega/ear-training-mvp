@@ -1,14 +1,29 @@
-import React from "react";
-import './header.css'; // Aquí pondremos estilos simples
+import React from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import './header.css';
 
-export default function Header() {
+function Header() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  
+  // Solo mostrar el botón de volver si no estamos en la página principal
+  const showBackButton = location.pathname !== '/';
+
   return (
     <header className="header">
       <div className="logo">🎵 Afinapp</div>
-      <nav className="menu">
-        <button className="menu-button">Iniciar sesión</button>
-        <button className="menu-button premium">Comprar Premium</button>
-      </nav>
+      <div className="menu">
+        {showBackButton && (
+          <button 
+            className="menu-button back-button"
+            onClick={() => navigate('/')}
+          >
+            ← Volver al inicio
+          </button>
+        )}
+      </div>
     </header>
   );
 }
+
+export default Header;

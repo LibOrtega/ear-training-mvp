@@ -134,12 +134,13 @@ function EarTraining() {
       fontFamily: 'system-ui, sans-serif',
       padding: '2rem',
       boxSizing: 'border-box',
-      minHeight: 'calc(100vh - 80px)'
+      minHeight: 'calc(100vh - 80px)',
+      backgroundColor: '#f8fafc'
     }}>
       {/* Header de la página */}
       <div style={{
         display: 'flex',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         alignItems: 'center',
         marginBottom: '2rem',
         flexWrap: 'wrap',
@@ -148,23 +149,8 @@ function EarTraining() {
         <h1 style={{
           fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
           margin: '0',
-          color: 'white'
+          color: '#1a202c'
         }}>🎵 Entrenamiento de Oído</h1>
-        
-        <button 
-          onClick={() => navigate('/')}
-          style={{
-            padding: '8px 16px',
-            fontSize: '14px',
-            borderRadius: '8px',
-            border: 'none',
-            backgroundColor: '#666',
-            color: 'white',
-            cursor: 'pointer'
-          }}
-        >
-          ← Volver al inicio
-        </button>
       </div>
 
       {/* Selector de tipo de ejercicio */}
@@ -185,7 +171,7 @@ function EarTraining() {
             minHeight: '50px',
             borderRadius: '8px',
             border: 'none',
-            backgroundColor: mode==='intervals' ? '#4CAF50' : '#2196F3',
+            backgroundColor: mode==='intervals' ? '#0056d6' : '#38b2ac',
             color: 'white',
             cursor: 'pointer'
           }}
@@ -201,7 +187,7 @@ function EarTraining() {
             minHeight: '50px',
             borderRadius: '8px',
             border: 'none',
-            backgroundColor: mode==='notes' ? '#4CAF50' : '#2196F3',
+            backgroundColor: mode==='notes' ? '#0056d6' : '#38b2ac',
             color: 'white',
             cursor: 'pointer'
           }}
@@ -217,7 +203,7 @@ function EarTraining() {
             minHeight: '50px',
             borderRadius: '8px',
             border: 'none',
-            backgroundColor: mode==='chords' ? '#4CAF50' : '#2196F3',
+            backgroundColor: mode==='chords' ? '#0056d6' : '#38b2ac',
             color: 'white',
             cursor: 'pointer'
           }}
@@ -244,7 +230,7 @@ function EarTraining() {
             minHeight: '50px',
             borderRadius: '8px',
             border: 'none',
-            backgroundColor: '#FF9800',
+            backgroundColor: '#ed8936',
             color: 'white',
             cursor: 'pointer'
           }}
@@ -259,7 +245,7 @@ function EarTraining() {
             minHeight: '50px',
             borderRadius: '8px',
             border: 'none',
-            backgroundColor: '#9C27B0',
+            backgroundColor: '#9f7aea',
             color: 'white',
             cursor: 'pointer'
           }}
@@ -270,9 +256,9 @@ function EarTraining() {
           fontSize: 'clamp(16px, 3vw, 20px)',
           textAlign: 'center',
           padding: '12px 24px',
-          backgroundColor: '#333',
+          backgroundColor: '#e2e8f0',
           borderRadius: '8px',
-          color: 'white',
+          color: '#2d3748',
           fontWeight: 'bold'
         }}>
           Puntaje: {score.correct}/{score.total}
@@ -282,18 +268,18 @@ function EarTraining() {
       {/* Área de ejercicio */}
       {question && (
         <div style={{
-          border: '2px solid #444',
+          border: '1px solid #e2e8f0',
           padding: '24px',
           borderRadius: '12px',
           maxWidth: '100%',
-          backgroundColor: '#2a2a2a',
-          boxShadow: '0 4px 8px rgba(0,0,0,0.3)'
+          backgroundColor: 'white',
+          boxShadow: '0 4px 8px rgba(0,0,0,0.1)'
         }}>
           <p style={{
             fontSize: 'clamp(16px, 3.5vw, 22px)',
             textAlign: 'center',
             marginBottom: '20px',
-            color: 'white'
+            color: '#1a202c'
           }}>
             Selecciona {mode === 'intervals' ? 'el intervalo' : mode === 'notes' ? 'la nota' : 'el acorde'} que escuchas:
           </p>
@@ -315,20 +301,21 @@ function EarTraining() {
                   wordBreak: 'break-word',
                   borderRadius: '8px',
                   border: 'none',
-                  backgroundColor: '#555',
-                  color: 'white',
+                  backgroundColor: '#f7fafc',
+                  color: '#2d3748',
                   cursor: question.played ? 'pointer' : 'not-allowed',
-                  transition: 'all 0.2s ease'
+                  transition: 'all 0.2s ease',
+                  border: '1px solid #e2e8f0'
                 }}
                 onMouseEnter={(e) => {
                   if (question.played) {
-                    e.target.style.backgroundColor = '#666';
+                    e.target.style.backgroundColor = '#edf2f7';
                     e.target.style.transform = 'scale(1.02)';
                   }
                 }}
                 onMouseLeave={(e) => {
                   if (question.played) {
-                    e.target.style.backgroundColor = '#555';
+                    e.target.style.backgroundColor = '#f7fafc';
                     e.target.style.transform = 'scale(1)';
                   }
                 }}
@@ -341,7 +328,7 @@ function EarTraining() {
             marginTop: '20px',
             textAlign: 'center',
             fontSize: 'clamp(16px, 3.5vw, 22px)',
-            color: '#4CAF50',
+            color: '#38a169',
             fontWeight: 'bold',
             minHeight: '30px'
           }}>
@@ -354,12 +341,13 @@ function EarTraining() {
       <div style={{
         marginTop: '2rem',
         padding: '20px',
-        backgroundColor: '#2a2a2a',
+        backgroundColor: 'white',
         borderRadius: '12px',
-        border: '1px solid #444'
+        border: '1px solid #e2e8f0',
+        boxShadow: '0 4px 8px rgba(0,0,0,0.1)'
       }}>
         <h3 style={{
-          color: '#4CAF50',
+          color: '#0056d6',
           marginBottom: '16px',
           textAlign: 'center'
         }}>
@@ -368,7 +356,7 @@ function EarTraining() {
            '🎼 Reconocimiento de Acordes'}
         </h3>
         <p style={{
-          color: '#ccc',
+          color: '#4a5568',
           lineHeight: '1.6',
           textAlign: 'center'
         }}>

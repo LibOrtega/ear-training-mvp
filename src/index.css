@@ -129,8 +129,8 @@ html, body, #root {
   padding: 0;
   width: 100%;
   height: 100%;
-  background-color: #1a1a1a;
-  color: white;
+  background-color: #ffffff;
+  color: #2d3748;
 }
 
 #root {
@@ -139,10 +139,10 @@ html, body, #root {
   flex-direction: column;
 }
 
-/* Dark theme for better contrast */
+/* Light theme with blue accents like Coursera */
 body {
-  background-color: #1a1a1a;
-  color: white;
+  background-color: #ffffff;
+  color: #2d3748;
   font-family: 'system-ui', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 

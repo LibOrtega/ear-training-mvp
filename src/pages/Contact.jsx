@@ -36,12 +36,13 @@ function Contact() {
       fontFamily: 'system-ui, sans-serif',
       padding: '2rem',
       boxSizing: 'border-box',
-      minHeight: 'calc(100vh - 80px)'
+      minHeight: 'calc(100vh - 80px)',
+      backgroundColor: '#f8fafc'
     }}>
       {/* Header de la página */}
       <div style={{
         display: 'flex',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         alignItems: 'center',
         marginBottom: '2rem',
         flexWrap: 'wrap',
@@ -50,44 +51,29 @@ function Contact() {
         <h1 style={{
           fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
           margin: '0',
-          color: 'white'
+          color: '#1a202c'
         }}>👨‍🏫 Contacto para Profesores</h1>
-        
-        <button 
-          onClick={() => navigate('/')}
-          style={{
-            padding: '8px 16px',
-            fontSize: '14px',
-            borderRadius: '8px',
-            border: 'none',
-            backgroundColor: '#666',
-            color: 'white',
-            cursor: 'pointer'
-          }}
-        >
-          ← Volver al inicio
-        </button>
       </div>
 
       {/* Información introductoria */}
       <div style={{
-        border: '2px solid #444',
+        border: '1px solid #e2e8f0',
         padding: '24px',
         borderRadius: '12px',
         maxWidth: '100%',
-        backgroundColor: '#2a2a2a',
-        boxShadow: '0 4px 8px rgba(0,0,0,0.3)',
+        backgroundColor: 'white',
+        boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
         marginBottom: '2rem',
         textAlign: 'center'
       }}>
         <h2 style={{
           fontSize: 'clamp(1.2rem, 3vw, 1.8rem)',
           marginBottom: '16px',
-          color: '#4CAF50'
+          color: '#0056d6'
         }}>¿Eres profesor de música?</h2>
         <p style={{
           fontSize: 'clamp(14px, 3vw, 18px)',
-          color: '#ccc',
+          color: '#4a5568',
           lineHeight: '1.6',
           marginBottom: '16px'
         }}>
@@ -102,34 +88,34 @@ function Contact() {
         }}>
           <div style={{
             padding: '16px',
-            backgroundColor: '#333',
+            backgroundColor: '#f7fafc',
             borderRadius: '8px',
-            border: '1px solid #555'
+            border: '1px solid #e2e8f0'
           }}>
-            <h4 style={{ color: '#4CAF50', marginBottom: '8px' }}>🎯 Para tus clases</h4>
-            <p style={{ color: '#ccc', fontSize: '14px' }}>
+            <h4 style={{ color: '#0056d6', marginBottom: '8px' }}>🎯 Para tus clases</h4>
+            <p style={{ color: '#4a5568', fontSize: '14px' }}>
               Ejercicios estructurados que puedes asignar como tarea
             </p>
           </div>
           <div style={{
             padding: '16px',
-            backgroundColor: '#333',
+            backgroundColor: '#f7fafc',
             borderRadius: '8px',
-            border: '1px solid #555'
+            border: '1px solid #e2e8f0'
           }}>
-            <h4 style={{ color: '#2196F3', marginBottom: '8px' }}>📊 Seguimiento</h4>
-            <p style={{ color: '#ccc', fontSize: '14px' }}>
+            <h4 style={{ color: '#38b2ac', marginBottom: '8px' }}>📊 Seguimiento</h4>
+            <p style={{ color: '#4a5568', fontSize: '14px' }}>
               Reportes del progreso de cada estudiante
             </p>
           </div>
           <div style={{
             padding: '16px',
-            backgroundColor: '#333',
+            backgroundColor: '#f7fafc',
             borderRadius: '8px',
-            border: '1px solid #555'
+            border: '1px solid #e2e8f0'
           }}>
-            <h4 style={{ color: '#FF9800', marginBottom: '8px' }}>🎵 Personalización</h4>
-            <p style={{ color: '#ccc', fontSize: '14px' }}>
+            <h4 style={{ color: '#ed8936', marginBottom: '8px' }}>🎵 Personalización</h4>
+            <p style={{ color: '#4a5568', fontSize: '14px' }}>
               Contenido adaptado al nivel de tus estudiantes
             </p>
           </div>
@@ -138,18 +124,18 @@ function Contact() {
 
       {/* Formulario */}
       <div style={{
-        border: '2px solid #444',
+        border: '1px solid #e2e8f0',
         padding: '24px',
         borderRadius: '12px',
         maxWidth: '100%',
-        backgroundColor: '#2a2a2a',
-        boxShadow: '0 4px 8px rgba(0,0,0,0.3)'
+        backgroundColor: 'white',
+        boxShadow: '0 4px 8px rgba(0,0,0,0.1)'
       }}>
         <h2 style={{
           fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
           textAlign: 'center',
           marginBottom: '24px',
-          color: 'white'
+          color: '#1a202c'
         }}>Formulario de Contacto</h2>
         
         <form onSubmit={handleSubmit} style={{
@@ -166,7 +152,7 @@ function Contact() {
               display: 'flex',
               flexDirection: 'column',
               gap: '8px',
-              color: 'white'
+              color: '#2d3748'
             }}>
               Nombre completo:
               <input
@@ -179,9 +165,9 @@ function Contact() {
                   padding: '12px',
                   fontSize: '16px',
                   borderRadius: '8px',
-                  border: '1px solid #555',
-                  backgroundColor: '#333',
-                  color: 'white',
+                  border: '1px solid #e2e8f0',
+                  backgroundColor: '#f7fafc',
+                  color: '#2d3748',
                   outline: 'none'
                 }}
               />
@@ -191,7 +177,7 @@ function Contact() {
               display: 'flex',
               flexDirection: 'column',
               gap: '8px',
-              color: 'white'
+              color: '#2d3748'
             }}>
               Email:
               <input
@@ -204,9 +190,9 @@ function Contact() {
                   padding: '12px',
                   fontSize: '16px',
                   borderRadius: '8px',
-                  border: '1px solid #555',
-                  backgroundColor: '#333',
-                  color: 'white',
+                  border: '1px solid #e2e8f0',
+                  backgroundColor: '#f7fafc',
+                  color: '#2d3748',
                   outline: 'none'
                 }}
               />
@@ -222,7 +208,7 @@ function Contact() {
               display: 'flex',
               flexDirection: 'column',
               gap: '8px',
-              color: 'white'
+              color: '#2d3748'
             }}>
               Instrumento principal que enseñas:
               <input
@@ -235,9 +221,9 @@ function Contact() {
                   padding: '12px',
                   fontSize: '16px',
                   borderRadius: '8px',
-                  border: '1px solid #555',
-                  backgroundColor: '#333',
-                  color: 'white',
+                  border: '1px solid #e2e8f0',
+                  backgroundColor: '#f7fafc',
+                  color: '#2d3748',
                   outline: 'none'
                 }}
               />
@@ -247,7 +233,7 @@ function Contact() {
               display: 'flex',
               flexDirection: 'column',
               gap: '8px',
-              color: 'white'
+              color: '#2d3748'
             }}>
               Número aproximado de alumnos:
               <input
@@ -261,9 +247,9 @@ function Contact() {
                   padding: '12px',
                   fontSize: '16px',
                   borderRadius: '8px',
-                  border: '1px solid #555',
-                  backgroundColor: '#333',
-                  color: 'white',
+                  border: '1px solid #e2e8f0',
+                  backgroundColor: '#f7fafc',
+                  color: '#2d3748',
                   outline: 'none'
                 }}
               />
@@ -274,7 +260,7 @@ function Contact() {
             display: 'flex',
             flexDirection: 'column',
             gap: '8px',
-            color: 'white'
+            color: '#2d3748'
           }}>
             Mensaje adicional (opcional):
             <textarea
@@ -287,9 +273,9 @@ function Contact() {
                 padding: '12px',
                 fontSize: '16px',
                 borderRadius: '8px',
-                border: '1px solid #555',
-                backgroundColor: '#333',
-                color: 'white',
+                border: '1px solid #e2e8f0',
+                backgroundColor: '#f7fafc',
+                color: '#2d3748',
                 outline: 'none',
                 resize: 'vertical'
               }}
@@ -303,7 +289,7 @@ function Contact() {
               fontSize: '18px',
               borderRadius: '8px',
               border: 'none',
-              backgroundColor: '#4CAF50',
+              backgroundColor: '#0056d6',
               color: 'white',
               cursor: 'pointer',
               fontWeight: 'bold',
@@ -312,11 +298,11 @@ function Contact() {
               alignSelf: 'center'
             }}
             onMouseEnter={(e) => {
-              e.target.style.backgroundColor = '#45a049';
+              e.target.style.backgroundColor = '#004494';
               e.target.style.transform = 'scale(1.02)';
             }}
             onMouseLeave={(e) => {
-              e.target.style.backgroundColor = '#4CAF50';
+              e.target.style.backgroundColor = '#0056d6';
               e.target.style.transform = 'scale(1)';
             }}
           >
@@ -329,17 +315,18 @@ function Contact() {
       <div style={{
         marginTop: '2rem',
         padding: '20px',
-        backgroundColor: '#2a2a2a',
+        backgroundColor: 'white',
         borderRadius: '12px',
-        border: '1px solid #444',
+        border: '1px solid #e2e8f0',
+        boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
         textAlign: 'center'
       }}>
         <h3 style={{
-          color: '#4CAF50',
+          color: '#0056d6',
           marginBottom: '16px'
         }}>¿Tienes preguntas?</h3>
         <p style={{
-          color: '#ccc',
+          color: '#4a5568',
           lineHeight: '1.6'
         }}>
           También puedes contactarnos directamente en <strong>profesores@afinapp.com</strong> 
