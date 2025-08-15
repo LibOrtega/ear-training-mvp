@@ -131,35 +131,197 @@ export default function App(){
   return (
     <div>
       <Header />
-      <div style={{maxWidth:600, margin:'2rem auto', fontFamily:'system-ui, sans-serif', padding:'1rem'}}>
-        <h1>Entrenador de oído</h1>
-        <div style={{display:'flex', gap:12, marginBottom:12}}>
-          <button onClick={()=>setMode('intervals')} disabled={mode==='intervals'}>🎵 Intervalos</button>
-          <button onClick={()=>setMode('notes')} disabled={mode==='notes'}>🎹 Notas</button>
-          <button onClick={()=>setMode('chords')} disabled={mode==='chords'}>🎼 Acordes</button>
+      <div style={{
+        maxWidth: '100%',
+        width: '100%',
+        margin: '0',
+        fontFamily: 'system-ui, sans-serif',
+        padding: '2rem',
+        boxSizing: 'border-box',
+        minHeight: 'calc(100vh - 80px)'
+      }}>
+        <h1 style={{
+          fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+          textAlign: 'center',
+          marginBottom: '2rem'
+        }}>Entrenador de oído</h1>
+        
+        <div style={{
+          display: 'flex',
+          flexDirection: 'row',
+          gap: '16px',
+          marginBottom: '24px',
+          flexWrap: 'wrap',
+          justifyContent: 'center'
+        }}>
+          <button 
+            onClick={()=>setMode('intervals')} 
+            disabled={mode==='intervals'}
+            style={{
+              padding: '12px 24px',
+              fontSize: 'clamp(14px, 2.5vw, 18px)',
+              minHeight: '50px',
+              borderRadius: '8px',
+              border: 'none',
+              backgroundColor: mode==='intervals' ? '#4CAF50' : '#2196F3',
+              color: 'white',
+              cursor: 'pointer'
+            }}
+          >
+            🎵 Intervalos
+          </button>
+          <button 
+            onClick={()=>setMode('notes')} 
+            disabled={mode==='notes'}
+            style={{
+              padding: '12px 24px',
+              fontSize: 'clamp(14px, 2.5vw, 18px)',
+              minHeight: '50px',
+              borderRadius: '8px',
+              border: 'none',
+              backgroundColor: mode==='notes' ? '#4CAF50' : '#2196F3',
+              color: 'white',
+              cursor: 'pointer'
+            }}
+          >
+            🎹 Notas
+          </button>
+          <button 
+            onClick={()=>setMode('chords')} 
+            disabled={mode==='chords'}
+            style={{
+              padding: '12px 24px',
+              fontSize: 'clamp(14px, 2.5vw, 18px)',
+              minHeight: '50px',
+              borderRadius: '8px',
+              border: 'none',
+              backgroundColor: mode==='chords' ? '#4CAF50' : '#2196F3',
+              color: 'white',
+              cursor: 'pointer'
+            }}
+          >
+            🎼 Acordes
+          </button>
         </div>
 
-        <div style={{display:'flex', gap:12, marginBottom:12, alignItems:'center'}}>
-          <button onClick={play}>▶ Reproducir</button>
-          <button onClick={()=>newQuestion()}>🔁 Nueva</button>
-          <div style={{marginLeft:'auto'}}>Puntaje: {score.correct}/{score.total}</div>
+        <div style={{
+          display: 'flex',
+          flexDirection: 'row',
+          gap: '16px',
+          marginBottom: '24px',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          justifyContent: 'center'
+        }}>
+          <button 
+            onClick={play}
+            style={{
+              padding: '12px 24px',
+              fontSize: 'clamp(14px, 2.5vw, 18px)',
+              minHeight: '50px',
+              borderRadius: '8px',
+              border: 'none',
+              backgroundColor: '#FF9800',
+              color: 'white',
+              cursor: 'pointer'
+            }}
+          >
+            ▶ Reproducir
+          </button>
+          <button 
+            onClick={()=>newQuestion()}
+            style={{
+              padding: '12px 24px',
+              fontSize: 'clamp(14px, 2.5vw, 18px)',
+              minHeight: '50px',
+              borderRadius: '8px',
+              border: 'none',
+              backgroundColor: '#9C27B0',
+              color: 'white',
+              cursor: 'pointer'
+            }}
+          >
+            🔁 Nueva
+          </button>
+          <div style={{
+            fontSize: 'clamp(16px, 3vw, 20px)',
+            textAlign: 'center',
+            padding: '12px 24px',
+            backgroundColor: '#333',
+            borderRadius: '8px',
+            color: 'white',
+            fontWeight: 'bold'
+          }}>
+            Puntaje: {score.correct}/{score.total}
+          </div>
         </div>
 
-        <div style={{border:'1px solid #ddd', padding:12, borderRadius:6}}>
-          <p>Selecciona {mode === 'intervals' ? 'el intervalo' : mode === 'notes' ? 'la nota' : 'el acorde'} que escuchas:</p>
-          <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap:8}}>
+        <div style={{
+          border: '2px solid #444',
+          padding: '24px',
+          borderRadius: '12px',
+          maxWidth: '100%',
+          backgroundColor: '#2a2a2a',
+          boxShadow: '0 4px 8px rgba(0,0,0,0.3)'
+        }}>
+          <p style={{
+            fontSize: 'clamp(16px, 3.5vw, 22px)',
+            textAlign: 'center',
+            marginBottom: '20px',
+            color: 'white'
+          }}>
+            Selecciona {mode === 'intervals' ? 'el intervalo' : mode === 'notes' ? 'la nota' : 'el acorde'} que escuchas:
+          </p>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+            gap: '16px',
+            marginTop: '20px'
+          }}>
             {question.options.map(opt=>(
               <button
                 key={opt.name || opt}
                 onClick={()=>answer(opt)}
                 disabled={!question.played}
-                style={{padding:12}}
+                style={{
+                  padding: '16px',
+                  fontSize: 'clamp(14px, 2.5vw, 18px)',
+                  minHeight: '60px',
+                  wordBreak: 'break-word',
+                  borderRadius: '8px',
+                  border: 'none',
+                  backgroundColor: '#555',
+                  color: 'white',
+                  cursor: question.played ? 'pointer' : 'not-allowed',
+                  transition: 'all 0.2s ease'
+                }}
+                onMouseEnter={(e) => {
+                  if (question.played) {
+                    e.target.style.backgroundColor = '#666';
+                    e.target.style.transform = 'scale(1.02)';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (question.played) {
+                    e.target.style.backgroundColor = '#555';
+                    e.target.style.transform = 'scale(1)';
+                  }
+                }}
               >
                 {opt.name || opt}
               </button>
             ))}
           </div>
-          <p style={{marginTop:10}}>{message}</p>
+          <p style={{
+            marginTop: '20px',
+            textAlign: 'center',
+            fontSize: 'clamp(16px, 3.5vw, 22px)',
+            color: '#4CAF50',
+            fontWeight: 'bold',
+            minHeight: '30px'
+          }}>
+            {message}
+          </p>
         </div>
       </div>
     </div>

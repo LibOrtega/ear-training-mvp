@@ -46,4 +46,46 @@
 .menu-button.premium:hover {
   background-color: darkorange;
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header {
+    padding: 10px 16px;
+  }
+  
+  .logo {
+    font-size: 18px;
+  }
+  
+  .menu {
+    gap: 8px;
+  }
+  
+  .menu-button {
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 8px 12px;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .logo {
+    font-size: 16px;
+  }
+  
+  .menu {
+    margin-left: 0;
+    gap: 6px;
+  }
+  
+  .menu-button {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+}
   
