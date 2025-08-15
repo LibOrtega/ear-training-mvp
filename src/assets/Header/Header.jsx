@@ -4,7 +4,7 @@ import './header.css'; // Aquí pondremos estilos simples
 export default function Header() {
   return (
     <header className="header">
-      <div className="logo">🎹 Entrenador de Oído</div>
+      <div className="logo">🎵 Afinapp</div>
       <nav className="menu">
         <button className="menu-button">Iniciar sesión</button>
         <button className="menu-button premium">Comprar Premium</button>
