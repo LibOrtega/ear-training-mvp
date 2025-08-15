@@ -1,0 +1,49 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background-color: #222;
+  color: white;
+  font-family: sans-serif;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.menu {
+  display: flex;
+  gap: 12px;
+  margin-left: auto;
+}
+
+.menu-button {
+  padding: 6px 12px;
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.menu-button:hover {
+  background-color: white;
+  color: #222;
+}
+
+.menu-button.premium {
+  background-color: gold;
+  color: black;
+  border: none;
+}
+
+.menu-button.premium:hover {
+  background-color: darkorange;
+}
+  
