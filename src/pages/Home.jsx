@@ -158,7 +158,7 @@ function Home() {
           }}>
             <h3 style={{ color: '#38b2ac', marginBottom: '16px' }}>🎹 Múltiples Instrumentos</h3>
             <p style={{ color: '#4a5568', lineHeight: '1.6' }}>
-              Soporte para piano, guitarra, violín y más instrumentos musicales.
+              Soporte para piano, guitarra, violín y más instrumentos musicales próximamente.)
             </p>
           </div>
           

@@ -22,6 +22,7 @@
   display: flex;
   gap: 12px;
   margin-left: auto;
+  align-items: center;
 }
 
 .menu-button {
@@ -70,6 +71,51 @@
   box-shadow: 0 6px 12px rgba(113,128,150,0.4);
 }
 
+/* Estilos para el botón de cerrar sesión */
+.menu-button.logout-button {
+  background-color: #e53e3e;
+  border: none;
+  color: white;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.menu-button.logout-button:hover {
+  background-color: #c53030;
+  transform: translateY(-1px);
+}
+
+/* Información del usuario */
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  padding: 8px 12px;
+  background-color: #f7fafc;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.user-username {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0056d6;
+}
+
+.user-type {
+  font-size: 12px;
+  color: #718096;
+}
+
+/* Botones de autenticación */
+.auth-buttons {
+  display: flex;
+  gap: 8px;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .header {
@@ -94,6 +140,18 @@
     font-size: 13px;
     min-height: 45px;
   }
+  
+  .user-info {
+    padding: 6px 10px;
+  }
+  
+  .user-username {
+    font-size: 13px;
+  }
+  
+  .user-type {
+    font-size: 11px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -110,6 +168,8 @@
   .menu {
     margin-left: 0;
     gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
   }
   
   .menu-button {
@@ -121,6 +181,19 @@
     padding: 8px 16px;
     font-size: 12px;
     min-height: 40px;
+  }
+  
+  .user-info {
+    padding: 5px 8px;
+    text-align: center;
+  }
+  
+  .user-username {
+    font-size: 12px;
+  }
+  
+  .user-type {
+    font-size: 10px;
   }
 }
   

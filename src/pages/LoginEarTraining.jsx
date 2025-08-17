@@ -1,31 +1,102 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 function LoginEarTraining() {
   const navigate = useNavigate();
+  const { signUp, login, isAuthenticated, clearCorruptedData } = useAuth();
   const [formData, setFormData] = useState({
+    username: "",
     email: "",
-    password: ""
+    confirmEmail: "",
+    password: "",
+    confirmPassword: ""
   });
   const [isSignUp, setIsSignUp] = useState(false);
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    setError(""); // Limpiar error cuando el usuario escribe
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Datos del usuario:", formData);
-    
+  const validateForm = () => {
     if (isSignUp) {
-      alert("Cuenta creada exitosamente. ¡Bienvenido a Afinapp!");
-    } else {
-      alert("Inicio de sesión exitoso. ¡Bienvenido de vuelta!");
+      // Validaciones para registro
+      if (formData.username.trim().length < 3) {
+        throw new Error('El nombre de usuario debe tener al menos 3 caracteres');
+      }
+      if (formData.email !== formData.confirmEmail) {
+        throw new Error('Los correos electrónicos no coinciden');
+      }
+      if (formData.password.length < 6) {
+        throw new Error('La contraseña debe tener al menos 6 caracteres');
+      }
+      if (formData.password !== formData.confirmPassword) {
+        throw new Error('Las contraseñas no coinciden');
+      }
     }
-    
-    // Redirigir al entrenamiento de oído
-    navigate('/ear-training');
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    setIsLoading(true);
+
+    try {
+      // Validar formulario
+      validateForm();
+
+      if (isSignUp) {
+        // Crear cuenta
+        await signUp(formData.username, formData.email, formData.password, 'ear-training');
+        alert("¡Cuenta creada exitosamente! Bienvenido a Afinapp");
+      } else {
+        // Iniciar sesión
+        await login(formData.email, formData.password);
+        alert("¡Inicio de sesión exitoso! Bienvenido de vuelta");
+      }
+      
+      // Redirigir al entrenamiento de oído
+      navigate('/ear-training');
+    } catch (error) {
+      console.error('Error en formulario:', error);
+      setError(error.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const resetForm = () => {
+    setFormData({
+      username: "",
+      email: "",
+      confirmEmail: "",
+      password: "",
+      confirmPassword: ""
+    });
+    setError("");
+  };
+
+  const toggleMode = () => {
+    setIsSignUp(!isSignUp);
+    resetForm();
+  };
+
+  const handleClearData = () => {
+    if (window.confirm('¿Estás seguro de que quieres limpiar todos los datos? Esto eliminará todas las cuentas y sesiones.')) {
+      clearCorruptedData();
+      alert('Datos limpiados. Puedes crear una nueva cuenta ahora.');
+      resetForm();
+    }
+  };
+
+  // Si ya está autenticado, redirigir
+  if (isAuthenticated) {
+    navigate('/ear-training');
+    return null;
+  }
 
   return (
     <div style={{
@@ -42,7 +113,7 @@ function LoginEarTraining() {
       alignItems: 'center'
     }}>
       <div style={{
-        maxWidth: '400px',
+        maxWidth: '450px',
         width: '100%',
         backgroundColor: 'white',
         borderRadius: '16px',
@@ -68,12 +139,65 @@ function LoginEarTraining() {
           </p>
         </div>
 
+        {/* Mensaje de error */}
+        {error && (
+          <div style={{
+            padding: '12px',
+            backgroundColor: '#fed7d7',
+            border: '1px solid #feb2b2',
+            borderRadius: '8px',
+            color: '#c53030',
+            marginBottom: '1rem',
+            fontSize: '14px',
+            textAlign: 'center'
+          }}>
+            {error}
+          </div>
+        )}
+
         {/* Formulario */}
         <form onSubmit={handleSubmit} style={{
           display: 'flex',
           flexDirection: 'column',
           gap: '1.5rem'
         }}>
+          {/* Nombre de usuario - solo para registro */}
+          {isSignUp && (
+            <div>
+              <label style={{
+                display: 'block',
+                marginBottom: '0.5rem',
+                color: '#2d3748',
+                fontWeight: '500'
+              }}>
+                Nombre de usuario: *
+              </label>
+              <input
+                type="text"
+                name="username"
+                value={formData.username}
+                onChange={handleInputChange}
+                required={isSignUp}
+                disabled={isLoading}
+                style={{
+                  width: '100%',
+                  padding: '12px',
+                  fontSize: '16px',
+                  borderRadius: '8px',
+                  border: '1px solid #e2e8f0',
+                  backgroundColor: isLoading ? '#f7fafc' : '#f7fafc',
+                  color: '#2d3748',
+                  outline: 'none',
+                  boxSizing: 'border-box',
+                  opacity: isLoading ? 0.7 : 1
+                }}
+                placeholder="Tu nombre de usuario"
+                minLength="3"
+              />
+            </div>
+          )}
+
+          {/* Email */}
           <div>
             <label style={{
               display: 'block',
@@ -81,7 +205,7 @@ function LoginEarTraining() {
               color: '#2d3748',
               fontWeight: '500'
             }}>
-              Email:
+              Correo electrónico: *
             </label>
             <input
               type="email"
@@ -89,21 +213,59 @@ function LoginEarTraining() {
               value={formData.email}
               onChange={handleInputChange}
               required
+              disabled={isLoading}
               style={{
                 width: '100%',
                 padding: '12px',
                 fontSize: '16px',
                 borderRadius: '8px',
                 border: '1px solid #e2e8f0',
-                backgroundColor: '#f7fafc',
+                backgroundColor: isLoading ? '#f7fafc' : '#f7fafc',
                 color: '#2d3748',
                 outline: 'none',
-                boxSizing: 'border-box'
+                boxSizing: 'border-box',
+                opacity: isLoading ? 0.7 : 1
               }}
               placeholder="tu@email.com"
             />
           </div>
 
+          {/* Confirmar email - solo para registro */}
+          {isSignUp && (
+            <div>
+              <label style={{
+                display: 'block',
+                marginBottom: '0.5rem',
+                color: '#2d3748',
+                fontWeight: '500'
+              }}>
+                Confirmar correo electrónico: *
+              </label>
+              <input
+                type="email"
+                name="confirmEmail"
+                value={formData.confirmEmail}
+                onChange={handleInputChange}
+                required={isSignUp}
+                disabled={isLoading}
+                style={{
+                  width: '100%',
+                  padding: '12px',
+                  fontSize: '16px',
+                  borderRadius: '8px',
+                  border: '1px solid #e2e8f0',
+                  backgroundColor: isLoading ? '#f7fafc' : '#f7fafc',
+                  color: '#2d3748',
+                  outline: 'none',
+                  boxSizing: 'border-box',
+                  opacity: isLoading ? 0.7 : 1
+                }}
+                placeholder="Confirma tu email"
+              />
+            </div>
+          )}
+
+          {/* Contraseña */}
           <div>
             <label style={{
               display: 'block',
@@ -111,7 +273,7 @@ function LoginEarTraining() {
               color: '#2d3748',
               fontWeight: '500'
             }}>
-              Contraseña:
+              Contraseña: *
             </label>
             <input
               type="password"
@@ -119,42 +281,96 @@ function LoginEarTraining() {
               value={formData.password}
               onChange={handleInputChange}
               required
+              disabled={isLoading}
               style={{
                 width: '100%',
                 padding: '12px',
                 fontSize: '16px',
                 borderRadius: '8px',
                 border: '1px solid #e2e8f0',
-                backgroundColor: '#f7fafc',
+                backgroundColor: isLoading ? '#f7fafc' : '#f7fafc',
                 color: '#2d3748',
                 outline: 'none',
-                boxSizing: 'border-box'
+                boxSizing: 'border-box',
+                opacity: isLoading ? 0.7 : 1
               }}
               placeholder="••••••••"
+              minLength={isSignUp ? "6" : undefined}
             />
+            {isSignUp && (
+              <div style={{
+                fontSize: '12px',
+                color: '#718096',
+                marginTop: '4px'
+              }}>
+                Mínimo 6 caracteres
+              </div>
+            )}
           </div>
+
+          {/* Confirmar contraseña - solo para registro */}
+          {isSignUp && (
+            <div>
+              <label style={{
+                display: 'block',
+                marginBottom: '0.5rem',
+                color: '#2d3748',
+                fontWeight: '500'
+              }}>
+                Confirmar contraseña: *
+              </label>
+              <input
+                type="password"
+                name="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleInputChange}
+                required={isSignUp}
+                disabled={isLoading}
+                style={{
+                  width: '100%',
+                  padding: '12px',
+                  fontSize: '16px',
+                  borderRadius: '8px',
+                  border: '1px solid #e2e8f0',
+                  backgroundColor: isLoading ? '#f7fafc' : '#f7fafc',
+                  color: '#2d3748',
+                  outline: 'none',
+                  boxSizing: 'border-box',
+                  opacity: isLoading ? 0.7 : 1
+                }}
+                placeholder="Confirma tu contraseña"
+                minLength="6"
+              />
+            </div>
+          )}
 
           <button 
             type="submit"
+            disabled={isLoading}
             style={{
               padding: '14px',
               fontSize: '16px',
               borderRadius: '8px',
               border: 'none',
-              backgroundColor: '#0056d6',
+              backgroundColor: isLoading ? '#a0aec0' : '#0056d6',
               color: 'white',
-              cursor: 'pointer',
+              cursor: isLoading ? 'not-allowed' : 'pointer',
               fontWeight: '600',
-              transition: 'all 0.2s ease'
+              transition: 'all 0.2s ease',
+              opacity: isLoading ? 0.7 : 1
             }}
             onMouseEnter={(e) => {
-              e.target.style.backgroundColor = '#004494';
+              if (!isLoading) {
+                e.target.style.backgroundColor = '#004494';
+              }
             }}
             onMouseLeave={(e) => {
-              e.target.style.backgroundColor = '#0056d6';
+              if (!isLoading) {
+                e.target.style.backgroundColor = '#0056d6';
+              }
             }}
           >
-            {isSignUp ? 'Crear Cuenta' : 'Iniciar Sesión'}
+            {isLoading ? 'Procesando...' : (isSignUp ? 'Crear Cuenta' : 'Iniciar Sesión')}
           </button>
         </form>
 
@@ -172,17 +388,42 @@ function LoginEarTraining() {
             {isSignUp ? '¿Ya tienes cuenta?' : '¿No tienes cuenta?'}
           </p>
           <button
-            onClick={() => setIsSignUp(!isSignUp)}
+            onClick={toggleMode}
+            disabled={isLoading}
             style={{
               background: 'none',
               border: 'none',
-              color: '#0056d6',
-              cursor: 'pointer',
+              color: isLoading ? '#a0aec0' : '#0056d6',
+              cursor: isLoading ? 'not-allowed' : 'pointer',
               fontSize: '14px',
               textDecoration: 'underline'
             }}
           >
             {isSignUp ? 'Iniciar sesión' : 'Crear cuenta'}
+          </button>
+        </div>
+
+        {/* Botón de limpiar datos */}
+        <div style={{
+          textAlign: 'center',
+          marginTop: '1rem',
+          paddingTop: '1rem',
+          borderTop: '1px solid #e2e8f0'
+        }}>
+          <button
+            onClick={handleClearData}
+            disabled={isLoading}
+            style={{
+              background: 'none',
+              border: 'none',
+              color: '#e53e3e',
+              cursor: isLoading ? 'not-allowed' : 'pointer',
+              fontSize: '12px',
+              textDecoration: 'underline'
+            }}
+            title="Limpiar todos los datos guardados (útil si hay problemas)"
+          >
+            🔧 Limpiar datos
           </button>
         </div>
 

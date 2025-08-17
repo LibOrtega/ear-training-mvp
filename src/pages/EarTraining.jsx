@@ -1,22 +1,26 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import { usePremium } from '../hooks/usePremium';
 import * as Tone from 'tone';
+import MusicTheory from '../components/MusicTheory';
+import PaymentModalStripe from '../components/PaymentModalStripe';
 
 // 🎵 Lista completa de intervalos (0 a 12 semitonos, incluye compuestos si quieres expandir)
 const INTERVALS = [
-  { name: 'Unison', semitones: 0 },
-  { name: 'Minor 2nd', semitones: 1 },
-  { name: 'Major 2nd', semitones: 2 },
-  { name: 'Minor 3rd', semitones: 3 },
-  { name: 'Major 3rd', semitones: 4 },
-  { name: 'Perfect 4th', semitones: 5 },
-  { name: 'Tritone', semitones: 6 },
-  { name: 'Perfect 5th', semitones: 7 },
-  { name: 'Minor 6th', semitones: 8 },
-  { name: 'Major 6th', semitones: 9 },
-  { name: 'Minor 7th', semitones: 10 },
-  { name: 'Major 7th', semitones: 11 },
-  { name: 'Octave', semitones: 12 }
+  { name: 'Unísono', semitones: 0 },
+  { name: 'Segunda menor', semitones: 1 },
+  { name: 'Segunda mayor', semitones: 2 },
+  { name: 'Tercera menor', semitones: 3 },
+  { name: 'Tercera mayor', semitones: 4 },
+  { name: 'Cuarta perfecta', semitones: 5 },
+  { name: 'Tritono', semitones: 6 },
+  { name: 'Quinta perfecta', semitones: 7 },
+  { name: 'Sexta menor', semitones: 8 },
+  { name: 'Sexta mayor', semitones: 9 },
+  { name: 'Séptima menor', semitones: 10 },
+  { name: 'Séptima mayor', semitones: 11 },
+  { name: 'Octava', semitones: 12 }
 ]
 
 // 🎹 Nombres de notas
@@ -49,27 +53,91 @@ function midiToNote(m) {
   return NOTE_NAMES[m % 12] + octave
 }
 
-function shuffle(a){ return a.slice().sort(()=>Math.random()-0.5) }
+  function shuffle(a){ return a.slice().sort(()=>Math.random()-0.5) }
 
 function EarTraining() {
   const navigate = useNavigate();
+  const { currentUser, isAuthenticated, updateProgress, getUserStats } = useAuth();
+  const { isPremium } = usePremium();
   const synthRef = useRef(null)
   const [mode, setMode] = useState('intervals') // 'intervals', 'notes', 'chords'
   const [question, setQuestion] = useState(null)
   const [message, setMessage] = useState('')
   const [score, setScore] = useState({correct:0, total:0})
+  const [showMusicTheory, setShowMusicTheory] = useState(false)
+  const [showPaymentModal, setShowPaymentModal] = useState(false)
+  const [isInitialized, setIsInitialized] = useState(false)
 
-  useEffect(()=>{
-    synthRef.current = new Tone.PolySynth(Tone.Synth).toDestination()
-    newQuestion()
-  }, [mode])
+  // Redirigir si no está autenticado
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate('/login-ear-training');
+      return;
+    }
+  }, [isAuthenticated, navigate]);
+
+  // Inicializar sintetizador solo una vez
+  useEffect(() => {
+    if (isAuthenticated) {
+      try {
+        if (!synthRef.current) {
+          synthRef.current = new Tone.PolySynth(Tone.Synth).toDestination();
+        }
+        setIsInitialized(true);
+      } catch (error) {
+        console.error('Error al inicializar audio:', error);
+        setIsInitialized(true); // Continuar sin audio si hay error
+      }
+    }
+  }, [isAuthenticated]);
+
+  // Cargar progreso del usuario solo cuando cambie la autenticación
+  useEffect(() => {
+    if (isAuthenticated && currentUser && currentUser.progress) {
+      setScore({
+        correct: currentUser.progress.correct,
+        total: currentUser.progress.total
+      });
+    }
+  }, [isAuthenticated, currentUser]);
+
+  // Crear nueva pregunta cuando cambie el modo
+  useEffect(() => {
+    if (isAuthenticated && isInitialized) {
+      newQuestion();
+    }
+  }, [mode, isAuthenticated, isInitialized]);
+
+  // Crear primera pregunta cuando se inicialice
+  useEffect(() => {
+    console.log('Estado actual:', { isAuthenticated, isInitialized, question });
+    if (isAuthenticated && isInitialized) {
+      console.log('Componente inicializado, creando primera pregunta...');
+      newQuestion();
+    }
+  }, [isAuthenticated, isInitialized]);
+
+  const handleTutorialClick = () => {
+    if (isPremium) {
+      setShowMusicTheory(true);
+    } else {
+      setShowPaymentModal(true);
+    }
+  };
+
+  const handlePaymentSuccess = () => {
+    setShowPaymentModal(false);
+    setShowMusicTheory(true);
+  };
 
   function newQuestion(){
+    console.log('newQuestion llamado, modo:', mode);
     if (mode === 'intervals') {
       const correct = INTERVALS[Math.floor(Math.random()*INTERVALS.length)]
       const root = Math.floor(Math.random()*60) + 21 // 21..80 (evitamos notas extremas)
       const others = shuffle(INTERVALS.filter(i=>i.semitones !== correct.semitones)).slice(0,3)
       const options = shuffle([correct, ...others])
+      console.log('Nueva pregunta de intervalos creada:', { root, correct, options });
       setQuestion({root, correct, options, played:false})
 
     } else if (mode === 'notes') {
@@ -79,6 +147,7 @@ function EarTraining() {
       for (let m = 21; m <= 108; m++) allNotes.push(midiToNote(m))
       const others = shuffle(allNotes.filter(n=>n !== correctNote)).slice(0,3)
       const options = shuffle([correctNote, ...others])
+      console.log('Nueva pregunta de notas creada:', { root, correctNote, options });
       setQuestion({root, correct: correctNote, options, played:false})
 
     } else if (mode === 'chords') {
@@ -87,6 +156,7 @@ function EarTraining() {
       const correct = chordType
       const others = shuffle(CHORD_TYPES.filter(c=>c.name !== chordType.name)).slice(0,3)
       const options = shuffle([correct, ...others])
+      console.log('Nueva pregunta de acordes creada:', { root, correct, options });
       setQuestion({root, correct, options, played:false})
     }
     setMessage('')
@@ -121,10 +191,67 @@ function EarTraining() {
         ? opt === question.correct
         : opt.name === question.correct.name
 
+    // Actualizar puntaje local
     setScore(s => ({correct: s.correct + (correct?1:0), total: s.total + 1}))
+    
+    // Actualizar progreso en el contexto
+    if (isAuthenticated && currentUser) {
+      updateProgress({
+        correct,
+        mode,
+        question: question.correct.name || question.correct,
+        timestamp: new Date().toISOString()
+      });
+    }
+    
     setMessage(correct ? '¡Correcto!' : `Incorrecto — era ${mode === 'intervals' ? question.correct.name : question.correct.name || question.correct}`)
     setTimeout(()=> newQuestion(), 1000)
   }
+
+  // Si no está autenticado, mostrar loading
+  if (!isAuthenticated) {
+    return (
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+        backgroundColor: '#f8fafc'
+      }}>
+        <div style={{
+          fontSize: '18px',
+          color: '#4a5568'
+        }}>
+          Redirigiendo al login...
+        </div>
+      </div>
+    );
+  }
+
+  // Si no está inicializado, mostrar loading
+  if (!isInitialized) {
+    console.log('Mostrando loading - no inicializado');
+    return (
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+        backgroundColor: '#f8fafc'
+      }}>
+        <div style={{
+          fontSize: '18px',
+          color: '#4a5568'
+        }}>
+          Inicializando...
+        </div>
+      </div>
+    );
+  }
+
+  console.log('Renderizando componente principal, question:', question);
+
+  const userStats = getUserStats();
 
   return (
     <div style={{
@@ -152,6 +279,49 @@ function EarTraining() {
           color: '#1a202c'
         }}>🎵 Entrenamiento de Oído</h1>
       </div>
+
+      {/* Información del usuario */}
+      {userStats && (
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center',
+          marginBottom: '2rem',
+          flexWrap: 'wrap',
+          gap: '1rem'
+        }}>
+          <div style={{
+            padding: '12px 20px',
+            backgroundColor: 'white',
+            borderRadius: '8px',
+            border: '1px solid #e2e8f0',
+            boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+            textAlign: 'center'
+          }}>
+            <div style={{ fontSize: '14px', color: '#718096', marginBottom: '4px' }}>
+              Miembro desde
+            </div>
+            <div style={{ fontSize: '16px', fontWeight: '600', color: '#2d3748' }}>
+              {userStats.memberSince}
+            </div>
+          </div>
+          
+          <div style={{
+            padding: '12px 20px',
+            backgroundColor: 'white',
+            borderRadius: '8px',
+            border: '1px solid #e2e8f0',
+            boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+            textAlign: 'center'
+          }}>
+            <div style={{ fontSize: '14px', color: '#718096', marginBottom: '4px' }}>
+              Precisión
+            </div>
+            <div style={{ fontSize: '16px', fontWeight: '600', color: '#0056d6' }}>
+              {userStats.accuracy}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Selector de tipo de ejercicio */}
       <div style={{
@@ -209,6 +379,24 @@ function EarTraining() {
           }}
         >
           🎼 Acordes
+        </button>
+        <button 
+          onClick={handleTutorialClick}
+          style={{
+            padding: '12px 24px',
+            fontSize: 'clamp(14px, 2.5vw, 18px)',
+            minHeight: '50px',
+            borderRadius: '8px',
+            border: 'none',
+            backgroundColor: isPremium ? '#10b981' : '#f59e0b',
+            color: 'white',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px'
+          }}
+        >
+          {isPremium ? '📚 Tutoriales' : '🔒 Tutoriales Premium'}
         </button>
       </div>
 
@@ -368,6 +556,18 @@ function EarTraining() {
           }
         </p>
       </div>
+
+      {/* Modales */}
+      {showMusicTheory && (
+        <MusicTheory onClose={() => setShowMusicTheory(false)} />
+      )}
+      
+      {showPaymentModal && (
+        <PaymentModalStripe 
+          onClose={() => setShowPaymentModal(false)}
+          onSuccess={handlePaymentSuccess}
+        />
+      )}
     </div>
   );
 }
