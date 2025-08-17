@@ -68,7 +68,7 @@ function Home() {
           🎵 Aprender de oído
         </button>
         <button 
-          onClick={() => navigate('/login-musico')}
+          onClick={() => navigate('/musician-mode')}
           style={{
             padding: '16px 32px',
             fontSize: 'clamp(16px, 3vw, 20px)',

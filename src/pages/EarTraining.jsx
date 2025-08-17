@@ -67,6 +67,7 @@ function EarTraining() {
   const [showMusicTheory, setShowMusicTheory] = useState(false)
   const [showPaymentModal, setShowPaymentModal] = useState(false)
   const [isInitialized, setIsInitialized] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   // Redirigir si no está autenticado
   useEffect(() => {
@@ -76,22 +77,37 @@ function EarTraining() {
     }
   }, [isAuthenticated, navigate]);
 
-  // Inicializar sintetizador solo una vez
+  // Inicializar sintetizador y crear primera pregunta
   useEffect(() => {
     if (isAuthenticated) {
-      try {
-        if (!synthRef.current) {
-          synthRef.current = new Tone.PolySynth(Tone.Synth).toDestination();
+      setIsLoading(true);
+      const initializeAudio = async () => {
+        try {
+          if (!synthRef.current) {
+            synthRef.current = new Tone.PolySynth(Tone.Synth).toDestination();
+          }
+          setIsInitialized(true);
+          // Crear primera pregunta después de inicializar
+          setTimeout(() => {
+            newQuestion();
+            setIsLoading(false);
+          }, 100);
+        } catch (error) {
+          console.error('Error al inicializar audio:', error);
+          setIsInitialized(true);
+          // Crear pregunta incluso si hay error de audio
+          setTimeout(() => {
+            newQuestion();
+            setIsLoading(false);
+          }, 100);
         }
-        setIsInitialized(true);
-      } catch (error) {
-        console.error('Error al inicializar audio:', error);
-        setIsInitialized(true); // Continuar sin audio si hay error
-      }
+      };
+      
+      initializeAudio();
     }
   }, [isAuthenticated]);
 
-  // Cargar progreso del usuario solo cuando cambie la autenticación
+  // Cargar progreso del usuario
   useEffect(() => {
     if (isAuthenticated && currentUser && currentUser.progress) {
       setScore({
@@ -101,21 +117,12 @@ function EarTraining() {
     }
   }, [isAuthenticated, currentUser]);
 
-  // Crear nueva pregunta cuando cambie el modo
+  // Crear nueva pregunta cuando cambie el modo (solo si ya está inicializado)
   useEffect(() => {
-    if (isAuthenticated && isInitialized) {
+    if (isAuthenticated && isInitialized && question) {
       newQuestion();
     }
-  }, [mode, isAuthenticated, isInitialized]);
-
-  // Crear primera pregunta cuando se inicialice
-  useEffect(() => {
-    console.log('Estado actual:', { isAuthenticated, isInitialized, question });
-    if (isAuthenticated && isInitialized) {
-      console.log('Componente inicializado, creando primera pregunta...');
-      newQuestion();
-    }
-  }, [isAuthenticated, isInitialized]);
+  }, [mode]);
 
   const handleTutorialClick = () => {
     if (isPremium) {
@@ -228,6 +235,26 @@ function EarTraining() {
     );
   }
 
+  // Si está cargando, mostrar loading
+  if (isLoading) {
+    return (
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+        backgroundColor: '#f8fafc'
+      }}>
+        <div style={{
+          fontSize: '18px',
+          color: '#4a5568'
+        }}>
+          Cargando ejercicios...
+        </div>
+      </div>
+    );
+  }
+
   // Si no está inicializado, mostrar loading
   if (!isInitialized) {
     console.log('Mostrando loading - no inicializado');
@@ -250,6 +277,30 @@ function EarTraining() {
   }
 
   console.log('Renderizando componente principal, question:', question);
+
+  // Si no hay pregunta, crear una nueva
+  if (!question) {
+    console.log('No hay pregunta, creando una nueva...');
+    setTimeout(() => {
+      newQuestion();
+    }, 100);
+    return (
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+        backgroundColor: '#f8fafc'
+      }}>
+        <div style={{
+          fontSize: '18px',
+          color: '#4a5568'
+        }}>
+          Preparando ejercicios...
+        </div>
+      </div>
+    );
+  }
 
   const userStats = getUserStats();
 

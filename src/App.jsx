@@ -8,6 +8,7 @@ import EarTraining from './pages/EarTraining.jsx'
 import Contact from './pages/Contact.jsx'
 import LoginEarTraining from './pages/LoginEarTraining.jsx'
 import LoginMusico from './pages/LoginMusico.jsx'
+import MusicianMode from './pages/MusicianMode.jsx'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/login-ear-training" element={<LoginEarTraining />} />
             <Route path="/login-musico" element={<LoginMusico />} />
+            <Route path="/musician-mode" element={<MusicianMode />} />
           </Routes>
         </div>
       </Router>

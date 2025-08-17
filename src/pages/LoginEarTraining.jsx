@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
@@ -15,6 +15,33 @@ function LoginEarTraining() {
   const [isSignUp, setIsSignUp] = useState(false);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  // Redirigir si ya está autenticado
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/ear-training');
+    }
+  }, [isAuthenticated, navigate]);
+
+  // Si ya está autenticado, mostrar loading mientras redirige
+  if (isAuthenticated) {
+    return (
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+        backgroundColor: '#f8fafc'
+      }}>
+        <div style={{
+          fontSize: '18px',
+          color: '#4a5568'
+        }}>
+          Redirigiendo al entrenamiento...
+        </div>
+      </div>
+    );
+  }
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -91,12 +118,6 @@ function LoginEarTraining() {
       resetForm();
     }
   };
-
-  // Si ya está autenticado, redirigir
-  if (isAuthenticated) {
-    navigate('/ear-training');
-    return null;
-  }
 
   return (
     <div style={{
