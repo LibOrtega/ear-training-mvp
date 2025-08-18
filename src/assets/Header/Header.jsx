@@ -29,7 +29,7 @@ function Header() {
           </button>
         )}
         
-        {isAuthenticated ? (
+        {isAuthenticated && (
           <>
             <div className="user-info">
               <span className="user-username">@{currentUser.username}</span>
@@ -42,15 +42,6 @@ function Header() {
               Cerrar Sesión
             </button>
           </>
-        ) : (
-          <div className="auth-buttons">
-            <button 
-              className="menu-button"
-              onClick={() => navigate('/login-ear-training')}
-            >
-              Iniciar Sesión
-            </button>
-          </div>
         )}
       </div>
     </header>

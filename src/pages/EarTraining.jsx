@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { usePremium } from '../hooks/usePremium';
@@ -53,7 +53,7 @@ function midiToNote(m) {
   return NOTE_NAMES[m % 12] + octave
 }
 
-  function shuffle(a){ return a.slice().sort(()=>Math.random()-0.5) }
+function shuffle(a){ return a.slice().sort(()=>Math.random()-0.5) }
 
 function EarTraining() {
   const navigate = useNavigate();
@@ -122,29 +122,27 @@ function EarTraining() {
     if (isAuthenticated && isInitialized && question) {
       newQuestion();
     }
-  }, [mode]);
+  }, [mode, isAuthenticated, isInitialized]);
 
-  const handleTutorialClick = () => {
+  const handleTutorialClick = useCallback(() => {
     if (isPremium) {
       setShowMusicTheory(true);
     } else {
       setShowPaymentModal(true);
     }
-  };
+  }, [isPremium]);
 
-  const handlePaymentSuccess = () => {
+  const handlePaymentSuccess = useCallback(() => {
     setShowPaymentModal(false);
     setShowMusicTheory(true);
-  };
+  }, []);
 
-  function newQuestion(){
-    console.log('newQuestion llamado, modo:', mode);
+  const newQuestion = useCallback(() => {
     if (mode === 'intervals') {
       const correct = INTERVALS[Math.floor(Math.random()*INTERVALS.length)]
       const root = Math.floor(Math.random()*60) + 21 // 21..80 (evitamos notas extremas)
       const others = shuffle(INTERVALS.filter(i=>i.semitones !== correct.semitones)).slice(0,3)
       const options = shuffle([correct, ...others])
-      console.log('Nueva pregunta de intervalos creada:', { root, correct, options });
       setQuestion({root, correct, options, played:false})
 
     } else if (mode === 'notes') {
@@ -154,7 +152,6 @@ function EarTraining() {
       for (let m = 21; m <= 108; m++) allNotes.push(midiToNote(m))
       const others = shuffle(allNotes.filter(n=>n !== correctNote)).slice(0,3)
       const options = shuffle([correctNote, ...others])
-      console.log('Nueva pregunta de notas creada:', { root, correctNote, options });
       setQuestion({root, correct: correctNote, options, played:false})
 
     } else if (mode === 'chords') {
@@ -163,11 +160,10 @@ function EarTraining() {
       const correct = chordType
       const others = shuffle(CHORD_TYPES.filter(c=>c.name !== chordType.name)).slice(0,3)
       const options = shuffle([correct, ...others])
-      console.log('Nueva pregunta de acordes creada:', { root, correct, options });
       setQuestion({root, correct, options, played:false})
     }
     setMessage('')
-  }
+  }, [mode]);
 
   async function play(){
     if(!question) return
@@ -257,7 +253,6 @@ function EarTraining() {
 
   // Si no está inicializado, mostrar loading
   if (!isInitialized) {
-    console.log('Mostrando loading - no inicializado');
     return (
       <div style={{
         display: 'flex',
@@ -276,14 +271,9 @@ function EarTraining() {
     );
   }
 
-  console.log('Renderizando componente principal, question:', question);
-
   // Si no hay pregunta, crear una nueva
   if (!question) {
-    console.log('No hay pregunta, creando una nueva...');
-    setTimeout(() => {
-      newQuestion();
-    }, 100);
+    newQuestion();
     return (
       <div style={{
         display: 'flex',
@@ -539,7 +529,6 @@ function EarTraining() {
                   minHeight: '60px',
                   wordBreak: 'break-word',
                   borderRadius: '8px',
-                  border: 'none',
                   backgroundColor: '#f7fafc',
                   color: '#2d3748',
                   cursor: question.played ? 'pointer' : 'not-allowed',

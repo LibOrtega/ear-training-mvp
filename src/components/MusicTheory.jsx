@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 function MusicTheory({ onClose }) {
   const [activeTab, setActiveTab] = useState('intervals');
-  const [showTutorial, setShowTutorial] = useState(false);
 
   const theoryData = {
     intervals: {

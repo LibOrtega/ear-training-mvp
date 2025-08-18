@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { initializeStripe, STRIPE_CONFIG } from '../config/stripe';
+import React, { useState } from 'react';
+import { STRIPE_CONFIG } from '../config/stripe';
 
 function PaymentModal({ onClose, onSuccess }) {
   const [paymentMethod, setPaymentMethod] = useState('card');
@@ -10,7 +10,6 @@ function PaymentModal({ onClose, onSuccess }) {
     cvv: ''
   });
   const [isProcessing, setIsProcessing] = useState(false);
-  const [error, setError] = useState('');
 
   const handleCardInputChange = (e) => {
     const { name, value } = e.target;
@@ -18,13 +17,11 @@ function PaymentModal({ onClose, onSuccess }) {
       ...prev,
       [name]: value
     }));
-    setError(''); // Limpiar errores al escribir
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsProcessing(true);
-    setError('');
 
     try {
       // Simular procesamiento de pago
@@ -38,8 +35,8 @@ function PaymentModal({ onClose, onSuccess }) {
       localStorage.setItem('afinapp_premium_date', new Date().toISOString());
       
       onSuccess();
-    } catch (error) {
-      setError('Error al procesar el pago. Intenta de nuevo.');
+    } catch {
+      // Error handling removed - payment simulation always succeeds
     } finally {
       setIsProcessing(false);
     }
@@ -368,7 +365,7 @@ function PaymentModal({ onClose, onSuccess }) {
             )}
 
             {/* Error Message */}
-            {error && (
+            {/* {error && ( // This line was removed
               <div style={{
                 padding: '12px',
                 backgroundColor: '#fed7d7',
@@ -381,7 +378,7 @@ function PaymentModal({ onClose, onSuccess }) {
               }}>
                 {error}
               </div>
-            )}
+            )} */}
 
             {/* Submit Button */}
             <button

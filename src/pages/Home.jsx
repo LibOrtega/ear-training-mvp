@@ -1,8 +1,18 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 function Home() {
   const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
+
+  const handleEarTrainingClick = () => {
+    if (isAuthenticated) {
+      navigate('/ear-training');
+    } else {
+      navigate('/login-ear-training');
+    }
+  };
 
   return (
     <div style={{
@@ -43,7 +53,7 @@ function Home() {
         justifyContent: 'center'
       }}>
         <button 
-          onClick={() => navigate('/login-ear-training')}
+          onClick={handleEarTrainingClick}
           style={{
             padding: '16px 32px',
             fontSize: 'clamp(16px, 3vw, 20px)',
