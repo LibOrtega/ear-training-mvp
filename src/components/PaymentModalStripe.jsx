@@ -75,216 +75,140 @@ function PaymentModalStripe({ onClose, onSuccess }) {
     }}>
       <div style={{
         backgroundColor: 'white',
+        padding: '2rem',
         borderRadius: '16px',
+        boxShadow: '0 10px 30px rgba(255, 140, 66, 0.3)',
+        border: '2px solid #ffb74d',
         maxWidth: '500px',
-        width: '100%',
-        maxHeight: '90vh',
-        overflow: 'auto'
+        width: '90%',
+        textAlign: 'center',
+        position: 'relative'
       }}>
-        {/* Header */}
-        <div style={{
-          padding: '24px',
-          borderBottom: '1px solid #e2e8f0',
-          position: 'relative'
+        {/* Botón de cerrar */}
+        <button
+          onClick={onClose}
+          style={{
+            position: 'absolute',
+            top: '15px',
+            right: '15px',
+            background: 'none',
+            border: 'none',
+            fontSize: '20px',
+            cursor: 'pointer',
+            color: '#718096',
+            padding: '8px',
+            borderRadius: '50%',
+            width: '32px',
+            height: '32px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            transition: 'all 0.3s ease',
+            zIndex: 10
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.backgroundColor = '#fff3e0';
+            e.target.style.color = '#f57c00';
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.backgroundColor = 'transparent';
+            e.target.style.color = '#718096';
+          }}
+        >
+          ✕
+        </button>
+        
+        <h2 style={{
+          color: '#f57c00',
+          marginBottom: '1.5rem',
+          fontSize: '1.8rem',
+          fontWeight: '700'
         }}>
-          <button
-            onClick={onClose}
-            style={{
-              position: 'absolute',
-              top: '20px',
-              right: '20px',
-              background: 'none',
-              border: 'none',
-              fontSize: '24px',
-              cursor: 'pointer',
-              color: '#718096',
-              padding: '8px',
-              borderRadius: '50%',
-              width: '40px',
-              height: '40px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              transition: 'all 0.2s ease'
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.backgroundColor = '#f7fafc';
-              e.target.style.color = '#4a5568';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.backgroundColor = 'transparent';
-              e.target.style.color = '#718096';
-            }}
-          >
-            ✕
-          </button>
-          <div style={{ textAlign: 'center' }}>
-            <h1 style={{
-              fontSize: '1.8rem',
-              color: '#1a202c',
-              marginBottom: '8px'
-            }}>
-              🚀 Desbloquea Tutoriales Premium
-            </h1>
-            <p style={{
-              fontSize: '16px',
-              color: '#4a5568',
-              margin: 0
-            }}>
-              Accede a toda la teoría musical y tutoriales avanzados
-            </p>
+          🎵 Acceso Premium - Entrenamiento Auditivo
+        </h2>
+        
+        <div style={{
+          background: 'linear-gradient(135deg, #fff8f0 0%, #fff3e0 100%)',
+          padding: '1.5rem',
+          borderRadius: '12px',
+          border: '1px solid #ffcc80',
+          marginBottom: '1.5rem'
+        }}>
+          <h3 style={{
+            color: '#f57c00',
+            marginBottom: '1rem',
+            fontSize: '1.3rem',
+            fontWeight: '600'
+          }}>Beneficios Incluidos:</h3>
+          
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '12px',
+            textAlign: 'left'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <span style={{ color: '#10b981', fontSize: '18px' }}>✓</span>
+              <span style={{ fontSize: '14px', color: '#4a5568' }}>Acceso completo a todos los ejercicios</span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <span style={{ color: '#10b981', fontSize: '18px' }}>✓</span>
+              <span style={{ fontSize: '14px', color: '#4a5568' }}>Progreso personalizado</span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <span style={{ color: '#10b981', fontSize: '18px' }}>✓</span>
+              <span style={{ fontSize: '14px', color: '#4a5568' }}>Ejemplos prácticos</span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <span style={{ color: '#10b981', fontSize: '18px' }}>✓</span>
+              <span style={{ fontSize: '14px', color: '#4a5568' }}>Aprende a tu paso</span>
+            </div>
           </div>
         </div>
-
-        {/* Pricing */}
-        <div style={{
-          padding: '24px',
-          backgroundColor: '#f0f9ff',
-          borderBottom: '1px solid #e2e8f0'
-        }}>
-          <div style={{
-            textAlign: 'center',
-            padding: '20px',
-            backgroundColor: 'white',
+        
+        <button
+          onClick={handlePayment}
+          disabled={!stripe || isProcessing}
+          style={{
+            backgroundColor: '#ff8c42',
+            color: 'white',
+            border: 'none',
+            padding: '12px 24px',
             borderRadius: '12px',
-            border: '2px solid #0056d6'
-          }}>
-            <div style={{
-              fontSize: '2.5rem',
-              fontWeight: 'bold',
-              color: '#0056d6',
-              marginBottom: '8px'
-            }}>
-              $200 MXN
-            </div>
-            <div style={{
-              fontSize: '16px',
-              color: '#4a5568',
-              marginBottom: '16px'
-            }}>
-              Pago único • Acceso de por vida
-            </div>
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
-              gap: '12px',
-              textAlign: 'left'
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ color: '#10b981', fontSize: '18px' }}>✓</span>
-                <span style={{ fontSize: '14px', color: '#4a5568' }}>Teoría completa</span>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ color: '#10b981', fontSize: '18px' }}>✓</span>
-                <span style={{ fontSize: '14px', color: '#4a5568' }}>Tutoriales paso a paso</span>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ color: '#10b981', fontSize: '18px' }}>✓</span>
-                <span style={{ fontSize: '14px', color: '#4a5568' }}>Ejemplos prácticos</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Payment Section */}
-        <div style={{ padding: '24px' }}>
-          {/* Error Message */}
-          {error && (
-            <div style={{
-              padding: '12px',
-              backgroundColor: '#fed7d7',
-              border: '1px solid #feb2b2',
-              borderRadius: '8px',
-              color: '#c53030',
-              marginBottom: '16px',
-              fontSize: '14px',
-              textAlign: 'center'
-            }}>
-              {error}
-            </div>
-          )}
-
-          {/* Stripe Payment Button */}
-          <button
-            onClick={handlePayment}
-            disabled={isProcessing || !stripe}
-            style={{
-              width: '100%',
-              padding: '16px',
-              fontSize: '18px',
-              fontWeight: '600',
-              borderRadius: '8px',
-              border: 'none',
-              backgroundColor: isProcessing || !stripe ? '#a0aec0' : '#0056d6',
-              color: 'white',
-              cursor: isProcessing || !stripe ? 'not-allowed' : 'pointer',
-              transition: 'all 0.2s ease',
-              marginBottom: '16px'
-            }}
-            onMouseEnter={(e) => {
-              if (!isProcessing && stripe) {
-                e.target.style.backgroundColor = '#004494';
-              }
-            }}
-            onMouseLeave={(e) => {
-              if (!isProcessing && stripe) {
-                e.target.style.backgroundColor = '#0056d6';
-              }
-            }}
-          >
-            {isProcessing ? 'Procesando...' : 
-             !stripe ? 'Cargando Stripe...' : 'Pagar $200 MXN'}
-          </button>
-
-          {/* Security Info */}
-          <div style={{
-            padding: '16px',
-            backgroundColor: '#f7fafc',
-            borderRadius: '8px',
-            border: '1px solid #e2e8f0',
-            textAlign: 'center'
-          }}>
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '8px',
-              marginBottom: '8px'
-            }}>
-              <span style={{ color: '#10b981', fontSize: '18px' }}>🔒</span>
-              <span style={{ fontSize: '14px', color: '#4a5568', fontWeight: '500' }}>
-                Pago Seguro con Stripe
-              </span>
-            </div>
-            <p style={{
-              fontSize: '12px',
-              color: '#718096',
-              margin: 0
-            }}>
-              Tu información está protegida con encriptación SSL de 256 bits
-            </p>
-          </div>
-
-          {/* Close Button */}
-          <div style={{
-            marginTop: '24px',
-            textAlign: 'center'
-          }}>
-            <button
-              onClick={onClose}
-              style={{
-                background: 'none',
-                border: 'none',
-                color: '#718096',
-                cursor: 'pointer',
-                fontSize: '14px',
-                textDecoration: 'underline'
-              }}
-            >
-              Cancelar
-            </button>
-          </div>
-        </div>
+            fontSize: '16px',
+            fontWeight: '600',
+            cursor: (!stripe || isProcessing) ? 'not-allowed' : 'pointer',
+            transition: 'all 0.3s ease',
+            width: '100%',
+            boxShadow: '0 4px 15px rgba(255, 140, 66, 0.3)'
+          }}
+          onMouseEnter={(e) => {
+            if (stripe && !isProcessing) {
+              e.target.style.backgroundColor = '#ff6b35';
+              e.target.style.transform = 'translateY(-2px)';
+              e.target.style.boxShadow = '0 6px 20px rgba(255, 140, 66, 0.4)';
+            }
+          }}
+          onMouseLeave={(e) => {
+            if (stripe && !isProcessing) {
+              e.target.style.backgroundColor = '#ff8c42';
+              e.target.style.transform = 'translateY(0)';
+              e.target.style.boxShadow = '0 4px 15px rgba(255, 140, 66, 0.3)';
+            }
+          }}
+        >
+          {isProcessing ? 'Procesando Pago...' : 
+           !stripe ? 'Cargando Stripe...' : 'Pago no disponible por el momento'}
+        </button>
+        
+        <p style={{
+          color: '#718096',
+          fontSize: '14px',
+          marginTop: '1rem',
+          fontStyle: 'italic'
+        }}>
+          Acceso inmediato después del pago
+        </p>
       </div>
     </div>
   );

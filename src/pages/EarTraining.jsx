@@ -5,6 +5,7 @@ import { usePremium } from '../hooks/usePremium';
 import * as Tone from 'tone';
 import MusicTheory from '../components/MusicTheory';
 import PaymentModalStripe from '../components/PaymentModalStripe';
+import SimpleFooter from '../components/SimpleFooter';
 
 // 🎵 Lista completa de intervalos (0 a 12 semitonos, incluye compuestos si quieres expandir)
 const INTERVALS = [
@@ -69,6 +70,7 @@ function EarTraining() {
   const [isInitialized, setIsInitialized] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
 
+
   // Redirigir si no está autenticado
   useEffect(() => {
     if (!isAuthenticated) {
@@ -84,20 +86,32 @@ function EarTraining() {
       const initializeAudio = async () => {
         try {
           if (!synthRef.current) {
-            synthRef.current = new Tone.PolySynth(Tone.Synth).toDestination();
+            // Usar un sintetizador de piano más confiable
+                         synthRef.current = new Tone.PolySynth(Tone.Synth, {
+               oscillator: {
+                 type: "triangle"
+               },
+               envelope: {
+                 attack: 0.05,
+                 decay: 0.2,
+                 sustain: 0.2,
+                 release: 1.0
+               },
+               volume: -15
+             }).toDestination();
           }
           setIsInitialized(true);
-          // Crear primera pregunta después de inicializar
-          setTimeout(() => {
-            newQuestion();
-            setIsLoading(false);
-          }, 100);
+                  // Crear primera pregunta después de inicializar
+        setTimeout(() => {
+          newQuestion(false);
+          setIsLoading(false);
+        }, 100);
         } catch (error) {
           console.error('Error al inicializar audio:', error);
           setIsInitialized(true);
           // Crear pregunta incluso si hay error de audio
           setTimeout(() => {
-            newQuestion();
+            newQuestion(false);
             setIsLoading(false);
           }, 100);
         }
@@ -120,7 +134,7 @@ function EarTraining() {
   // Crear nueva pregunta cuando cambie el modo (solo si ya está inicializado)
   useEffect(() => {
     if (isAuthenticated && isInitialized && question) {
-      newQuestion();
+      newQuestion(false);
     }
   }, [mode, isAuthenticated, isInitialized]);
 
@@ -137,7 +151,7 @@ function EarTraining() {
     setShowMusicTheory(true);
   }, []);
 
-  const newQuestion = useCallback(() => {
+  const newQuestion = useCallback((isReset = false) => {
     if (mode === 'intervals') {
       const correct = INTERVALS[Math.floor(Math.random()*INTERVALS.length)]
       const root = Math.floor(Math.random()*60) + 21 // 21..80 (evitamos notas extremas)
@@ -178,11 +192,18 @@ function EarTraining() {
       synth.triggerAttackRelease(secondNote, '8n', now + 0.6)
 
     } else if (mode === 'notes') {
-      synth.triggerAttackRelease(midiToNote(question.root), '1n', now)
+      synth.triggerAttackRelease(midiToNote(question.root), '8n', now)
 
     } else if (mode === 'chords') {
       const notes = question.correct.intervals.map(i => midiToNote(question.root + i))
-      synth.triggerAttackRelease(notes, '1n', now)
+      
+      // Primero tocar el arpegio (notas individuales)
+      notes.forEach((note, index) => {
+        synth.triggerAttackRelease(note, '8n', now + (index * 0.3))
+      })
+      
+      // Luego tocar el acorde completo
+      synth.triggerAttackRelease(notes, '4n', now + (notes.length * 0.3) + 0.2)
     }
     setQuestion(q => ({...q, played:true}))
   }
@@ -208,7 +229,7 @@ function EarTraining() {
     }
     
     setMessage(correct ? '¡Correcto!' : `Incorrecto — era ${mode === 'intervals' ? question.correct.name : question.correct.name || question.correct}`)
-    setTimeout(()=> newQuestion(), 1000)
+    setTimeout(()=> newQuestion(false), 1000)
   }
 
   // Si no está autenticado, mostrar loading
@@ -273,7 +294,7 @@ function EarTraining() {
 
   // Si no hay pregunta, crear una nueva
   if (!question) {
-    newQuestion();
+    newQuestion(false);
     return (
       <div style={{
         display: 'flex',
@@ -317,7 +338,7 @@ function EarTraining() {
         <h1 style={{
           fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
           margin: '0',
-          color: '#1a202c'
+          color: '#2d3748'
         }}>🎵 Entrenamiento de Oído</h1>
       </div>
 
@@ -333,9 +354,9 @@ function EarTraining() {
           <div style={{
             padding: '12px 20px',
             backgroundColor: 'white',
-            borderRadius: '8px',
-            border: '1px solid #e2e8f0',
-            boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+            borderRadius: '12px',
+            border: '1px solid #ffcc80',
+            boxShadow: '0 2px 8px rgba(255, 204, 128, 0.2)',
             textAlign: 'center'
           }}>
             <div style={{ fontSize: '14px', color: '#718096', marginBottom: '4px' }}>
@@ -349,15 +370,15 @@ function EarTraining() {
           <div style={{
             padding: '12px 20px',
             backgroundColor: 'white',
-            borderRadius: '8px',
-            border: '1px solid #e2e8f0',
-            boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+            borderRadius: '12px',
+            border: '1px solid #ffcc80',
+            boxShadow: '0 2px 8px rgba(255, 204, 128, 0.2)',
             textAlign: 'center'
           }}>
             <div style={{ fontSize: '14px', color: '#718096', marginBottom: '4px' }}>
               Precisión
             </div>
-            <div style={{ fontSize: '16px', fontWeight: '600', color: '#0056d6' }}>
+            <div style={{ fontSize: '16px', fontWeight: '600', color: '#d68910' }}>
               {userStats.accuracy}
             </div>
           </div>
@@ -380,11 +401,13 @@ function EarTraining() {
             padding: '12px 24px',
             fontSize: 'clamp(14px, 2.5vw, 18px)',
             minHeight: '50px',
-            borderRadius: '8px',
+            borderRadius: '12px',
             border: 'none',
-            backgroundColor: mode==='intervals' ? '#0056d6' : '#38b2ac',
+            backgroundColor: mode==='intervals' ? '#ff8c42' : '#fbbf24',
             color: 'white',
-            cursor: 'pointer'
+            cursor: 'pointer',
+            transition: 'all 0.2s ease',
+            boxShadow: mode==='intervals' ? '0 4px 12px rgba(255, 140, 66, 0.3)' : '0 2px 8px rgba(251, 191, 36, 0.2)'
           }}
         >
           🎵 Intervalos
@@ -396,11 +419,13 @@ function EarTraining() {
             padding: '12px 24px',
             fontSize: 'clamp(14px, 2.5vw, 18px)',
             minHeight: '50px',
-            borderRadius: '8px',
+            borderRadius: '12px',
             border: 'none',
-            backgroundColor: mode==='notes' ? '#0056d6' : '#38b2ac',
+            backgroundColor: mode==='notes' ? '#ff8c42' : '#fbbf24',
             color: 'white',
-            cursor: 'pointer'
+            cursor: 'pointer',
+            transition: 'all 0.2s ease',
+            boxShadow: mode==='notes' ? '0 4px 12px rgba(255, 140, 66, 0.3)' : '0 2px 8px rgba(251, 191, 36, 0.2)'
           }}
         >
           🎹 Notas
@@ -412,11 +437,13 @@ function EarTraining() {
             padding: '12px 24px',
             fontSize: 'clamp(14px, 2.5vw, 18px)',
             minHeight: '50px',
-            borderRadius: '8px',
+            borderRadius: '12px',
             border: 'none',
-            backgroundColor: mode==='chords' ? '#0056d6' : '#38b2ac',
+            backgroundColor: mode==='chords' ? '#ff8c42' : '#fbbf24',
             color: 'white',
-            cursor: 'pointer'
+            cursor: 'pointer',
+            transition: 'all 0.2s ease',
+            boxShadow: mode==='chords' ? '0 4px 12px rgba(255, 140, 66, 0.3)' : '0 2px 8px rgba(251, 191, 36, 0.2)'
           }}
         >
           🎼 Acordes
@@ -427,17 +454,19 @@ function EarTraining() {
             padding: '12px 24px',
             fontSize: 'clamp(14px, 2.5vw, 18px)',
             minHeight: '50px',
-            borderRadius: '8px',
+            borderRadius: '12px',
             border: 'none',
-            backgroundColor: isPremium ? '#10b981' : '#f59e0b',
+            backgroundColor: isPremium ? '#fbbf24' : '#f39c12',
             color: 'white',
             cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
-            gap: '8px'
+            gap: '8px',
+            transition: 'all 0.2s ease',
+            boxShadow: isPremium ? '0 2px 8px rgba(251, 191, 36, 0.2)' : '0 2px 8px rgba(243, 156, 18, 0.2)'
           }}
         >
-          {isPremium ? '📚 Tutoriales' : '🔒 Tutoriales Premium'}
+          {isPremium ? '📚 Tutoriales' : '🔒 Desbloquear Experiencia Completa'}
         </button>
       </div>
 
@@ -457,38 +486,45 @@ function EarTraining() {
             padding: '12px 24px',
             fontSize: 'clamp(14px, 2.5vw, 18px)',
             minHeight: '50px',
-            borderRadius: '8px',
+            borderRadius: '12px',
             border: 'none',
-            backgroundColor: '#ed8936',
+            backgroundColor: '#ff8c42',
             color: 'white',
-            cursor: 'pointer'
+            cursor: 'pointer',
+            transition: 'all 0.2s ease',
+            boxShadow: '0 2px 8px rgba(255, 140, 66, 0.2)'
           }}
         >
           ▶ Reproducir
         </button>
-        <button 
-          onClick={()=>newQuestion()}
-          style={{
-            padding: '12px 24px',
-            fontSize: 'clamp(14px, 2.5vw, 18px)',
-            minHeight: '50px',
-            borderRadius: '8px',
-            border: 'none',
-            backgroundColor: '#9f7aea',
-            color: 'white',
-            cursor: 'pointer'
-          }}
-        >
-          🔁 Nueva
-        </button>
+                 <button 
+           onClick={()=>newQuestion(false)}
+           style={{
+             padding: '12px 24px',
+             fontSize: 'clamp(14px, 2.5vw, 18px)',
+             minHeight: '50px',
+             borderRadius: '12px',
+             border: 'none',
+             backgroundColor: '#fbbf24',
+             color: 'white',
+             cursor: 'pointer',
+             transition: 'all 0.2s ease',
+             boxShadow: '0 2px 8px rgba(251, 191, 36, 0.2)'
+           }}
+         >
+           🔁 Nueva
+         </button>
+                   
         <div style={{
           fontSize: 'clamp(16px, 3vw, 20px)',
           textAlign: 'center',
           padding: '12px 24px',
-          backgroundColor: '#e2e8f0',
-          borderRadius: '8px',
+          backgroundColor: '#fff8f0',
+          borderRadius: '12px',
           color: '#2d3748',
-          fontWeight: 'bold'
+          fontWeight: 'bold',
+          border: '1px solid #ffcc80',
+          boxShadow: '0 2px 8px rgba(255, 204, 128, 0.1)'
         }}>
           Puntaje: {score.correct}/{score.total}
         </div>
@@ -608,6 +644,8 @@ function EarTraining() {
           onSuccess={handlePaymentSuccess}
         />
       )}
+
+      <SimpleFooter />
     </div>
   );
 }

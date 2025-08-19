@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import SimpleFooter from '../components/SimpleFooter';
 
 function LoginEarTraining() {
   const navigate = useNavigate();
@@ -474,6 +475,8 @@ function LoginEarTraining() {
           </ul>
         </div>
       </div>
+      
+      <SimpleFooter />
     </div>
   );
 }

@@ -18,31 +18,49 @@ function Header() {
 
   return (
     <header className="header">
-      <div className="logo">🎵 Afinapp</div>
-      <div className="menu">
-        {showBackButton && (
-          <button 
-            className="menu-button back-button"
-            onClick={() => navigate('/')}
-          >
-            ← Volver al inicio
-          </button>
-        )}
+      <div className="header-content">
+        <div className="logo-section">
+          <div className="logo">
+            <span className="logo-icon">🎼</span>
+            <span className="logo-text">Afinapp</span>
+          </div>
+        </div>
         
-        {isAuthenticated && (
-          <>
-            <div className="user-info">
-              <span className="user-username">@{currentUser.username}</span>
-              <span className="user-type">({currentUser.userType === 'ear-training' ? '🎵 Estudiante' : '🎹 Músico'})</span>
-            </div>
+        <div className="header-actions">
+          {showBackButton && (
             <button 
-              className="menu-button logout-button"
-              onClick={handleLogout}
+              className="action-button back-button"
+              onClick={() => navigate('/')}
             >
-              Cerrar Sesión
+              <span className="button-icon">🏠</span>
+              <span className="button-text">Inicio</span>
             </button>
-          </>
-        )}
+          )}
+          
+          {isAuthenticated && (
+            <div className="user-section">
+              <div className="user-profile">
+                <div className="user-avatar">
+                  {currentUser.username.charAt(0).toUpperCase()}
+                </div>
+                <div className="user-details">
+                  <div className="user-name">@{currentUser.username}</div>
+                  <div className="user-role">
+                    {currentUser.userType === 'ear-training' ? '🎯 Estudiante' : '🎭 Músico'}
+                  </div>
+                </div>
+              </div>
+              
+              <button 
+                className="action-button logout-button"
+                onClick={handleLogout}
+              >
+                <span className="button-icon">🚪</span>
+                <span className="button-text">Salir</span>
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </header>
   );

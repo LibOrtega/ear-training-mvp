@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ContactFooter from '../components/ContactFooter';
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -55,19 +56,19 @@ function Contact() {
 
       {/* Información introductoria */}
       <div style={{
-        border: '1px solid #e2e8f0',
+        border: '1px solid #f4d03f',
         padding: '24px',
         borderRadius: '12px',
         maxWidth: '100%',
-        backgroundColor: 'white',
-        boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+        background: 'linear-gradient(135deg, #fef9e7 0%, #fdf2e9 100%)',
+        boxShadow: '0 4px 8px rgba(244, 208, 63, 0.15)',
         marginBottom: '2rem',
         textAlign: 'center'
       }}>
         <h2 style={{
           fontSize: 'clamp(1.2rem, 3vw, 1.8rem)',
           marginBottom: '16px',
-          color: '#0056d6'
+          color: '#d68910'
         }}>¿Eres profesor de música?</h2>
         <p style={{
           fontSize: 'clamp(14px, 3vw, 18px)',
@@ -86,33 +87,33 @@ function Contact() {
         }}>
           <div style={{
             padding: '16px',
-            backgroundColor: '#f7fafc',
+            background: 'linear-gradient(135deg, #fef9e7 0%, #fdf2e9 100%)',
             borderRadius: '8px',
-            border: '1px solid #e2e8f0'
+            border: '1px solid #f4d03f'
           }}>
-            <h4 style={{ color: '#0056d6', marginBottom: '8px' }}>🎯 Para tus clases</h4>
+            <h4 style={{ color: '#d68910', marginBottom: '8px' }}>🎯 Para tus clases</h4>
             <p style={{ color: '#4a5568', fontSize: '14px' }}>
               Ejercicios estructurados que puedes asignar como tarea
             </p>
           </div>
           <div style={{
             padding: '16px',
-            backgroundColor: '#f7fafc',
+            background: 'linear-gradient(135deg, #fef9e7 0%, #fdf2e9 100%)',
             borderRadius: '8px',
-            border: '1px solid #e2e8f0'
+            border: '1px solid #f4d03f'
           }}>
-            <h4 style={{ color: '#38b2ac', marginBottom: '8px' }}>📊 Seguimiento</h4>
+            <h4 style={{ color: '#d68910', marginBottom: '8px' }}>📊 Seguimiento</h4>
             <p style={{ color: '#4a5568', fontSize: '14px' }}>
               Reportes del progreso de cada estudiante
             </p>
           </div>
           <div style={{
             padding: '16px',
-            backgroundColor: '#f7fafc',
+            background: 'linear-gradient(135deg, #fef9e7 0%, #fdf2e9 100%)',
             borderRadius: '8px',
-            border: '1px solid #e2e8f0'
+            border: '1px solid #f4d03f'
           }}>
-            <h4 style={{ color: '#ed8936', marginBottom: '8px' }}>🎵 Personalización</h4>
+            <h4 style={{ color: '#d68910', marginBottom: '8px' }}>🎵 Personalización</h4>
             <p style={{ color: '#4a5568', fontSize: '14px' }}>
               Contenido adaptado al nivel de tus estudiantes
             </p>
@@ -122,18 +123,18 @@ function Contact() {
 
       {/* Formulario */}
       <div style={{
-        border: '1px solid #e2e8f0',
+        border: '1px solid #f4d03f',
         padding: '24px',
         borderRadius: '12px',
         maxWidth: '100%',
-        backgroundColor: 'white',
-        boxShadow: '0 4px 8px rgba(0,0,0,0.1)'
+        background: 'linear-gradient(135deg, #fef9e7 0%, #fdf2e9 100%)',
+        boxShadow: '0 4px 8px rgba(244, 208, 63, 0.15)'
       }}>
         <h2 style={{
           fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
           textAlign: 'center',
           marginBottom: '24px',
-          color: '#1a202c'
+          color: '#d68910'
         }}>Formulario de Contacto</h2>
         
         <form onSubmit={handleSubmit} style={{
@@ -163,8 +164,8 @@ function Contact() {
                   padding: '12px',
                   fontSize: '16px',
                   borderRadius: '8px',
-                  border: '1px solid #e2e8f0',
-                  backgroundColor: '#f7fafc',
+                  border: '1px solid #f4d03f',
+                  backgroundColor: '#fef9e7',
                   color: '#2d3748',
                   outline: 'none'
                 }}
@@ -188,8 +189,8 @@ function Contact() {
                   padding: '12px',
                   fontSize: '16px',
                   borderRadius: '8px',
-                  border: '1px solid #e2e8f0',
-                  backgroundColor: '#f7fafc',
+                  border: '1px solid #f4d03f',
+                  backgroundColor: '#fef9e7',
                   color: '#2d3748',
                   outline: 'none'
                 }}
@@ -219,8 +220,8 @@ function Contact() {
                   padding: '12px',
                   fontSize: '16px',
                   borderRadius: '8px',
-                  border: '1px solid #e2e8f0',
-                  backgroundColor: '#f7fafc',
+                  border: '1px solid #f4d03f',
+                  backgroundColor: '#fef9e7',
                   color: '#2d3748',
                   outline: 'none'
                 }}
@@ -245,8 +246,8 @@ function Contact() {
                   padding: '12px',
                   fontSize: '16px',
                   borderRadius: '8px',
-                  border: '1px solid #e2e8f0',
-                  backgroundColor: '#f7fafc',
+                  border: '1px solid #f4d03f',
+                  backgroundColor: '#fef9e7',
                   color: '#2d3748',
                   outline: 'none'
                 }}
@@ -271,8 +272,8 @@ function Contact() {
                 padding: '12px',
                 fontSize: '16px',
                 borderRadius: '8px',
-                border: '1px solid #e2e8f0',
-                backgroundColor: '#f7fafc',
+                border: '1px solid #f4d03f',
+                backgroundColor: '#fef9e7',
                 color: '#2d3748',
                 outline: 'none',
                 resize: 'vertical'
@@ -287,49 +288,95 @@ function Contact() {
               fontSize: '18px',
               borderRadius: '8px',
               border: 'none',
-              backgroundColor: '#0056d6',
+              backgroundColor: '#e67e22',
               color: 'white',
               cursor: 'pointer',
               fontWeight: 'bold',
               marginTop: '20px',
               transition: 'all 0.2s ease',
-              alignSelf: 'center'
+              alignSelf: 'center',
+              boxShadow: '0 4px 15px rgba(230, 126, 34, 0.2)'
             }}
             onMouseEnter={(e) => {
-              e.target.style.backgroundColor = '#004494';
+              e.target.style.backgroundColor = '#d35400';
               e.target.style.transform = 'scale(1.02)';
+              e.target.style.boxShadow = '0 6px 20px rgba(230, 126, 34, 0.3)';
             }}
             onMouseLeave={(e) => {
-              e.target.style.backgroundColor = '#0056d6';
+              e.target.style.backgroundColor = '#e67e22';
               e.target.style.transform = 'scale(1)';
+              e.target.style.boxShadow = '0 4px 15px rgba(230, 126, 34, 0.2)';
             }}
           >
             Enviar solicitud
           </button>
         </form>
       </div>
-
-      {/* Información de contacto adicional */}
+      
+      {/* Sección de contacto personal */}
       <div style={{
-        marginTop: '2rem',
-        padding: '20px',
-        backgroundColor: 'white',
-        borderRadius: '12px',
-        border: '1px solid #e2e8f0',
-        boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-        textAlign: 'center'
+        marginTop: '3rem',
+        padding: '2rem',
+        background: 'linear-gradient(135deg, #ff8c42 0%, #ff6b35 100%)',
+        borderRadius: '16px',
+        textAlign: 'center',
+        boxShadow: '0 8px 25px rgba(255, 140, 66, 0.3)'
       }}>
-        <h3 style={{
-          color: '#0056d6',
-          marginBottom: '16px'
-        }}>¿Tienes preguntas?</h3>
-        <p style={{
-          color: '#4a5568',
-          lineHeight: '1.6'
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '12px',
+          marginBottom: '1rem'
         }}>
-          También puedes contactarnos directamente en <strong>profesores@afinapp.com</strong> 
-          o llamarnos al <strong>+1 (555) 123-4567</strong>
+          <span style={{ fontSize: '2rem', filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.2))' }}>🎼</span>
+          <h2 style={{
+            color: 'white',
+            fontSize: '1.8rem',
+            fontWeight: '700',
+            margin: 0
+          }}>Afinapp</h2>
+        </div>
+        
+        <p style={{
+          color: 'rgba(255, 255, 255, 0.9)',
+          fontSize: '1.1rem',
+          marginBottom: '2rem',
+          fontWeight: '500'
+        }}>
+          ¿Tienes preguntas? Contáctame:
         </p>
+        
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1rem',
+          alignItems: 'center'
+        }}>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '12px',
+            color: 'white',
+            fontSize: '1.1rem',
+            fontWeight: '500'
+          }}>
+            <span style={{ fontSize: '1.2rem' }}>🎯</span>
+            <span>libertadfarinneo@gmail.com</span>
+          </div>
+          
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '12px',
+            color: 'white',
+            fontSize: '1.1rem',
+            fontWeight: '500'
+          }}>
+            <span style={{ fontSize: '1.2rem' }}>📱</span>
+            <span>+52 639 165 2842</span>
+          </div>
+        </div>
       </div>
     </div>
   );

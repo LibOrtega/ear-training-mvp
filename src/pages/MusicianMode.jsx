@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { useMusician } from '../hooks/useMusician';
 import MusicianPaymentModal from '../components/MusicianPaymentModal';
 import MusicianLevel from '../components/MusicianLevel';
+import SimpleFooter from '../components/SimpleFooter';
 
 function MusicianMode() {
   const navigate = useNavigate();
@@ -135,21 +136,21 @@ function MusicianMode() {
               fontWeight: '600',
               borderRadius: '12px',
               border: 'none',
-              backgroundColor: '#0056d6',
+              backgroundColor: '#ff8c42',
               color: 'white',
               cursor: 'pointer',
               transition: 'all 0.2s ease',
-              boxShadow: '0 4px 12px rgba(0, 86, 214, 0.3)'
+              boxShadow: '0 4px 12px rgba(255, 140, 66, 0.3)'
             }}
             onMouseEnter={(e) => {
-              e.target.style.backgroundColor = '#004494';
+              e.target.style.backgroundColor = '#ff6b35';
               e.target.style.transform = 'translateY(-2px)';
-              e.target.style.boxShadow = '0 6px 20px rgba(0, 86, 214, 0.4)';
+              e.target.style.boxShadow = '0 6px 20px rgba(255, 140, 66, 0.4)';
             }}
             onMouseLeave={(e) => {
-              e.target.style.backgroundColor = '#0056d6';
+              e.target.style.backgroundColor = '#ff8c42';
               e.target.style.transform = 'translateY(0)';
-              e.target.style.boxShadow = '0 4px 12px rgba(0, 86, 214, 0.3)';
+              e.target.style.boxShadow = '0 4px 12px rgba(255, 140, 66, 0.3)';
             }}
           >
             🔓 Desbloquear Modo Músico
@@ -623,6 +624,8 @@ function MusicianMode() {
           </div>
         </div>
       </div>
+      
+      <SimpleFooter />
     </div>
   );
 }
