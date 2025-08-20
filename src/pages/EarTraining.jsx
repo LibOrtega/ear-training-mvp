@@ -5,7 +5,7 @@ import { usePremium } from '../hooks/usePremium';
 import * as Tone from 'tone';
 import MusicTheory from '../components/MusicTheory';
 import PaymentModalStripe from '../components/PaymentModalStripe';
-import SimpleFooter from '../components/SimpleFooter';
+
 
 // 🎵 Lista completa de intervalos (0 a 12 semitonos, incluye compuestos si quieres expandir)
 const INTERVALS = [
@@ -232,86 +232,86 @@ function EarTraining() {
     setTimeout(()=> newQuestion(false), 1000)
   }
 
-  // Si no está autenticado, mostrar loading
-  if (!isAuthenticated) {
-    return (
-      <div style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
-        backgroundColor: '#f8fafc'
-      }}>
-        <div style={{
-          fontSize: '18px',
-          color: '#4a5568'
-        }}>
-          Redirigiendo al login...
-        </div>
-      </div>
-    );
-  }
+     // Si no está autenticado, mostrar loading
+   if (!isAuthenticated) {
+     return (
+       <div style={{
+         display: 'flex',
+         justifyContent: 'center',
+         alignItems: 'center',
+         height: '100vh',
+         backgroundColor: 'var(--background-primary)'
+       }}>
+         <div style={{
+           fontSize: '18px',
+           color: 'var(--text-secondary)'
+         }}>
+           Redirigiendo al login...
+         </div>
+       </div>
+     );
+   }
 
-  // Si está cargando, mostrar loading
-  if (isLoading) {
-    return (
-      <div style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
-        backgroundColor: '#f8fafc'
-      }}>
-        <div style={{
-          fontSize: '18px',
-          color: '#4a5568'
-        }}>
-          Cargando ejercicios...
-        </div>
-      </div>
-    );
-  }
+     // Si está cargando, mostrar loading
+   if (isLoading) {
+     return (
+       <div style={{
+         display: 'flex',
+         justifyContent: 'center',
+         alignItems: 'center',
+         height: '100vh',
+         backgroundColor: 'var(--background-primary)'
+       }}>
+         <div style={{
+           fontSize: '18px',
+           color: 'var(--text-secondary)'
+         }}>
+           Cargando ejercicios...
+         </div>
+       </div>
+     );
+   }
 
-  // Si no está inicializado, mostrar loading
-  if (!isInitialized) {
-    return (
-      <div style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
-        backgroundColor: '#f8fafc'
-      }}>
-        <div style={{
-          fontSize: '18px',
-          color: '#4a5568'
-        }}>
-          Inicializando...
-        </div>
-      </div>
-    );
-  }
+     // Si no está inicializado, mostrar loading
+   if (!isInitialized) {
+     return (
+       <div style={{
+         display: 'flex',
+         justifyContent: 'center',
+         alignItems: 'center',
+         height: '100vh',
+         backgroundColor: 'var(--background-primary)'
+       }}>
+         <div style={{
+           fontSize: '18px',
+           color: 'var(--text-secondary)'
+         }}>
+           Inicializando...
+         </div>
+       </div>
+     );
+   }
 
-  // Si no hay pregunta, crear una nueva
-  if (!question) {
-    newQuestion(false);
-    return (
-      <div style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
-        backgroundColor: '#f8fafc'
-      }}>
-        <div style={{
-          fontSize: '18px',
-          color: '#4a5568'
-        }}>
-          Preparando ejercicios...
-        </div>
-      </div>
-    );
-  }
+     // Si no hay pregunta, crear una nueva
+   if (!question) {
+     newQuestion(false);
+     return (
+       <div style={{
+         display: 'flex',
+         justifyContent: 'center',
+         alignItems: 'center',
+         height: '100vh',
+         backgroundColor: 'var(--background-primary)'
+       }}>
+         <div style={{
+           fontSize: '18px',
+           color: 'var(--text-secondary)'
+         }}>
+           Preparando ejercicios...
+         </div>
+       </div>
+     );
+   }
 
   const userStats = getUserStats();
 
@@ -324,7 +324,13 @@ function EarTraining() {
       padding: '2rem',
       boxSizing: 'border-box',
       minHeight: 'calc(100vh - 80px)',
-      backgroundColor: '#f8fafc'
+      backgroundColor: 'var(--background-primary)',
+      backgroundImage: `
+        radial-gradient(circle at 25% 25%, rgba(255, 140, 66, 0.03) 1px, transparent 1px),
+        radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.03) 1px, transparent 1px)
+      `,
+      backgroundSize: '100px 100px',
+      backgroundPosition: '0 0, 50px 50px'
     }}>
       {/* Header de la página */}
       <div style={{
@@ -338,7 +344,12 @@ function EarTraining() {
         <h1 style={{
           fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
           margin: '0',
-          color: '#2d3748'
+          color: 'var(--text-primary)',
+          background: 'var(--primary-gradient)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+          textAlign: 'center'
         }}>🎵 Entrenamiento de Oído</h1>
       </div>
 
@@ -352,33 +363,35 @@ function EarTraining() {
           gap: '1rem'
         }}>
           <div style={{
-            padding: '12px 20px',
-            backgroundColor: 'white',
-            borderRadius: '12px',
-            border: '1px solid #ffcc80',
-            boxShadow: '0 2px 8px rgba(255, 204, 128, 0.2)',
-            textAlign: 'center'
+            padding: '16px 24px',
+            backgroundColor: 'var(--background-card)',
+            borderRadius: 'var(--border-radius-md)',
+            border: '1px solid rgba(255, 140, 66, 0.3)',
+            boxShadow: 'var(--shadow-md)',
+            textAlign: 'center',
+            backdropFilter: 'blur(10px)'
           }}>
-            <div style={{ fontSize: '14px', color: '#718096', marginBottom: '4px' }}>
+            <div style={{ fontSize: '14px', color: 'var(--text-secondary)', marginBottom: '6px' }}>
               Miembro desde
             </div>
-            <div style={{ fontSize: '16px', fontWeight: '600', color: '#2d3748' }}>
+            <div style={{ fontSize: '16px', fontWeight: '600', color: 'var(--text-primary)' }}>
               {userStats.memberSince}
             </div>
           </div>
           
           <div style={{
-            padding: '12px 20px',
-            backgroundColor: 'white',
-            borderRadius: '12px',
-            border: '1px solid #ffcc80',
-            boxShadow: '0 2px 8px rgba(255, 204, 128, 0.2)',
-            textAlign: 'center'
+            padding: '16px 24px',
+            backgroundColor: 'var(--background-card)',
+            borderRadius: 'var(--border-radius-md)',
+            border: '1px solid rgba(139, 92, 246, 0.3)',
+            boxShadow: 'var(--shadow-md)',
+            textAlign: 'center',
+            backdropFilter: 'blur(10px)'
           }}>
-            <div style={{ fontSize: '14px', color: '#718096', marginBottom: '4px' }}>
+            <div style={{ fontSize: '14px', color: 'var(--text-secondary)', marginBottom: '6px' }}>
               Precisión
             </div>
-            <div style={{ fontSize: '16px', fontWeight: '600', color: '#d68910' }}>
+            <div style={{ fontSize: '16px', fontWeight: '600', color: 'var(--primary-color)' }}>
               {userStats.accuracy}
             </div>
           </div>
@@ -398,72 +411,157 @@ function EarTraining() {
           onClick={()=>setMode('intervals')} 
           disabled={mode==='intervals'}
           style={{
-            padding: '12px 24px',
+            padding: '14px 28px',
             fontSize: 'clamp(14px, 2.5vw, 18px)',
             minHeight: '50px',
-            borderRadius: '12px',
+            borderRadius: 'var(--border-radius-md)',
             border: 'none',
-            backgroundColor: mode==='intervals' ? '#ff8c42' : '#fbbf24',
-            color: 'white',
+            background: mode==='intervals' ? 'var(--primary-gradient)' : 'linear-gradient(135deg, rgba(255, 140, 66, 0.3) 0%, rgba(255, 140, 66, 0.2) 100%)',
+            color: 'var(--text-primary)',
             cursor: 'pointer',
-            transition: 'all 0.2s ease',
-            boxShadow: mode==='intervals' ? '0 4px 12px rgba(255, 140, 66, 0.3)' : '0 2px 8px rgba(251, 191, 36, 0.2)'
+            transition: 'var(--transition-normal)',
+            boxShadow: mode==='intervals' ? 'var(--shadow-orange)' : '0 2px 8px rgba(255, 140, 66, 0.2)',
+            transform: 'translateY(0)',
+            backdropFilter: 'blur(10px)',
+            border: mode==='intervals' ? 'none' : '1px solid rgba(255, 140, 66, 0.3)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '8px'
+          }}
+          onMouseEnter={(e) => {
+            if (mode !== 'intervals') {
+              e.target.style.transform = 'translateY(-2px)';
+              e.target.style.boxShadow = '0 4px 15px rgba(255, 140, 66, 0.3)';
+              e.target.style.background = 'linear-gradient(135deg, rgba(255, 140, 66, 0.4) 0%, rgba(255, 140, 66, 0.3) 100%)';
+            }
+          }}
+          onMouseLeave={(e) => {
+            if (mode !== 'intervals') {
+              e.target.style.transform = 'translateY(0)';
+              e.target.style.boxShadow = '0 2px 8px rgba(255, 140, 66, 0.2)';
+              e.target.style.background = 'linear-gradient(135deg, rgba(255, 140, 66, 0.3) 0%, rgba(255, 140, 66, 0.2) 100%)';
+            }
           }}
         >
-          🎵 Intervalos
+          Intervalos
         </button>
         <button 
           onClick={()=>setMode('notes')} 
           disabled={mode==='notes'}
           style={{
-            padding: '12px 24px',
+            padding: '14px 28px',
             fontSize: 'clamp(14px, 2.5vw, 18px)',
             minHeight: '50px',
-            borderRadius: '12px',
+            borderRadius: 'var(--border-radius-md)',
             border: 'none',
-            backgroundColor: mode==='notes' ? '#ff8c42' : '#fbbf24',
-            color: 'white',
+            background: mode==='notes' ? 'linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%)' : 'linear-gradient(135deg, rgba(14, 165, 233, 0.3) 0%, rgba(2, 132, 199, 0.2) 100%)',
+            color: 'var(--text-primary)',
             cursor: 'pointer',
-            transition: 'all 0.2s ease',
-            boxShadow: mode==='notes' ? '0 4px 12px rgba(255, 140, 66, 0.3)' : '0 2px 8px rgba(251, 191, 36, 0.2)'
+            transition: 'var(--transition-normal)',
+            boxShadow: mode==='notes' ? '0 4px 15px rgba(14, 165, 233, 0.3)' : '0 2px 8px rgba(14, 165, 233, 0.2)',
+            transform: 'translateY(0)',
+            backdropFilter: 'blur(10px)',
+            border: mode==='notes' ? 'none' : '1px solid rgba(14, 165, 233, 0.3)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '8px'
+          }}
+          onMouseEnter={(e) => {
+            if (mode !== 'notes') {
+              e.target.style.transform = 'translateY(-2px)';
+              e.target.style.boxShadow = '0 4px 15px rgba(14, 165, 233, 0.3)';
+              e.target.style.background = 'linear-gradient(135deg, rgba(14, 165, 233, 0.4) 0%, rgba(2, 132, 199, 0.3) 100%)';
+            }
+          }}
+          onMouseLeave={(e) => {
+            if (mode !== 'notes') {
+              e.target.style.transform = 'translateY(0)';
+              e.target.style.boxShadow = '0 2px 8px rgba(14, 165, 233, 0.2)';
+              e.target.style.background = 'linear-gradient(135deg, rgba(14, 165, 233, 0.3) 0%, rgba(2, 132, 199, 0.2) 100%)';
+            }
           }}
         >
-          🎹 Notas
+          Notas
         </button>
         <button 
           onClick={()=>setMode('chords')} 
           disabled={mode==='chords'}
           style={{
-            padding: '12px 24px',
+            padding: '14px 28px',
             fontSize: 'clamp(14px, 2.5vw, 18px)',
             minHeight: '50px',
-            borderRadius: '12px',
+            borderRadius: 'var(--border-radius-md)',
             border: 'none',
-            backgroundColor: mode==='chords' ? '#ff8c42' : '#fbbf24',
-            color: 'white',
+            background: mode==='chords' ? 'linear-gradient(135deg, #10b981 0%, #059669 100%)' : 'linear-gradient(135deg, rgba(16, 185, 129, 0.3) 0%, rgba(5, 150, 105, 0.2) 100%)',
+            color: 'var(--text-primary)',
             cursor: 'pointer',
-            transition: 'all 0.2s ease',
-            boxShadow: mode==='chords' ? '0 4px 12px rgba(255, 140, 66, 0.3)' : '0 2px 8px rgba(251, 191, 36, 0.2)'
+            transition: 'var(--transition-normal)',
+            boxShadow: mode==='chords' ? '0 4px 15px rgba(16, 185, 129, 0.3)' : '0 2px 8px rgba(16, 185, 129, 0.2)',
+            transform: 'translateY(0)',
+            backdropFilter: 'blur(10px)',
+            border: mode==='chords' ? 'none' : '1px solid rgba(16, 185, 129, 0.3)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '8px'
+          }}
+          onMouseEnter={(e) => {
+            if (mode !== 'chords') {
+              e.target.style.transform = 'translateY(-2px)';
+              e.target.style.boxShadow = '0 4px 15px rgba(16, 185, 129, 0.3)';
+              e.target.style.background = 'linear-gradient(135deg, rgba(16, 185, 129, 0.4) 0%, rgba(5, 150, 105, 0.3) 100%)';
+            }
+          }}
+          onMouseLeave={(e) => {
+            if (mode !== 'chords') {
+              e.target.style.transform = 'translateY(0)';
+              e.target.style.boxShadow = '0 2px 8px rgba(16, 185, 129, 0.2)';
+              e.target.style.background = 'linear-gradient(135deg, rgba(16, 185, 129, 0.3) 0%, rgba(5, 150, 105, 0.2) 100%)';
+            }
           }}
         >
-          🎼 Acordes
+          Acordes
         </button>
         <button 
           onClick={handleTutorialClick}
           style={{
-            padding: '12px 24px',
+            padding: '14px 28px',
             fontSize: 'clamp(14px, 2.5vw, 18px)',
             minHeight: '50px',
-            borderRadius: '12px',
+            borderRadius: 'var(--border-radius-md)',
             border: 'none',
-            backgroundColor: isPremium ? '#fbbf24' : '#f39c12',
-            color: 'white',
+            background: isPremium ? 'linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%)' : 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)',
+            color: 'var(--text-primary)',
             cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
+            justifyContent: 'center',
             gap: '8px',
-            transition: 'all 0.2s ease',
-            boxShadow: isPremium ? '0 2px 8px rgba(251, 191, 36, 0.2)' : '0 2px 8px rgba(243, 156, 18, 0.2)'
+            transition: 'var(--transition-normal)',
+            boxShadow: isPremium ? '0 4px 15px rgba(139, 92, 246, 0.3)' : '0 4px 15px rgba(251, 191, 36, 0.4)',
+            transform: 'translateY(0)',
+            backdropFilter: 'blur(10px)',
+            border: isPremium ? 'none' : '1px solid rgba(251, 191, 36, 0.4)'
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.transform = 'translateY(-2px)';
+            if (isPremium) {
+              e.target.style.boxShadow = '0 6px 20px rgba(139, 92, 246, 0.4)';
+            } else {
+              e.target.style.boxShadow = '0 6px 20px rgba(251, 191, 36, 0.5)';
+              e.target.style.background = 'linear-gradient(135deg, #fcd34d 0%, #f59e0b 100%)';
+            }
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.transform = 'translateY(0)';
+            if (isPremium) {
+              e.target.style.boxShadow = '0 4px 15px rgba(139, 92, 246, 0.3)';
+            } else {
+              e.target.style.boxShadow = '0 4px 15px rgba(251, 191, 36, 0.4)';
+              e.target.style.background = 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)';
+            }
           }}
         >
           {isPremium ? '📚 Tutoriales' : '🔒 Desbloquear Experiencia Completa'}
@@ -483,71 +581,100 @@ function EarTraining() {
         <button 
           onClick={play}
           style={{
-            padding: '12px 24px',
+            padding: '14px 28px',
             fontSize: 'clamp(14px, 2.5vw, 18px)',
             minHeight: '50px',
-            borderRadius: '12px',
+            borderRadius: 'var(--border-radius-md)',
             border: 'none',
-            backgroundColor: '#dc2626',
-            color: 'white',
+            background: 'linear-gradient(135deg, #dc2626 0%, #ef4444 100%)',
+            color: 'var(--text-primary)',
             cursor: 'pointer',
-            transition: 'all 0.2s ease',
-            boxShadow: '0 2px 8px rgba(220, 38, 38, 0.2)'
+            transition: 'var(--transition-normal)',
+            boxShadow: '0 4px 15px rgba(220, 38, 38, 0.3)',
+            transform: 'translateY(0)',
+            backdropFilter: 'blur(10px)'
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.transform = 'translateY(-2px)';
+            e.target.style.boxShadow = '0 6px 20px rgba(220, 38, 38, 0.4)';
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.transform = 'translateY(0)';
+            e.target.style.boxShadow = '0 4px 15px rgba(220, 38, 38, 0.3)';
           }}
         >
           ▶ Reproducir
         </button>
-                 <button 
-           onClick={()=>newQuestion(false)}
-           style={{
-             padding: '12px 24px',
-             fontSize: 'clamp(14px, 2.5vw, 18px)',
-             minHeight: '50px',
-             borderRadius: '12px',
-             border: 'none',
-             backgroundColor: '#fbbf24',
-             color: 'white',
-             cursor: 'pointer',
-             transition: 'all 0.2s ease',
-             boxShadow: '0 2px 8px rgba(251, 191, 36, 0.2)'
-           }}
-         >
-           🔁 Nueva
-         </button>
-                   
-        <div style={{
-          fontSize: 'clamp(16px, 3vw, 20px)',
-          textAlign: 'center',
-          padding: '12px 24px',
-          backgroundColor: '#fff8f0',
-          borderRadius: '12px',
-          color: '#2d3748',
-          fontWeight: 'bold',
-          border: '1px solid #ffcc80',
-          boxShadow: '0 2px 8px rgba(255, 204, 128, 0.1)'
-        }}>
-          Puntaje: {score.correct}/{score.total}
-        </div>
+                                   <button 
+            onClick={()=>newQuestion(false)}
+            style={{
+              padding: '14px 28px',
+              fontSize: 'clamp(14px, 2.5vw, 18px)',
+              minHeight: '50px',
+              borderRadius: 'var(--border-radius-md)',
+              border: 'none',
+              background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)',
+              color: 'var(--text-primary)',
+              cursor: 'pointer',
+              transition: 'var(--transition-normal)',
+              boxShadow: '0 4px 15px rgba(251, 191, 36, 0.3)',
+              transform: 'translateY(0)',
+              backdropFilter: 'blur(10px)'
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.transform = 'translateY(-2px)';
+              e.target.style.boxShadow = '0 6px 20px rgba(251, 191, 36, 0.4)';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.transform = 'translateY(0)';
+              e.target.style.boxShadow = '0 4px 15px rgba(251, 191, 36, 0.3)';
+            }}
+          >
+            🔁 Nueva
+          </button>
+                    
+         <div style={{
+           fontSize: 'clamp(16px, 3vw, 20px)',
+           textAlign: 'center',
+           padding: '16px 24px',
+           backgroundColor: 'var(--background-card)',
+           borderRadius: 'var(--border-radius-md)',
+           color: 'var(--text-primary)',
+           fontWeight: 'bold',
+           border: '1px solid rgba(255, 140, 66, 0.3)',
+           boxShadow: 'var(--shadow-md)',
+           backdropFilter: 'blur(10px)'
+         }}>
+           Puntaje: {score.correct}/{score.total}
+         </div>
       </div>
 
-      {/* Área de ejercicio */}
-      {question && (
-        <div style={{
-          border: '1px solid #e2e8f0',
-          padding: '24px',
-          borderRadius: '12px',
-          maxWidth: '100%',
-          backgroundColor: 'white',
-          boxShadow: '0 4px 8px rgba(0,0,0,0.1)'
-        }}>
-          <p style={{
-            fontSize: 'clamp(16px, 3.5vw, 22px)',
-            textAlign: 'center',
-            marginBottom: '20px',
-            color: '#1a202c'
-          }}>
-            Selecciona {mode === 'intervals' ? 'el intervalo' : mode === 'notes' ? 'la nota' : 'el acorde'} que escuchas:
-          </p>
+             {/* Área de ejercicio */}
+       {question && (
+         <div style={{
+           border: '1px solid rgba(255, 140, 66, 0.3)',
+           padding: '2rem',
+           borderRadius: 'var(--border-radius-lg)',
+           maxWidth: '100%',
+           backgroundColor: 'var(--background-card)',
+           boxShadow: 'var(--shadow-lg)',
+           backdropFilter: 'blur(10px)',
+           backgroundImage: `
+             radial-gradient(circle at 25% 25%, rgba(255, 140, 66, 0.05) 1px, transparent 1px),
+             radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.05) 1px, transparent 1px)
+           `,
+           backgroundSize: '50px 50px',
+           backgroundPosition: '0 0, 25px 25px'
+         }}>
+                     <p style={{
+             fontSize: 'clamp(16px, 3.5vw, 22px)',
+             textAlign: 'center',
+             marginBottom: '20px',
+             color: 'var(--text-primary)',
+             fontWeight: '600'
+           }}>
+             Selecciona {mode === 'intervals' ? 'el intervalo' : mode === 'notes' ? 'la nota' : 'el acorde'} que escuchas:
+           </p>
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
@@ -559,78 +686,95 @@ function EarTraining() {
                 key={opt.name || opt}
                 onClick={()=>answer(opt)}
                 disabled={!question.played}
-                style={{
-                  padding: '16px',
-                  fontSize: 'clamp(14px, 2.5vw, 18px)',
-                  minHeight: '60px',
-                  wordBreak: 'break-word',
-                  borderRadius: '8px',
-                  backgroundColor: '#f7fafc',
-                  color: '#2d3748',
-                  cursor: question.played ? 'pointer' : 'not-allowed',
-                  transition: 'all 0.2s ease',
-                  border: '1px solid #e2e8f0'
-                }}
-                onMouseEnter={(e) => {
-                  if (question.played) {
-                    e.target.style.backgroundColor = '#edf2f7';
-                    e.target.style.transform = 'scale(1.02)';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (question.played) {
-                    e.target.style.backgroundColor = '#f7fafc';
-                    e.target.style.transform = 'scale(1)';
-                  }
-                }}
+                                 style={{
+                   padding: '16px',
+                   fontSize: 'clamp(14px, 2.5vw, 18px)',
+                   minHeight: '60px',
+                   wordBreak: 'break-word',
+                   borderRadius: 'var(--border-radius-md)',
+                   backgroundColor: 'var(--background-tertiary)',
+                   color: 'var(--text-primary)',
+                   cursor: question.played ? 'pointer' : 'not-allowed',
+                   transition: 'var(--transition-normal)',
+                   border: '1px solid rgba(255, 140, 66, 0.2)',
+                   backdropFilter: 'blur(10px)'
+                 }}
+                                 onMouseEnter={(e) => {
+                   if (question.played) {
+                     e.target.style.backgroundColor = 'rgba(255, 140, 66, 0.15)';
+                     e.target.style.transform = 'translateY(-2px)';
+                     e.target.style.boxShadow = 'var(--shadow-md)';
+                   }
+                 }}
+                 onMouseLeave={(e) => {
+                   if (question.played) {
+                     e.target.style.backgroundColor = 'var(--background-tertiary)';
+                     e.target.style.transform = 'translateY(0)';
+                     e.target.style.boxShadow = 'none';
+                   }
+                 }}
               >
                 {opt.name || opt}
               </button>
             ))}
           </div>
-          <p style={{
-            marginTop: '20px',
-            textAlign: 'center',
-            fontSize: 'clamp(16px, 3.5vw, 22px)',
-            color: '#38a169',
-            fontWeight: 'bold',
-            minHeight: '30px'
-          }}>
-            {message}
-          </p>
+                     <p style={{
+             marginTop: '20px',
+             textAlign: 'center',
+             fontSize: 'clamp(16px, 3.5vw, 22px)',
+             color: 'var(--primary-color)',
+             fontWeight: 'bold',
+             minHeight: '30px'
+           }}>
+             {message}
+           </p>
         </div>
       )}
 
-      {/* Información del modo actual */}
-      <div style={{
-        marginTop: '2rem',
-        padding: '20px',
-        backgroundColor: 'white',
-        borderRadius: '12px',
-        border: '1px solid #e2e8f0',
-        boxShadow: '0 4px 8px rgba(0,0,0,0.1)'
-      }}>
-        <h3 style={{
-          color: '#0056d6',
-          marginBottom: '16px',
-          textAlign: 'center'
-        }}>
-          {mode === 'intervals' ? '🎵 Entrenamiento de Intervalos' : 
-           mode === 'notes' ? '🎹 Identificación de Notas' : 
-           '🎼 Reconocimiento de Acordes'}
-        </h3>
-        <p style={{
-          color: '#4a5568',
-          lineHeight: '1.6',
-          textAlign: 'center'
-        }}>
-          {mode === 'intervals' ? 
-            'Escucha dos notas y identifica el intervalo entre ellas. Este ejercicio mejora tu capacidad de reconocer distancias musicales.' :
-           mode === 'notes' ? 
-            'Escucha una nota y identifícala por su nombre. Perfecto para desarrollar el oído absoluto y relativo.' :
-            'Escucha un acorde y identifica su tipo. Desarrolla tu capacidad de reconocer armonías y progresiones.'
-          }
-        </p>
+             {/* Información del modo actual */}
+       <div style={{
+         marginTop: '2rem',
+         padding: '2rem',
+         backgroundColor: 'var(--background-card)',
+         borderRadius: 'var(--border-radius-lg)',
+         border: '1px solid rgba(139, 92, 246, 0.3)',
+         boxShadow: 'var(--shadow-lg)',
+         backdropFilter: 'blur(10px)',
+         backgroundImage: `
+           radial-gradient(circle at 25% 25%, rgba(139, 92, 246, 0.05) 1px, transparent 1px),
+           radial-gradient(circle at 75% 75%, rgba(255, 140, 66, 0.05) 1px, transparent 1px)
+         `,
+         backgroundSize: '50px 50px',
+         backgroundPosition: '0 0, 25px 25px'
+       }}>
+                 <h3 style={{
+           color: 'var(--text-primary)',
+           marginBottom: '16px',
+           textAlign: 'center',
+           background: 'linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%)',
+           WebkitBackgroundClip: 'text',
+           WebkitTextFillColor: 'transparent',
+           backgroundClip: 'text',
+           fontSize: '1.4rem',
+           fontWeight: '600'
+         }}>
+           {mode === 'intervals' ? '🎵 Entrenamiento de Intervalos' : 
+            mode === 'notes' ? '🎹 Identificación de Notas' : 
+            '🎼 Reconocimiento de Acordes'}
+         </h3>
+                 <p style={{
+           color: 'var(--text-secondary)',
+           lineHeight: '1.6',
+           textAlign: 'center',
+           fontSize: '1rem'
+         }}>
+           {mode === 'intervals' ? 
+             'Escucha dos notas y identifica el intervalo entre ellas. Este ejercicio mejora tu capacidad de reconocer distancias musicales.' :
+            mode === 'notes' ? 
+             'Escucha una nota y identifícala por su nombre. Perfecto para desarrollar el oído absoluto y relativo.' :
+             'Escucha un acorde y identifica su tipo. Desarrolla tu capacidad de reconocer armonías y progresiones.'
+           }
+         </p>
       </div>
 
       {/* Modales */}
@@ -645,7 +789,7 @@ function EarTraining() {
         />
       )}
 
-      <SimpleFooter />
+              
     </div>
   );
 }

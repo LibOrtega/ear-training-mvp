@@ -74,148 +74,224 @@ function PaymentModal({ onClose, onSuccess }) {
       left: 0,
       right: 0,
       bottom: 0,
-      backgroundColor: 'rgba(0, 0, 0, 0.8)',
+      backgroundColor: 'rgba(0, 0, 0, 0.9)',
       zIndex: 1000,
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      padding: '20px'
+      padding: '20px',
+      backdropFilter: 'blur(10px)'
     }}>
       <div style={{
-        backgroundColor: 'white',
+        backgroundColor: 'var(--background-card)',
         padding: '2rem',
-        borderRadius: '16px',
-        boxShadow: '0 10px 30px rgba(255, 140, 66, 0.3)',
-        border: '2px solid #ffb74d',
-        maxWidth: '500px',
+        borderRadius: 'var(--border-radius-lg)',
+        boxShadow: 'var(--shadow-lg)',
+        border: '1px solid rgba(255, 140, 66, 0.3)',
+        maxWidth: '450px',
         width: '90%',
         textAlign: 'center',
-        position: 'relative'
+        position: 'relative',
+        maxHeight: '90vh',
+        overflowY: 'auto',
+        backgroundImage: `
+          radial-gradient(circle at 25% 25%, rgba(255, 140, 66, 0.05) 1px, transparent 1px),
+          radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.05) 1px, transparent 1px)
+        `,
+        backgroundSize: '50px 50px',
+        backgroundPosition: '0 0, 25px 25px'
       }}>
         {/* Botón de cerrar */}
         <button
           onClick={onClose}
           style={{
             position: 'absolute',
-            top: '15px',
-            right: '15px',
-            background: 'none',
-            border: 'none',
+            top: '20px',
+            right: '20px',
+            background: 'rgba(220, 38, 38, 0.1)',
+            border: '1px solid rgba(220, 38, 38, 0.3)',
             fontSize: '20px',
             cursor: 'pointer',
-            color: '#718096',
+            color: 'var(--text-primary)',
             padding: '8px',
             borderRadius: '50%',
-            width: '32px',
-            height: '32px',
+            width: '36px',
+            height: '36px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            transition: 'all 0.3s ease',
-            zIndex: 10
+            transition: 'var(--transition-normal)',
+            zIndex: 10,
+            backdropFilter: 'blur(10px)'
           }}
           onMouseEnter={(e) => {
-            e.target.style.backgroundColor = '#fff3e0';
-            e.target.style.color = '#f57c00';
+            e.target.style.backgroundColor = 'rgba(220, 38, 38, 0.2)';
+            e.target.style.borderColor = 'rgba(220, 38, 38, 0.5)';
+            e.target.style.transform = 'scale(1.1)';
+            e.target.style.boxShadow = '0 4px 15px rgba(220, 38, 38, 0.3)';
           }}
           onMouseLeave={(e) => {
-            e.target.style.backgroundColor = 'transparent';
-            e.target.style.color = '#718096';
+            e.target.style.backgroundColor = 'rgba(220, 38, 38, 0.1)';
+            e.target.style.borderColor = 'rgba(220, 38, 38, 0.3)';
+            e.target.style.transform = 'scale(1)';
+            e.target.style.boxShadow = 'none';
           }}
         >
-          ✕
+          ×
         </button>
         
         <h2 style={{
-          color: '#f57c00',
+          color: 'var(--text-primary)',
           marginBottom: '1.5rem',
           fontSize: '1.8rem',
-          fontWeight: '700'
+          fontWeight: '700',
+          background: 'var(--primary-gradient)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text'
         }}>
           🎵 Acceso Premium - Entrenamiento Auditivo
         </h2>
         
         <div style={{
-          backgroundColor: 'linear-gradient(135deg, #fff8f0 0%, #fff3e0 100%)',
-          padding: '1.5rem',
-          borderRadius: '12px',
-          border: '1px solid #ffcc80',
-          marginBottom: '1.5rem'
+          background: 'var(--background-tertiary)',
+          padding: '1rem',
+          borderRadius: 'var(--border-radius-md)',
+          border: '1px solid rgba(255, 140, 66, 0.2)',
+          marginBottom: '1rem',
+          backdropFilter: 'blur(10px)'
         }}>
           <h3 style={{
-            color: '#f57c00',
-            marginBottom: '1rem',
-            fontSize: '1.3rem',
-            fontWeight: '600'
-          }}>Beneficios Incluidos:</h3>
+            color: 'var(--text-primary)',
+            marginBottom: '1.5rem',
+            fontSize: '1.4rem',
+            fontWeight: '600',
+            textAlign: 'center'
+          }}>✨ Beneficios Incluidos:</h3>
           
           <div style={{
             display: 'flex',
             flexDirection: 'column',
-            gap: '12px',
+            gap: '8px',
             textAlign: 'left'
           }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span style={{ color: '#10b981', fontSize: '18px' }}>✓</span>
-              <span style={{ fontSize: '14px', color: '#4a5568' }}>Acceso completo a todos los ejercicios</span>
+            <div style={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              gap: '8px',
+              padding: '8px 12px',
+              background: 'rgba(255, 140, 66, 0.1)',
+              borderRadius: 'var(--border-radius-sm)',
+              border: '1px solid rgba(255, 140, 66, 0.2)'
+            }}>
+              <span style={{ color: '#10b981', fontSize: '16px' }}>✓</span>
+              <span style={{ fontSize: '12px', color: 'var(--text-primary)', fontWeight: '500' }}>Acceso completo a todos los ejercicios</span>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span style={{ color: '#10b981', fontSize: '18px' }}>✓</span>
-              <span style={{ fontSize: '14px', color: '#4a5568' }}>Progreso personalizado</span>
+            <div style={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              gap: '8px',
+              padding: '8px 12px',
+              background: 'rgba(139, 92, 246, 0.1)',
+              borderRadius: 'var(--border-radius-sm)',
+              border: '1px solid rgba(139, 92, 246, 0.2)'
+            }}>
+              <span style={{ color: '#10b981', fontSize: '16px' }}>✓</span>
+              <span style={{ fontSize: '12px', color: 'var(--text-primary)', fontWeight: '500' }}>Progreso personalizado</span>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span style={{ color: '#10b981', fontSize: '18px' }}>✓</span>
-              <span style={{ fontSize: '14px', color: '#4a5568' }}>Ejemplos prácticos</span>
+            <div style={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              gap: '8px',
+              padding: '8px 12px',
+              background: 'rgba(255, 140, 66, 0.1)',
+              borderRadius: 'var(--border-radius-sm)',
+              border: '1px solid rgba(255, 140, 66, 0.2)'
+            }}>
+              <span style={{ color: '#10b981', fontSize: '16px' }}>✓</span>
+              <span style={{ fontSize: '12px', color: 'var(--text-primary)', fontWeight: '500' }}>Ejemplos prácticos</span>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span style={{ color: '#10b981', fontSize: '18px' }}>✓</span>
-              <span style={{ fontSize: '14px', color: '#4a5568' }}>Aprende a tu paso</span>
+            <div style={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              gap: '8px',
+              padding: '8px 12px',
+              background: 'rgba(139, 92, 246, 0.1)',
+              borderRadius: 'var(--border-radius-sm)',
+              border: '1px solid rgba(139, 92, 246, 0.2)'
+            }}>
+              <span style={{ color: '#10b981', fontSize: '16px' }}>✓</span>
+              <span style={{ fontSize: '12px', color: 'var(--text-primary)', fontWeight: '500' }}>Aprende a tu paso</span>
             </div>
           </div>
         </div>
         
         <button
-          onClick={handlePayment}
+          onClick={handleSubmit}
           disabled={isProcessing}
           style={{
-            backgroundColor: '#ff8c42',
-            color: 'white',
+            background: isProcessing ? 'rgba(160, 174, 192, 0.5)' : 'var(--primary-gradient)',
+            color: 'var(--text-primary)',
             border: 'none',
-            padding: '12px 24px',
-            borderRadius: '12px',
+            padding: '16px 32px',
+            borderRadius: 'var(--border-radius-md)',
             fontSize: '16px',
             fontWeight: '600',
             cursor: isProcessing ? 'not-allowed' : 'pointer',
-            transition: 'all 0.3s ease',
+            transition: 'var(--transition-normal)',
             width: '100%',
-            boxShadow: '0 4px 15px rgba(255, 140, 66, 0.3)'
+            boxShadow: isProcessing ? 'none' : 'var(--shadow-orange)',
+            transform: 'translateY(0)',
+            backdropFilter: 'blur(10px)'
           }}
           onMouseEnter={(e) => {
             if (!isProcessing) {
-              e.target.style.backgroundColor = '#ff6b35';
-              e.target.style.transform = 'translateY(-2px)';
-              e.target.style.boxShadow = '0 6px 20px rgba(255, 140, 66, 0.4)';
+              e.target.style.transform = 'translateY(-3px)';
+              e.target.style.boxShadow = 'var(--shadow-lg)';
             }
           }}
           onMouseLeave={(e) => {
             if (!isProcessing) {
-              e.target.style.backgroundColor = '#ff8c42';
               e.target.style.transform = 'translateY(0)';
-              e.target.style.boxShadow = '0 4px 15px rgba(255, 140, 66, 0.3)';
+              e.target.style.boxShadow = 'var(--shadow-orange)';
             }
           }}
         >
-          {isProcessing ? 'Procesando Pago...' : 'Pago no disponible por el momento'}
+          {isProcessing ? 'Procesando Pago...' : 'Continuar con el pago'}
         </button>
         
-        <p style={{
-          color: '#718096',
-          fontSize: '14px',
-          marginTop: '1rem',
-          fontStyle: 'italic'
-        }}>
-          Acceso inmediato después del pago
-        </p>
+        {/* Botón Volver atrás */}
+        <button
+          onClick={onClose}
+          style={{
+            background: 'rgba(139, 92, 246, 0.1)',
+            border: '1px solid rgba(139, 92, 246, 0.3)',
+            color: 'var(--text-primary)',
+            padding: '10px 20px',
+            borderRadius: 'var(--border-radius-md)',
+            fontSize: '14px',
+            fontWeight: '500',
+            cursor: 'pointer',
+            transition: 'var(--transition-normal)',
+            width: '100%',
+            marginTop: '0.75rem',
+            backdropFilter: 'blur(10px)'
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.backgroundColor = 'rgba(139, 92, 246, 0.2)';
+            e.target.style.borderColor = 'rgba(139, 92, 246, 0.5)';
+            e.target.style.transform = 'translateY(-2px)';
+            e.target.style.boxShadow = '0 4px 15px rgba(139, 92, 246, 0.3)';
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.backgroundColor = 'rgba(139, 92, 246, 0.1)';
+            e.target.style.borderColor = 'rgba(139, 92, 246, 0.3)';
+            e.target.style.transform = 'translateY(0)';
+            e.target.style.boxShadow = 'none';
+          }}
+        >
+          Volver atrás
+        </button>
       </div>
     </div>
   );

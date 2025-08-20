@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import ContactFooter from '../components/ContactFooter';
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -36,8 +35,15 @@ function Contact() {
       padding: '2rem',
       boxSizing: 'border-box',
       minHeight: 'calc(100vh - 80px)',
-      backgroundColor: '#f8fafc'
+      backgroundColor: 'var(--background-primary)',
+      backgroundImage: `
+        radial-gradient(circle at 25% 25%, rgba(255, 140, 66, 0.03) 1px, transparent 1px),
+        radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.03) 1px, transparent 1px)
+      `,
+      backgroundSize: '100px 100px',
+      backgroundPosition: '0 0, 50px 50px'
     }}>
+      
       {/* Header de la página */}
       <div style={{
         display: 'flex',
@@ -50,29 +56,46 @@ function Contact() {
         <h1 style={{
           fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
           margin: '0',
-          color: '#1a202c'
-        }}>👨‍🏫 Contacto para Profesores</h1>
+          color: 'var(--text-primary)',
+          background: 'var(--primary-gradient)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+          textAlign: 'center'
+        }}>Contacto para Profesores</h1>
       </div>
 
       {/* Información introductoria */}
       <div style={{
-        border: '1px solid #f4d03f',
-        padding: '24px',
-        borderRadius: '12px',
+        border: '1px solid rgba(255, 140, 66, 0.3)',
+        padding: '2rem',
+        borderRadius: 'var(--border-radius-lg)',
         maxWidth: '100%',
-        background: 'linear-gradient(135deg, #fef9e7 0%, #fdf2e9 100%)',
-        boxShadow: '0 4px 8px rgba(244, 208, 63, 0.15)',
+        backgroundColor: 'var(--background-card)',
+        boxShadow: 'var(--shadow-lg)',
         marginBottom: '2rem',
-        textAlign: 'center'
+        textAlign: 'center',
+        backdropFilter: 'blur(10px)',
+        backgroundImage: `
+          radial-gradient(circle at 25% 25%, rgba(255, 140, 66, 0.05) 1px, transparent 1px),
+          radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.05) 1px, transparent 1px)
+        `,
+        backgroundSize: '50px 50px',
+        backgroundPosition: '0 0, 25px 25px'
       }}>
         <h2 style={{
           fontSize: 'clamp(1.2rem, 3vw, 1.8rem)',
           marginBottom: '16px',
-          color: '#d68910'
+          color: 'var(--text-primary)',
+          background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+          fontWeight: '600'
         }}>¿Eres profesor de música?</h2>
         <p style={{
           fontSize: 'clamp(14px, 3vw, 18px)',
-          color: '#4a5568',
+          color: 'var(--text-secondary)',
           lineHeight: '1.6',
           marginBottom: '16px'
         }}>
@@ -86,35 +109,74 @@ function Contact() {
           marginTop: '20px'
         }}>
           <div style={{
-            padding: '16px',
-            background: 'linear-gradient(135deg, #fef9e7 0%, #fdf2e9 100%)',
-            borderRadius: '8px',
-            border: '1px solid #f4d03f'
+            padding: '1.5rem',
+            backgroundColor: 'var(--background-tertiary)',
+            borderRadius: 'var(--border-radius-md)',
+            border: '1px solid rgba(255, 140, 66, 0.2)',
+            backdropFilter: 'blur(10px)',
+            transition: 'var(--transition-normal)',
+            transform: 'translateY(0)'
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.transform = 'translateY(-4px)';
+            e.target.style.boxShadow = 'var(--shadow-md)';
+            e.target.style.backgroundColor = 'rgba(255, 140, 66, 0.1)';
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.transform = 'translateY(0)';
+            e.target.style.boxShadow = 'none';
+            e.target.style.backgroundColor = 'var(--background-tertiary)';
           }}>
-            <h4 style={{ color: '#d68910', marginBottom: '8px' }}>🎯 Para tus clases</h4>
-            <p style={{ color: '#4a5568', fontSize: '14px' }}>
+            <h4 style={{ color: 'var(--primary-color)', marginBottom: '8px', fontSize: '1.1rem' }}>🎯 Para tus clases</h4>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>
               Ejercicios estructurados que puedes asignar como tarea
             </p>
           </div>
           <div style={{
-            padding: '16px',
-            background: 'linear-gradient(135deg, #fef9e7 0%, #fdf2e9 100%)',
-            borderRadius: '8px',
-            border: '1px solid #f4d03f'
+            padding: '1.5rem',
+            backgroundColor: 'var(--background-tertiary)',
+            borderRadius: 'var(--border-radius-md)',
+            border: '1px solid rgba(139, 92, 246, 0.2)',
+            backdropFilter: 'blur(10px)',
+            transition: 'var(--transition-normal)',
+            transform: 'translateY(0)'
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.transform = 'translateY(-4px)';
+            e.target.style.boxShadow = 'var(--shadow-md)';
+            e.target.style.backgroundColor = 'rgba(139, 92, 246, 0.1)';
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.transform = 'translateY(0)';
+            e.target.style.boxShadow = 'none';
+            e.target.style.backgroundColor = 'var(--background-tertiary)';
           }}>
-            <h4 style={{ color: '#d68910', marginBottom: '8px' }}>📊 Seguimiento</h4>
-            <p style={{ color: '#4a5568', fontSize: '14px' }}>
+            <h4 style={{ color: 'var(--primary-color)', marginBottom: '8px', fontSize: '1.1rem' }}>📊 Seguimiento</h4>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>
               Reportes del progreso de cada estudiante
             </p>
           </div>
           <div style={{
-            padding: '16px',
-            background: 'linear-gradient(135deg, #fef9e7 0%, #fdf2e9 100%)',
-            borderRadius: '8px',
-            border: '1px solid #f4d03f'
+            padding: '1.5rem',
+            backgroundColor: 'var(--background-tertiary)',
+            borderRadius: 'var(--border-radius-md)',
+            border: '1px solid rgba(255, 140, 66, 0.2)',
+            backdropFilter: 'blur(10px)',
+            transition: 'var(--transition-normal)',
+            transform: 'translateY(0)'
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.transform = 'translateY(-4px)';
+            e.target.style.boxShadow = 'var(--shadow-md)';
+            e.target.style.backgroundColor = 'rgba(255, 140, 66, 0.1)';
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.transform = 'translateY(0)';
+            e.target.style.boxShadow = 'none';
+            e.target.style.backgroundColor = 'var(--background-tertiary)';
           }}>
-            <h4 style={{ color: '#d68910', marginBottom: '8px' }}>🎵 Personalización</h4>
-            <p style={{ color: '#4a5568', fontSize: '14px' }}>
+            <h4 style={{ color: 'var(--primary-color)', marginBottom: '8px', fontSize: '1.1rem' }}>🎵 Personalización</h4>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>
               Contenido adaptado al nivel de tus estudiantes
             </p>
           </div>
@@ -123,18 +185,30 @@ function Contact() {
 
       {/* Formulario */}
       <div style={{
-        border: '1px solid #f4d03f',
-        padding: '24px',
-        borderRadius: '12px',
+        border: '1px solid rgba(255, 140, 66, 0.3)',
+        padding: '2rem',
+        borderRadius: 'var(--border-radius-lg)',
         maxWidth: '100%',
-        background: 'linear-gradient(135deg, #fef9e7 0%, #fdf2e9 100%)',
-        boxShadow: '0 4px 8px rgba(244, 208, 63, 0.15)'
+        backgroundColor: 'var(--background-card)',
+        boxShadow: 'var(--shadow-lg)',
+        backdropFilter: 'blur(10px)',
+        backgroundImage: `
+          radial-gradient(circle at 25% 25%, rgba(255, 140, 66, 0.05) 1px, transparent 1px),
+          radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.05) 1px, transparent 1px)
+        `,
+        backgroundSize: '50px 50px',
+        backgroundPosition: '0 0, 25px 25px'
       }}>
         <h2 style={{
           fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
           textAlign: 'center',
           marginBottom: '24px',
-          color: '#d68910'
+          color: 'var(--text-primary)',
+          background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+          fontWeight: '600'
         }}>Formulario de Contacto</h2>
         
         <form onSubmit={handleSubmit} style={{
@@ -151,7 +225,8 @@ function Contact() {
               display: 'flex',
               flexDirection: 'column',
               gap: '8px',
-              color: '#2d3748'
+              color: 'var(--text-primary)',
+              fontWeight: '500'
             }}>
               Nombre completo:
               <input
@@ -161,13 +236,23 @@ function Contact() {
                 onChange={handleInputChange}
                 required
                 style={{
-                  padding: '12px',
+                  padding: '14px 16px',
                   fontSize: '16px',
-                  borderRadius: '8px',
-                  border: '1px solid #f4d03f',
-                  backgroundColor: '#fef9e7',
-                  color: '#2d3748',
-                  outline: 'none'
+                  borderRadius: 'var(--border-radius-md)',
+                  border: '1px solid rgba(255, 140, 66, 0.3)',
+                  backgroundColor: 'var(--background-tertiary)',
+                  color: 'var(--text-primary)',
+                  outline: 'none',
+                  transition: 'var(--transition-normal)',
+                  backdropFilter: 'blur(10px)'
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = 'rgba(255, 140, 66, 0.6)';
+                  e.target.style.boxShadow = '0 0 0 3px rgba(255, 140, 66, 0.1)';
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = 'rgba(255, 140, 66, 0.3)';
+                  e.target.style.boxShadow = 'none';
                 }}
               />
             </label>
@@ -176,7 +261,8 @@ function Contact() {
               display: 'flex',
               flexDirection: 'column',
               gap: '8px',
-              color: '#2d3748'
+              color: 'var(--text-primary)',
+              fontWeight: '500'
             }}>
               Email:
               <input
@@ -186,13 +272,23 @@ function Contact() {
                 onChange={handleInputChange}
                 required
                 style={{
-                  padding: '12px',
+                  padding: '14px 16px',
                   fontSize: '16px',
-                  borderRadius: '8px',
-                  border: '1px solid #f4d03f',
-                  backgroundColor: '#fef9e7',
-                  color: '#2d3748',
-                  outline: 'none'
+                  borderRadius: 'var(--border-radius-md)',
+                  border: '1px solid rgba(255, 140, 66, 0.3)',
+                  backgroundColor: 'var(--background-tertiary)',
+                  color: 'var(--text-primary)',
+                  outline: 'none',
+                  transition: 'var(--transition-normal)',
+                  backdropFilter: 'blur(10px)'
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = 'rgba(255, 140, 66, 0.6)';
+                  e.target.style.boxShadow = '0 0 0 3px rgba(255, 140, 66, 0.1)';
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = 'rgba(255, 140, 66, 0.3)';
+                  e.target.style.boxShadow = 'none';
                 }}
               />
             </label>
@@ -207,7 +303,8 @@ function Contact() {
               display: 'flex',
               flexDirection: 'column',
               gap: '8px',
-              color: '#2d3748'
+              color: 'var(--text-primary)',
+              fontWeight: '500'
             }}>
               Instrumento principal que enseñas:
               <input
@@ -217,13 +314,23 @@ function Contact() {
                 onChange={handleInputChange}
                 required
                 style={{
-                  padding: '12px',
+                  padding: '14px 16px',
                   fontSize: '16px',
-                  borderRadius: '8px',
-                  border: '1px solid #f4d03f',
-                  backgroundColor: '#fef9e7',
-                  color: '#2d3748',
-                  outline: 'none'
+                  borderRadius: 'var(--border-radius-md)',
+                  border: '1px solid rgba(255, 140, 66, 0.3)',
+                  backgroundColor: 'var(--background-tertiary)',
+                  color: 'var(--text-primary)',
+                  outline: 'none',
+                  transition: 'var(--transition-normal)',
+                  backdropFilter: 'blur(10px)'
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = 'rgba(255, 140, 66, 0.6)';
+                  e.target.style.boxShadow = '0 0 0 3px rgba(255, 140, 66, 0.1)';
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = 'rgba(255, 140, 66, 0.3)';
+                  e.target.style.boxShadow = 'none';
                 }}
               />
             </label>
@@ -232,7 +339,8 @@ function Contact() {
               display: 'flex',
               flexDirection: 'column',
               gap: '8px',
-              color: '#2d3748'
+              color: 'var(--text-primary)',
+              fontWeight: '500'
             }}>
               Número aproximado de alumnos:
               <input
@@ -243,13 +351,23 @@ function Contact() {
                 required
                 min="1"
                 style={{
-                  padding: '12px',
+                  padding: '14px 16px',
                   fontSize: '16px',
-                  borderRadius: '8px',
-                  border: '1px solid #f4d03f',
-                  backgroundColor: '#fef9e7',
-                  color: '#2d3748',
-                  outline: 'none'
+                  borderRadius: 'var(--border-radius-md)',
+                  border: '1px solid rgba(255, 140, 66, 0.3)',
+                  backgroundColor: 'var(--background-tertiary)',
+                  color: 'var(--text-primary)',
+                  outline: 'none',
+                  transition: 'var(--transition-normal)',
+                  backdropFilter: 'blur(10px)'
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = 'rgba(255, 140, 66, 0.6)';
+                  e.target.style.boxShadow = '0 0 0 3px rgba(255, 140, 66, 0.1)';
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = 'rgba(255, 140, 66, 0.3)';
+                  e.target.style.boxShadow = 'none';
                 }}
               />
             </label>
@@ -259,7 +377,8 @@ function Contact() {
             display: 'flex',
             flexDirection: 'column',
             gap: '8px',
-            color: '#2d3748'
+            color: 'var(--text-primary)',
+            fontWeight: '500'
           }}>
             Mensaje adicional (opcional):
             <textarea
@@ -269,14 +388,24 @@ function Contact() {
               rows="4"
               placeholder="Cuéntanos más sobre tus necesidades, el nivel de tus estudiantes, o cualquier pregunta que tengas..."
               style={{
-                padding: '12px',
+                padding: '14px 16px',
                 fontSize: '16px',
-                borderRadius: '8px',
-                border: '1px solid #f4d03f',
-                backgroundColor: '#fef9e7',
-                color: '#2d3748',
+                borderRadius: 'var(--border-radius-md)',
+                border: '1px solid rgba(255, 140, 66, 0.3)',
+                backgroundColor: 'var(--background-tertiary)',
+                color: 'var(--text-primary)',
                 outline: 'none',
-                resize: 'vertical'
+                resize: 'vertical',
+                transition: 'var(--transition-normal)',
+                backdropFilter: 'blur(10px)'
+              }}
+              onFocus={(e) => {
+                e.target.style.borderColor = 'rgba(255, 140, 66, 0.6)';
+                e.target.style.boxShadow = '0 0 0 3px rgba(255, 140, 66, 0.1)';
+              }}
+              onBlur={(e) => {
+                e.target.style.borderColor = 'rgba(255, 140, 66, 0.3)';
+                e.target.style.boxShadow = 'none';
               }}
             />
           </label>
@@ -286,29 +415,29 @@ function Contact() {
             style={{
               padding: '16px 32px',
               fontSize: '18px',
-              borderRadius: '8px',
+              borderRadius: 'var(--border-radius-md)',
               border: 'none',
-              backgroundColor: '#e67e22',
-              color: 'white',
+              background: 'var(--primary-gradient)',
+              color: 'var(--text-primary)',
               cursor: 'pointer',
               fontWeight: 'bold',
               marginTop: '20px',
-              transition: 'all 0.2s ease',
+              transition: 'var(--transition-normal)',
               alignSelf: 'center',
-              boxShadow: '0 4px 15px rgba(230, 126, 34, 0.2)'
+              boxShadow: 'var(--shadow-orange)',
+              transform: 'translateY(0)',
+              backdropFilter: 'blur(10px)'
             }}
             onMouseEnter={(e) => {
-              e.target.style.backgroundColor = '#d35400';
-              e.target.style.transform = 'scale(1.02)';
-              e.target.style.boxShadow = '0 6px 20px rgba(230, 126, 34, 0.3)';
+              e.target.style.transform = 'translateY(-2px)';
+              e.target.style.boxShadow = '0 6px 20px rgba(255, 140, 66, 0.4)';
             }}
             onMouseLeave={(e) => {
-              e.target.style.backgroundColor = '#e67e22';
-              e.target.style.transform = 'scale(1)';
-              e.target.style.boxShadow = '0 4px 15px rgba(230, 126, 34, 0.2)';
+              e.target.style.transform = 'translateY(0)';
+              e.target.style.boxShadow = 'var(--shadow-orange)';
             }}
           >
-            Enviar solicitud
+            No disponible por el momento
           </button>
         </form>
       </div>
@@ -317,10 +446,18 @@ function Contact() {
       <div style={{
         marginTop: '3rem',
         padding: '2rem',
-        background: 'linear-gradient(135deg, #ff8c42 0%, #ff6b35 100%)',
-        borderRadius: '16px',
+        background: 'var(--primary-gradient)',
+        borderRadius: 'var(--border-radius-lg)',
         textAlign: 'center',
-        boxShadow: '0 8px 25px rgba(255, 140, 66, 0.3)'
+        boxShadow: 'var(--shadow-orange)',
+        border: '1px solid rgba(255, 140, 66, 0.3)',
+        backdropFilter: 'blur(10px)',
+        backgroundImage: `
+          radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+          radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.05) 1px, transparent 1px)
+        `,
+        backgroundSize: '50px 50px',
+        backgroundPosition: '0 0, 25px 25px'
       }}>
         <div style={{
           display: 'flex',

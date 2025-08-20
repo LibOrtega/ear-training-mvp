@@ -126,49 +126,171 @@ function LoginMusico() {
       padding: '2rem',
       boxSizing: 'border-box',
       minHeight: 'calc(100vh - 80px)',
-      backgroundColor: '#f8fafc',
+      background: 'var(--background-primary)',
       display: 'flex',
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
+      position: 'relative'
     }}>
+      {/* Patrón de fondo sutil */}
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundImage: `
+          radial-gradient(circle at 25% 25%, rgba(255, 140, 66, 0.03) 1px, transparent 1px),
+          radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.03) 1px, transparent 1px)
+        `,
+        backgroundSize: '50px 50px',
+        backgroundPosition: '0 0, 25px 25px',
+        opacity: 0.5,
+        pointerEvents: 'none'
+      }}></div>
+      
       <div style={{
         maxWidth: '450px',
         width: '100%',
-        backgroundColor: 'white',
-        borderRadius: '16px',
-        padding: '2rem',
-        boxShadow: '0 10px 25px rgba(0,0,0,0.1)',
-        border: '1px solid #e2e8f0'
-      }}>
-        {/* Header */}
-        <div style={{
-          textAlign: 'center',
-          marginBottom: '2rem'
-        }}>
-          <h1 style={{
-            fontSize: '2rem',
-            color: '#1a202c',
-            marginBottom: '0.5rem'
-          }}>🎹 Modo Músico</h1>
-          <p style={{
-            color: '#4a5568',
-            fontSize: '1rem'
+        backgroundColor: 'var(--background-card)',
+        borderRadius: 'var(--border-radius-lg)',
+        padding: '2.5rem',
+        boxShadow: 'var(--shadow-lg)',
+        border: '1px solid rgba(139, 92, 246, 0.2)',
+        position: 'relative',
+        zIndex: 10
+              }}>
+          
+          {/* Botón de cerrar */}
+          <button
+            onClick={() => navigate('/')}
+            style={{
+              position: 'absolute',
+              top: '16px',
+              right: '16px',
+              width: '32px',
+              height: '32px',
+              background: 'rgba(139, 92, 246, 0.1)',
+              border: '1px solid rgba(139, 92, 246, 0.3)',
+              borderRadius: '50%',
+              color: 'var(--text-primary)',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '18px',
+              fontWeight: '600',
+              transition: 'var(--transition-normal)',
+              backdropFilter: 'blur(10px)',
+              zIndex: 20
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.backgroundColor = 'rgba(139, 92, 246, 0.2)';
+              e.target.style.borderColor = 'rgba(139, 92, 246, 0.5)';
+              e.target.style.transform = 'scale(1.1)';
+              e.target.style.boxShadow = '0 4px 15px rgba(139, 92, 246, 0.3)';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.backgroundColor = 'rgba(139, 92, 246, 0.1)';
+              e.target.style.borderColor = 'rgba(139, 92, 246, 0.3)';
+              e.target.style.transform = 'scale(1)';
+              e.target.style.boxShadow = 'none';
+            }}
+            title="Cerrar modal"
+          >
+            ×
+          </button>
+          
+          {/* Header con logo */}
+          <div style={{
+            textAlign: 'center',
+            marginBottom: '2.5rem'
           }}>
-            {isSignUp ? 'Crea tu cuenta profesional' : 'Accede a herramientas avanzadas'}
-          </p>
-        </div>
+            {/* Logo con cara feliz */}
+            <div style={{
+              display: 'flex',
+              justifyContent: 'center',
+              marginBottom: '1.5rem'
+            }}>
+              <div style={{
+                width: '60px',
+                height: '60px',
+                background: 'linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%)',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                position: 'relative',
+                boxShadow: '0 4px 15px rgba(139, 92, 246, 0.3)'
+              }}>
+                {/* Cara feliz */}
+                <div style={{
+                  width: '36px',
+                  height: '36px',
+                  background: 'var(--text-primary)',
+                  borderRadius: '50%',
+                  position: 'relative'
+                }}>
+                  <div style={{
+                    position: 'absolute',
+                    top: '9px',
+                    left: '9px',
+                    width: '6px',
+                    height: '6px',
+                    background: 'var(--background-primary)',
+                    borderRadius: '50%'
+                  }}></div>
+                  <div style={{
+                    position: 'absolute',
+                    top: '9px',
+                    right: '9px',
+                    width: '6px',
+                    height: '6px',
+                    background: 'var(--background-primary)',
+                    borderRadius: '50%'
+                  }}></div>
+                  <div style={{
+                    position: 'absolute',
+                    bottom: '9px',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    width: '12px',
+                    height: '6px',
+                    borderBottom: '3px solid var(--background-primary)',
+                    borderLeft: '3px solid var(--background-primary)',
+                    borderRight: '3px solid var(--background-primary)',
+                    borderRadius: '0 0 12px 12px'
+                  }}></div>
+                </div>
+              </div>
+            </div>
+            
+            <h1 style={{
+              fontSize: '2.2rem',
+              color: 'var(--text-primary)',
+              marginBottom: '0.5rem',
+              fontWeight: '700'
+            }}>Modo Músico</h1>
+            <p style={{
+              color: 'var(--text-secondary)',
+              fontSize: '1.1rem'
+            }}>
+              {isSignUp ? 'Crea tu cuenta profesional' : 'Accede a herramientas avanzadas'}
+            </p>
+          </div>
 
         {/* Mensaje de error */}
         {error && (
           <div style={{
-            padding: '12px',
-            backgroundColor: '#fed7d7',
-            border: '1px solid #feb2b2',
-            borderRadius: '8px',
-            color: '#c53030',
-            marginBottom: '1rem',
+            padding: '16px',
+            backgroundColor: 'rgba(220, 38, 38, 0.1)',
+            border: '1px solid rgba(220, 38, 38, 0.3)',
+            borderRadius: 'var(--border-radius-sm)',
+            color: '#fca5a5',
+            marginBottom: '1.5rem',
             fontSize: '14px',
-            textAlign: 'center'
+            textAlign: 'center',
+            backdropFilter: 'blur(10px)'
           }}>
             {error}
           </div>
@@ -186,7 +308,7 @@ function LoginMusico() {
               <label style={{
                 display: 'block',
                 marginBottom: '0.5rem',
-                color: '#2d3748',
+                color: 'var(--text-primary)',
                 fontWeight: '500'
               }}>
                 Nombre de usuario: *
@@ -200,16 +322,17 @@ function LoginMusico() {
                 disabled={isLoading}
                 style={{
                   width: '100%',
-                  padding: '12px',
+                  padding: '14px',
                   fontSize: '16px',
-                  borderRadius: '8px',
-                  border: '1px solid #e2e8f0',
-                  backgroundColor: isLoading ? '#f7fafc' : '#f7fafc',
-                  color: '#2d3748',
+                  borderRadius: 'var(--border-radius-sm)',
+                  border: '1px solid rgba(139, 92, 246, 0.3)',
+                  backgroundColor: 'var(--background-tertiary)',
+                  color: 'var(--text-primary)',
                   outline: 'none',
                   boxSizing: 'border-box',
-                  opacity: isLoading ? 0.7 : 1
-              }}
+                  opacity: isLoading ? 0.7 : 1,
+                  transition: 'var(--transition-normal)'
+                }}
                 placeholder="Tu nombre de usuario"
                 minLength="3"
               />
@@ -221,7 +344,7 @@ function LoginMusico() {
             <label style={{
               display: 'block',
               marginBottom: '0.5rem',
-              color: '#2d3748',
+              color: 'var(--text-primary)',
               fontWeight: '500'
             }}>
               Correo electrónico: *
@@ -235,15 +358,16 @@ function LoginMusico() {
               disabled={isLoading}
               style={{
                 width: '100%',
-                padding: '12px',
+                padding: '14px',
                 fontSize: '16px',
-                borderRadius: '8px',
-                border: '1px solid #e2e8f0',
-                backgroundColor: isLoading ? '#f7fafc' : '#f7fafc',
-                color: '#2d3748',
+                borderRadius: 'var(--border-radius-sm)',
+                border: '1px solid rgba(139, 92, 246, 0.3)',
+                backgroundColor: 'var(--background-tertiary)',
+                color: 'var(--text-primary)',
                 outline: 'none',
                 boxSizing: 'border-box',
-                opacity: isLoading ? 0.7 : 1
+                opacity: isLoading ? 0.7 : 1,
+                transition: 'var(--transition-normal)'
               }}
               placeholder="tu@email.com"
             />
@@ -255,7 +379,7 @@ function LoginMusico() {
               <label style={{
                 display: 'block',
                 marginBottom: '0.5rem',
-                color: '#2d3748',
+                color: 'var(--text-primary)',
                 fontWeight: '500'
               }}>
                 Confirmar correo electrónico: *
@@ -269,15 +393,16 @@ function LoginMusico() {
                 disabled={isLoading}
                 style={{
                   width: '100%',
-                  padding: '12px',
+                  padding: '14px',
                   fontSize: '16px',
-                  borderRadius: '8px',
-                  border: '1px solid #e2e8f0',
-                  backgroundColor: isLoading ? '#f7fafc' : '#f7fafc',
-                  color: '#2d3748',
+                  borderRadius: 'var(--border-radius-sm)',
+                  border: '1px solid rgba(139, 92, 246, 0.3)',
+                  backgroundColor: 'var(--background-tertiary)',
+                  color: 'var(--text-primary)',
                   outline: 'none',
                   boxSizing: 'border-box',
-                  opacity: isLoading ? 0.7 : 1
+                  opacity: isLoading ? 0.7 : 1,
+                  transition: 'var(--transition-normal)'
                 }}
                 placeholder="Confirma tu email"
               />
@@ -289,7 +414,7 @@ function LoginMusico() {
             <label style={{
               display: 'block',
               marginBottom: '0.5rem',
-              color: '#2d3748',
+              color: 'var(--text-primary)',
               fontWeight: '500'
             }}>
               Contraseña: *
@@ -303,15 +428,16 @@ function LoginMusico() {
               disabled={isLoading}
               style={{
                 width: '100%',
-                padding: '12px',
+                padding: '14px',
                 fontSize: '16px',
-                borderRadius: '8px',
-                border: '1px solid #e2e8f0',
-                backgroundColor: isLoading ? '#f7fafc' : '#f7fafc',
-                color: '#2d3748',
+                borderRadius: 'var(--border-radius-sm)',
+                border: '1px solid rgba(139, 92, 246, 0.3)',
+                backgroundColor: 'var(--background-tertiary)',
+                color: 'var(--text-primary)',
                 outline: 'none',
                 boxSizing: 'border-box',
-                opacity: isLoading ? 0.7 : 1
+                opacity: isLoading ? 0.7 : 1,
+                transition: 'var(--transition-normal)'
               }}
               placeholder="••••••••"
               minLength={isSignUp ? "6" : undefined}
@@ -319,7 +445,7 @@ function LoginMusico() {
             {isSignUp && (
               <div style={{
                 fontSize: '12px',
-                color: '#718096',
+                color: 'var(--text-muted)',
                 marginTop: '4px'
               }}>
                 Mínimo 6 caracteres
@@ -333,7 +459,7 @@ function LoginMusico() {
               <label style={{
                 display: 'block',
                 marginBottom: '0.5rem',
-                color: '#2d3748',
+                color: 'var(--text-primary)',
                 fontWeight: '500'
               }}>
                 Confirmar contraseña: *
@@ -347,15 +473,16 @@ function LoginMusico() {
                 disabled={isLoading}
                 style={{
                   width: '100%',
-                  padding: '12px',
+                  padding: '14px',
                   fontSize: '16px',
-                  borderRadius: '8px',
-                  border: '1px solid #e2e8f0',
-                  backgroundColor: isLoading ? '#f7fafc' : '#f7fafc',
-                  color: '#2d3748',
+                  borderRadius: 'var(--border-radius-sm)',
+                  border: '1px solid rgba(139, 92, 246, 0.3)',
+                  backgroundColor: 'var(--background-tertiary)',
+                  color: 'var(--text-primary)',
                   outline: 'none',
                   boxSizing: 'border-box',
-                  opacity: isLoading ? 0.7 : 1
+                  opacity: isLoading ? 0.7 : 1,
+                  transition: 'var(--transition-normal)'
                 }}
                 placeholder="Confirma tu contraseña"
                 minLength="6"
@@ -367,25 +494,29 @@ function LoginMusico() {
             type="submit"
             disabled={isLoading}
             style={{
-              padding: '14px',
+              padding: '16px',
               fontSize: '16px',
-              borderRadius: '8px',
+              borderRadius: 'var(--border-radius-sm)',
               border: 'none',
-              backgroundColor: isLoading ? '#a0aec0' : '#38b2ac',
-              color: 'white',
+              background: isLoading ? 'rgba(160, 174, 192, 0.5)' : 'linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%)',
+              color: 'var(--text-primary)',
               cursor: isLoading ? 'not-allowed' : 'pointer',
               fontWeight: '600',
-              transition: 'all 0.2s ease',
-              opacity: isLoading ? 0.7 : 1
+              transition: 'var(--transition-normal)',
+              opacity: isLoading ? 0.7 : 1,
+              boxShadow: isLoading ? 'none' : '0 4px 15px rgba(139, 92, 246, 0.3)',
+              transform: isLoading ? 'none' : 'translateY(0)'
             }}
             onMouseEnter={(e) => {
               if (!isLoading) {
-                e.target.style.backgroundColor = '#319795';
+                e.target.style.transform = 'translateY(-2px)';
+                e.target.style.boxShadow = '0 8px 25px rgba(139, 92, 246, 0.4)';
               }
             }}
             onMouseLeave={(e) => {
               if (!isLoading) {
-                e.target.style.backgroundColor = '#38b2ac';
+                e.target.style.transform = 'translateY(0)';
+                e.target.style.boxShadow = '0 4px 15px rgba(139, 92, 246, 0.3)';
               }
             }}
           >
@@ -396,13 +527,14 @@ function LoginMusico() {
         {/* Cambiar entre login y signup */}
         <div style={{
           textAlign: 'center',
-          marginTop: '1.5rem',
+          marginTop: '2rem',
           paddingTop: '1.5rem',
-          borderTop: '1px solid #e2e8f0'
+          borderTop: '1px solid rgba(139, 92, 246, 0.2)'
         }}>
           <p style={{
-            color: '#4a5568',
-            marginBottom: '0.5rem'
+            color: 'var(--text-secondary)',
+            marginBottom: '0.8rem',
+            fontSize: '1rem'
           }}>
             {isSignUp ? '¿Ya tienes cuenta?' : '¿No tienes cuenta?'}
           </p>
@@ -412,10 +544,15 @@ function LoginMusico() {
             style={{
               background: 'none',
               border: 'none',
-              color: isLoading ? '#a0aec0' : '#38b2ac',
+              color: isLoading ? 'var(--text-muted)' : 'var(--accent-purple)',
               cursor: isLoading ? 'not-allowed' : 'pointer',
               fontSize: '14px',
-              textDecoration: 'underline'
+              textDecoration: 'underline',
+              transition: 'var(--transition-normal)',
+              ':hover': {
+                color: 'var(--accent-purple)',
+                textDecoration: 'none'
+              }
             }}
           >
             {isSignUp ? 'Iniciar sesión' : 'Crear cuenta'}
@@ -425,25 +562,44 @@ function LoginMusico() {
         {/* Botón de limpiar datos */}
         <div style={{
           textAlign: 'center',
-          marginTop: '1rem',
+          marginTop: '1.5rem',
           paddingTop: '1rem',
-          borderTop: '1px solid #e2e8f0'
+          borderTop: '1px solid rgba(139, 92, 246, 0.2)'
         }}>
           <button
             onClick={handleClearData}
             disabled={isLoading}
             style={{
-              background: 'none',
-              border: 'none',
-              color: '#e53e3e',
+              background: 'rgba(139, 92, 246, 0.1)',
+              border: '1px solid rgba(139, 92, 246, 0.3)',
+              color: 'var(--text-primary)',
+              padding: '10px 20px',
+              borderRadius: 'var(--border-radius-sm)',
               cursor: isLoading ? 'not-allowed' : 'pointer',
-              fontSize: '12px',
-              textDecoration: 'underline'
+              fontSize: '14px',
+              transition: 'var(--transition-normal)',
+              backdropFilter: 'blur(10px)'
             }}
             title="Limpiar todos los datos guardados (útil si hay problemas)"
-                      >
-             Limpiar datos
-           </button>
+            onMouseEnter={(e) => {
+              if (!isLoading) {
+                e.target.style.backgroundColor = 'rgba(139, 92, 246, 0.2)';
+                e.target.style.borderColor = 'rgba(139, 92, 246, 0.5)';
+                e.target.style.transform = 'translateY(-2px)';
+                e.target.style.boxShadow = '0 4px 15px rgba(139, 92, 246, 0.3)';
+              }
+            }}
+            onMouseLeave={(e) => {
+              if (!isLoading) {
+                e.target.style.backgroundColor = 'rgba(139, 92, 246, 0.1)';
+                e.target.style.borderColor = 'rgba(139, 92, 246, 0.3)';
+                e.target.style.transform = 'translateY(0)';
+                e.target.style.boxShadow = 'none';
+              }
+            }}
+          >
+            Limpiar datos
+          </button>
         </div>
 
 

@@ -4,7 +4,6 @@ import { useAuth } from '../context/AuthContext';
 import { useMusician } from '../hooks/useMusician';
 import MusicianPaymentModal from '../components/MusicianPaymentModal';
 import MusicianLevel from '../components/MusicianLevel';
-import SimpleFooter from '../components/SimpleFooter';
 
 function MusicianMode() {
   const navigate = useNavigate();
@@ -82,9 +81,13 @@ function MusicianMode() {
         justifyContent: 'center',
         alignItems: 'center',
         height: '100vh',
-        backgroundColor: '#f8fafc'
+        backgroundColor: 'var(--background-primary)'
       }}>
-        <div style={{ fontSize: '18px', color: '#4a5568' }}>
+        <div style={{ 
+          fontSize: '18px', 
+          color: 'var(--text-secondary)',
+          textAlign: 'center'
+        }}>
           Redirigiendo al login...
         </div>
       </div>
@@ -102,7 +105,13 @@ function MusicianMode() {
         padding: '2rem',
         boxSizing: 'border-box',
         minHeight: 'calc(100vh - 80px)',
-        backgroundColor: '#f8fafc'
+        backgroundColor: 'var(--background-primary)',
+        backgroundImage: `
+          radial-gradient(circle at 25% 25%, rgba(255, 140, 66, 0.03) 1px, transparent 1px),
+          radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.03) 1px, transparent 1px)
+        `,
+        backgroundSize: '100px 100px',
+        backgroundPosition: '0 0, 50px 50px'
       }}>
         <div style={{
           display: 'flex',
@@ -114,14 +123,18 @@ function MusicianMode() {
         }}>
           <h1 style={{
             fontSize: 'clamp(2rem, 5vw, 3.5rem)',
-            color: '#1a202c',
-            marginBottom: '1rem'
+            color: 'var(--text-primary)',
+            marginBottom: '1rem',
+            background: 'var(--primary-gradient)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text'
           }}>
             🎵 Modo Músico
           </h1>
           <p style={{
             fontSize: 'clamp(1.1rem, 2.5vw, 1.5rem)',
-            color: '#4a5568',
+            color: 'var(--text-secondary)',
             marginBottom: '2rem',
             maxWidth: '600px',
             lineHeight: '1.6'
@@ -134,23 +147,23 @@ function MusicianMode() {
               padding: '16px 32px',
               fontSize: 'clamp(1.1rem, 2.5vw, 1.3rem)',
               fontWeight: '600',
-              borderRadius: '12px',
+              borderRadius: 'var(--border-radius-md)',
               border: 'none',
-              backgroundColor: '#ff8c42',
-              color: 'white',
+              background: 'var(--primary-gradient)',
+              color: 'var(--text-primary)',
               cursor: 'pointer',
-              transition: 'all 0.2s ease',
-              boxShadow: '0 4px 12px rgba(255, 140, 66, 0.3)'
+              transition: 'var(--transition-normal)',
+              boxShadow: 'var(--shadow-orange)',
+              transform: 'translateY(0)',
+              backdropFilter: 'blur(10px)'
             }}
             onMouseEnter={(e) => {
-              e.target.style.backgroundColor = '#ff6b35';
               e.target.style.transform = 'translateY(-2px)';
               e.target.style.boxShadow = '0 6px 20px rgba(255, 140, 66, 0.4)';
             }}
             onMouseLeave={(e) => {
-              e.target.style.backgroundColor = '#ff8c42';
               e.target.style.transform = 'translateY(0)';
-              e.target.style.boxShadow = '0 4px 12px rgba(255, 140, 66, 0.3)';
+              e.target.style.boxShadow = 'var(--shadow-orange)';
             }}
           >
             🔓 Desbloquear Modo Músico
@@ -190,7 +203,13 @@ function MusicianMode() {
       padding: '2rem',
       boxSizing: 'border-box',
       minHeight: 'calc(100vh - 80px)',
-      backgroundColor: '#f8fafc'
+      backgroundColor: 'var(--background-primary)',
+      backgroundImage: `
+        radial-gradient(circle at 25% 25%, rgba(255, 140, 66, 0.03) 1px, transparent 1px),
+        radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.03) 1px, transparent 1px)
+      `,
+      backgroundSize: '100px 100px',
+      backgroundPosition: '0 0, 50px 50px'
     }}>
       {/* Header */}
       <div style={{
@@ -204,89 +223,98 @@ function MusicianMode() {
         <h1 style={{
           fontSize: 'clamp(2rem, 5vw, 3rem)',
           margin: '0',
-          color: '#1a202c'
+          color: 'var(--text-primary)',
+          background: 'var(--primary-gradient)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+          textAlign: 'center'
         }}>🎵 Modo Músico</h1>
       </div>
 
-      {/* Información del usuario */}
+      {/* Descripción */}
       <div style={{
-        display: 'flex',
-        justifyContent: 'center',
-        marginBottom: '2rem',
-        flexWrap: 'wrap',
-        gap: '1rem'
+        textAlign: 'center',
+        marginBottom: '3rem',
+        maxWidth: '800px',
+        margin: '0 auto 3rem auto'
       }}>
-        <div style={{
-          padding: '12px 20px',
-          backgroundColor: 'white',
-          borderRadius: '8px',
-          border: '1px solid #e2e8f0',
-          boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-          textAlign: 'center'
+        <p style={{
+          fontSize: 'clamp(1.1rem, 2.5vw, 1.3rem)',
+          color: 'var(--text-secondary)',
+          lineHeight: '1.6',
+          margin: '0'
         }}>
-          <div style={{ fontSize: '14px', color: '#718096', marginBottom: '4px' }}>
-            Estatus
-          </div>
-          <div style={{ fontSize: '16px', fontWeight: '600', color: '#10b981' }}>
-            Músico Premium
-          </div>
-        </div>
+          Explora tres niveles de teoría musical avanzada. Cada nivel incluye conceptos progresivamente más complejos, 
+          ejercicios interactivos y seguimiento detallado de tu progreso.
+        </p>
       </div>
 
       {/* Selector de niveles */}
       <div style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
         gap: '2rem',
         maxWidth: '1200px',
         margin: '0 auto'
       }}>
         {/* Nivel Básico */}
         <div style={{
-          backgroundColor: 'white',
-          borderRadius: '16px',
+          backgroundColor: 'var(--background-card)',
+          borderRadius: 'var(--border-radius-lg)',
           padding: '2rem',
-          border: '1px solid #e2e8f0',
-          boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-          transition: 'all 0.2s ease',
+          boxShadow: 'var(--shadow-lg)',
+          border: '1px solid rgba(255, 140, 66, 0.3)',
+          backdropFilter: 'blur(10px)',
+          backgroundImage: `
+            radial-gradient(circle at 25% 25%, rgba(255, 140, 66, 0.05) 1px, transparent 1px),
+            radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.05) 1px, transparent 1px)
+          `,
+          backgroundSize: '50px 50px',
+          backgroundPosition: '0 0, 25px 25px',
+          transition: 'var(--transition-normal)',
+          transform: 'translateY(0)',
           cursor: 'pointer'
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.transform = 'translateY(-4px)';
-          e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.15)';
+          e.target.style.transform = 'translateY(-4px)';
+          e.target.style.boxShadow = '0 8px 25px rgba(255, 140, 66, 0.2)';
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.transform = 'translateY(0)';
-          e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+          e.target.style.transform = 'translateY(0)';
+          e.target.style.boxShadow = 'var(--shadow-lg)';
         }}
-        onClick={() => setSelectedLevel('basic')}
-        >
-          <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
+        onClick={() => setSelectedLevel('basic')}>
+          <div style={{
+            textAlign: 'center',
+            marginBottom: '1.5rem'
+          }}>
             <div style={{
               fontSize: '3rem',
               marginBottom: '1rem'
-            }}>🎼</div>
+            }}>🌱</div>
             <h2 style={{
               fontSize: '1.8rem',
-              color: '#1a202c',
-              margin: '0 0 0.5rem 0'
+              color: 'var(--text-primary)',
+              margin: '0 0 0.5rem 0',
+              fontWeight: '600'
             }}>Nivel Básico</h2>
             <p style={{
-              color: '#4a5568',
-              margin: '0',
+              color: 'var(--text-secondary)',
               fontSize: '1rem',
+              margin: '0',
               lineHeight: '1.5'
             }}>
-              Ideal para músicos bebés que apenas van iniciando su camino musical
+              Fundamentos de teoría musical, escalas básicas y acordes simples
             </p>
           </div>
-
-          {/* Estadísticas del nivel */}
+          
+          {/* Estadísticas */}
           <div style={{
-            backgroundColor: '#f7fafc',
-            borderRadius: '12px',
+            backgroundColor: 'var(--background-tertiary)',
+            borderRadius: 'var(--border-radius-md)',
             padding: '1rem',
-            marginBottom: '1.5rem'
+            marginBottom: '1rem'
           }}>
             <div style={{
               display: 'flex',
@@ -294,107 +322,149 @@ function MusicianMode() {
               alignItems: 'center',
               marginBottom: '0.5rem'
             }}>
-              <span style={{ fontSize: '14px', color: '#718096' }}>Progreso:</span>
-              <span style={{ fontSize: '16px', fontWeight: '600', color: '#2d3748' }}>
-                {stats.basic.total > 0 ? `${Math.round((stats.basic.score / stats.basic.total) * 100)}%` : '0%'}
-              </span>
-            </div>
-            <div style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              marginBottom: '0.5rem'
-            }}>
-              <span style={{ fontSize: '14px', color: '#718096' }}>Calificación:</span>
+              <span style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Progreso:</span>
               <span style={{ 
-                fontSize: '16px', 
-                fontWeight: '600', 
-                color: getGradeColor(stats.basic.grade)
+                color: 'var(--text-primary)', 
+                fontWeight: '600',
+                fontSize: '0.9rem'
               }}>
-                {stats.basic.grade}
+                {stats.basic.total > 0 ? Math.round((stats.basic.score / stats.basic.total) * 100) : 0}%
               </span>
             </div>
             <div style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center'
+              width: '100%',
+              height: '8px',
+              backgroundColor: 'rgba(255, 140, 66, 0.2)',
+              borderRadius: '4px',
+              overflow: 'hidden'
             }}>
-              <span style={{ fontSize: '14px', color: '#718096' }}>Tiempo:</span>
-              <span style={{ fontSize: '16px', fontWeight: '600', color: '#2d3748' }}>
-                {formatTime(stats.basic.timeSpent)}
-              </span>
+              <div style={{
+                width: `${stats.basic.total > 0 ? (stats.basic.score / stats.basic.total) * 100 : 0}%`,
+                height: '100%',
+                background: 'var(--primary-gradient)',
+                borderRadius: '4px',
+                transition: 'width 0.3s ease'
+              }} />
             </div>
           </div>
-
+          
+          {/* Calificación */}
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginBottom: '1rem'
+          }}>
+            <span style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Calificación:</span>
+            <span style={{ 
+              color: getGradeColor(stats.basic.grade), 
+              fontWeight: '700',
+              fontSize: '1.1rem'
+            }}>
+              {stats.basic.grade}
+            </span>
+          </div>
+          
+          {/* Tiempo */}
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginBottom: '1rem'
+          }}>
+            <span style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Tiempo:</span>
+            <span style={{ 
+              color: 'var(--text-primary)', 
+              fontWeight: '600',
+              fontSize: '0.9rem'
+            }}>
+              {formatTime(stats.basic.timeSpent)}
+            </span>
+          </div>
+          
           <button style={{
             width: '100%',
             padding: '12px',
+            backgroundColor: 'var(--primary-gradient)',
+            color: 'var(--text-primary)',
+            border: 'none',
+            borderRadius: 'var(--border-radius-md)',
             fontSize: '1rem',
             fontWeight: '600',
-            borderRadius: '8px',
-            border: 'none',
-            backgroundColor: '#38b2ac',
-            color: 'white',
             cursor: 'pointer',
-            transition: 'all 0.2s ease'
+            transition: 'var(--transition-normal)',
+            boxShadow: 'var(--shadow-orange)',
+            transform: 'translateY(0)'
           }}
           onMouseEnter={(e) => {
-            e.target.style.backgroundColor = '#319795';
+            e.target.style.transform = 'translateY(-2px)';
+            e.target.style.boxShadow = '0 6px 20px rgba(255, 140, 66, 0.4)';
           }}
           onMouseLeave={(e) => {
-            e.target.style.backgroundColor = '#38b2ac';
-          }}
-          >
+            e.target.style.transform = 'translateY(0)';
+            e.target.style.boxShadow = 'var(--shadow-orange)';
+          }}>
             Comenzar Nivel Básico
           </button>
         </div>
 
         {/* Nivel Intermedio */}
         <div style={{
-          backgroundColor: 'white',
-          borderRadius: '16px',
+          backgroundColor: 'var(--background-card)',
+          borderRadius: 'var(--border-radius-lg)',
           padding: '2rem',
-          border: '1px solid #e2e8f0',
-          boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-          transition: 'all 0.2s ease',
+          boxShadow: 'var(--shadow-lg)',
+          border: '1px solid rgba(139, 92, 246, 0.3)',
+          backdropFilter: 'blur(10px)',
+          backgroundImage: `
+            radial-gradient(circle at 25% 25%, rgba(139, 92, 246, 0.05) 1px, transparent 1px),
+            radial-gradient(circle at 75% 75%, rgba(255, 140, 66, 0.05) 1px, transparent 1px)
+          `,
+          backgroundSize: '50px 50px',
+          backgroundPosition: '0 0, 25px 25px',
+          transition: 'var(--transition-normal)',
+          transform: 'translateY(0)',
           cursor: 'pointer'
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.transform = 'translateY(-4px)';
-          e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.15)';
+          e.target.style.transform = 'translateY(-4px)';
+          e.target.style.boxShadow = '0 8px 25px rgba(139, 92, 246, 0.2)';
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.transform = 'translateY(0)';
-          e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+          e.target.style.transform = 'translateY(0)';
+          e.target.style.boxShadow = 'var(--shadow-lg)';
         }}
-        onClick={() => setSelectedLevel('intermediate')}
-        >
-          <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
+        onClick={() => setSelectedLevel('intermediate')}>
+          <div style={{
+            textAlign: 'center',
+            marginBottom: '1.5rem'
+          }}>
             <div style={{
               fontSize: '3rem',
               marginBottom: '1rem'
-            }}>🎹</div>
+            }}>🌿</div>
             <h2 style={{
               fontSize: '1.8rem',
-              color: '#1a202c',
-              margin: '0 0 0.5rem 0'
+              color: 'var(--text-primary)',
+              margin: '0 0 0.5rem 0',
+              fontWeight: '600'
             }}>Nivel Intermedio</h2>
             <p style={{
-              color: '#4a5568',
-              margin: '0',
+              color: 'var(--text-secondary)',
               fontSize: '1rem',
+              margin: '0',
               lineHeight: '1.5'
             }}>
-              Ideal para músicos más avanzados que buscan profundizar en la teoría
+              Armonía avanzada, modos musicales y progresiones complejas
             </p>
           </div>
-
-          {/* Estadísticas del nivel */}
+          
+          {/* Estadísticas */}
           <div style={{
-            backgroundColor: '#f7fafc',
-            borderRadius: '12px',
+            backgroundColor: 'var(--background-tertiary)',
+            borderRadius: 'var(--border-radius-md)',
             padding: '1rem',
-            marginBottom: '1.5rem'
+            marginBottom: '1rem'
           }}>
             <div style={{
               display: 'flex',
@@ -402,107 +472,149 @@ function MusicianMode() {
               alignItems: 'center',
               marginBottom: '0.5rem'
             }}>
-              <span style={{ fontSize: '14px', color: '#718096' }}>Progreso:</span>
-              <span style={{ fontSize: '16px', fontWeight: '600', color: '#2d3748' }}>
-                {stats.intermediate.total > 0 ? `${Math.round((stats.intermediate.score / stats.intermediate.total) * 100)}%` : '0%'}
-              </span>
-            </div>
-            <div style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              marginBottom: '0.5rem'
-            }}>
-              <span style={{ fontSize: '14px', color: '#718096' }}>Calificación:</span>
+              <span style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Progreso:</span>
               <span style={{ 
-                fontSize: '16px', 
-                fontWeight: '600', 
-                color: getGradeColor(stats.intermediate.grade)
+                color: 'var(--text-primary)', 
+                fontWeight: '600',
+                fontSize: '0.9rem'
               }}>
-                {stats.intermediate.grade}
+                {stats.intermediate.total > 0 ? Math.round((stats.intermediate.score / stats.intermediate.total) * 100) : 0}%
               </span>
             </div>
             <div style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center'
+              width: '100%',
+              height: '8px',
+              backgroundColor: 'rgba(139, 92, 246, 0.2)',
+              borderRadius: '4px',
+              overflow: 'hidden'
             }}>
-              <span style={{ fontSize: '14px', color: '#718096' }}>Tiempo:</span>
-              <span style={{ fontSize: '16px', fontWeight: '600', color: '#2d3748' }}>
-                {formatTime(stats.intermediate.timeSpent)}
-              </span>
+              <div style={{
+                width: `${stats.intermediate.total > 0 ? (stats.intermediate.score / stats.intermediate.total) * 100 : 0}%`,
+                height: '100%',
+                background: 'linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%)',
+                borderRadius: '4px',
+                transition: 'width 0.3s ease'
+              }} />
             </div>
           </div>
-
+          
+          {/* Calificación */}
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginBottom: '1rem'
+          }}>
+            <span style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Calificación:</span>
+            <span style={{ 
+              color: getGradeColor(stats.intermediate.grade), 
+              fontWeight: '700',
+              fontSize: '1.1rem'
+            }}>
+              {stats.intermediate.grade}
+            </span>
+          </div>
+          
+          {/* Tiempo */}
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginBottom: '1rem'
+          }}>
+            <span style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Tiempo:</span>
+            <span style={{ 
+              color: 'var(--text-primary)', 
+              fontWeight: '600',
+              fontSize: '0.9rem'
+            }}>
+              {formatTime(stats.intermediate.timeSpent)}
+            </span>
+          </div>
+          
           <button style={{
             width: '100%',
             padding: '12px',
+            background: 'linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%)',
+            color: 'var(--text-primary)',
+            border: 'none',
+            borderRadius: 'var(--border-radius-md)',
             fontSize: '1rem',
             fontWeight: '600',
-            borderRadius: '8px',
-            border: 'none',
-            backgroundColor: '#9f7aea',
-            color: 'white',
             cursor: 'pointer',
-            transition: 'all 0.2s ease'
+            transition: 'var(--transition-normal)',
+            boxShadow: '0 4px 15px rgba(139, 92, 246, 0.3)',
+            transform: 'translateY(0)'
           }}
           onMouseEnter={(e) => {
-            e.target.style.backgroundColor = '#805ad5';
+            e.target.style.transform = 'translateY(-2px)';
+            e.target.style.boxShadow = '0 6px 20px rgba(139, 92, 246, 0.4)';
           }}
           onMouseLeave={(e) => {
-            e.target.style.backgroundColor = '#9f7aea';
-          }}
-          >
+            e.target.style.transform = 'translateY(0)';
+            e.target.style.boxShadow = '0 4px 15px rgba(139, 92, 246, 0.3)';
+          }}>
             Comenzar Nivel Intermedio
           </button>
         </div>
 
         {/* Nivel Profesional */}
         <div style={{
-          backgroundColor: 'white',
-          borderRadius: '16px',
+          backgroundColor: 'var(--background-card)',
+          borderRadius: 'var(--border-radius-lg)',
           padding: '2rem',
-          border: '1px solid #e2e8f0',
-          boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-          transition: 'all 0.2s ease',
+          boxShadow: 'var(--shadow-lg)',
+          border: '1px solid rgba(16, 185, 129, 0.3)',
+          backdropFilter: 'blur(10px)',
+          backgroundImage: `
+            radial-gradient(circle at 25% 25%, rgba(16, 185, 129, 0.05) 1px, transparent 1px),
+            radial-gradient(circle at 75% 75%, rgba(255, 140, 66, 0.05) 1px, transparent 1px)
+          `,
+          backgroundSize: '50px 50px',
+          backgroundPosition: '0 0, 25px 25px',
+          transition: 'var(--transition-normal)',
+          transform: 'translateY(0)',
           cursor: 'pointer'
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.transform = 'translateY(-4px)';
-          e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.15)';
+          e.target.style.transform = 'translateY(-4px)';
+          e.target.style.boxShadow = '0 8px 25px rgba(16, 185, 129, 0.2)';
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.transform = 'translateY(0)';
-          e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+          e.target.style.transform = 'translateY(0)';
+          e.target.style.boxShadow = 'var(--shadow-lg)';
         }}
-        onClick={() => setSelectedLevel('professional')}
-        >
-          <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
+        onClick={() => setSelectedLevel('professional')}>
+          <div style={{
+            textAlign: 'center',
+            marginBottom: '1.5rem'
+          }}>
             <div style={{
               fontSize: '3rem',
               marginBottom: '1rem'
-            }}>🎭</div>
+            }}>🌳</div>
             <h2 style={{
               fontSize: '1.8rem',
-              color: '#1a202c',
-              margin: '0 0 0.5rem 0'
+              color: 'var(--text-primary)',
+              margin: '0 0 0.5rem 0',
+              fontWeight: '600'
             }}>Nivel Profesional</h2>
             <p style={{
-              color: '#4a5568',
-              margin: '0',
+              color: 'var(--text-secondary)',
               fontSize: '1rem',
+              margin: '0',
               lineHeight: '1.5'
             }}>
-              Para licenciados en música y profesionales que buscan maestría total
+              Composición avanzada, análisis musical y técnicas de improvisación
             </p>
           </div>
-
-          {/* Estadísticas del nivel */}
+          
+          {/* Estadísticas */}
           <div style={{
-            backgroundColor: '#f7fafc',
-            borderRadius: '12px',
+            backgroundColor: 'var(--background-tertiary)',
+            borderRadius: 'var(--border-radius-md)',
             padding: '1rem',
-            marginBottom: '1.5rem'
+            marginBottom: '1rem'
           }}>
             <div style={{
               display: 'flex',
@@ -510,122 +622,122 @@ function MusicianMode() {
               alignItems: 'center',
               marginBottom: '0.5rem'
             }}>
-              <span style={{ fontSize: '14px', color: '#718096' }}>Progreso:</span>
-              <span style={{ fontSize: '16px', fontWeight: '600', color: '#2d3748' }}>
-                {stats.professional.total > 0 ? `${Math.round((stats.professional.score / stats.professional.total) * 100)}%` : '0%'}
-              </span>
-            </div>
-            <div style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              marginBottom: '0.5rem'
-            }}>
-              <span style={{ fontSize: '14px', color: '#718096' }}>Calificación:</span>
+              <span style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Progreso:</span>
               <span style={{ 
-                fontSize: '16px', 
-                fontWeight: '600', 
-                color: getGradeColor(stats.professional.grade)
+                color: 'var(--text-primary)', 
+                fontWeight: '600',
+                fontSize: '0.9rem'
               }}>
-                {stats.professional.grade}
+                {stats.professional.total > 0 ? Math.round((stats.professional.score / stats.professional.total) * 100) : 0}%
               </span>
             </div>
             <div style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center'
+              width: '100%',
+              height: '8px',
+              backgroundColor: 'rgba(16, 185, 129, 0.2)',
+              borderRadius: '4px',
+              overflow: 'hidden'
             }}>
-              <span style={{ fontSize: '14px', color: '#718096' }}>Tiempo:</span>
-              <span style={{ fontSize: '16px', fontWeight: '600', color: '#2d3748' }}>
-                {formatTime(stats.professional.timeSpent)}
-              </span>
+              <div style={{
+                width: `${stats.professional.total > 0 ? (stats.professional.score / stats.professional.total) * 100 : 0}%`,
+                height: '100%',
+                background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                borderRadius: '4px',
+                transition: 'width 0.3s ease'
+              }} />
             </div>
           </div>
-
+          
+          {/* Calificación */}
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginBottom: '1rem'
+          }}>
+            <span style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Calificación:</span>
+            <span style={{ 
+              color: getGradeColor(stats.professional.grade), 
+              fontWeight: '700',
+              fontSize: '1.1rem'
+            }}>
+              {stats.professional.grade}
+            </span>
+          </div>
+          
+          {/* Tiempo */}
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginBottom: '1rem'
+          }}>
+            <span style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Tiempo:</span>
+            <span style={{ 
+              color: 'var(--text-primary)', 
+              fontWeight: '600',
+              fontSize: '0.9rem'
+            }}>
+              {formatTime(stats.professional.timeSpent)}
+            </span>
+          </div>
+          
           <button style={{
             width: '100%',
             padding: '12px',
+            background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+            color: 'var(--text-primary)',
+            border: 'none',
+            borderRadius: 'var(--border-radius-md)',
             fontSize: '1rem',
             fontWeight: '600',
-            borderRadius: '8px',
-            border: 'none',
-            backgroundColor: '#ed8936',
-            color: 'white',
             cursor: 'pointer',
-            transition: 'all 0.2s ease'
+            transition: 'var(--transition-normal)',
+            boxShadow: '0 4px 15px rgba(16, 185, 129, 0.3)',
+            transform: 'translateY(0)'
           }}
           onMouseEnter={(e) => {
-            e.target.style.backgroundColor = '#dd6b20';
+            e.target.style.transform = 'translateY(-2px)';
+            e.target.style.boxShadow = '0 6px 20px rgba(16, 185, 129, 0.4)';
           }}
           onMouseLeave={(e) => {
-            e.target.style.backgroundColor = '#ed8936';
-          }}
-          >
+            e.target.style.transform = 'translateY(0)';
+            e.target.style.boxShadow = '0 4px 15px rgba(16, 185, 129, 0.3)';
+          }}>
             Comenzar Nivel Profesional
           </button>
         </div>
       </div>
 
-      {/* Resumen de estadísticas generales */}
+      {/* Información adicional */}
       <div style={{
         marginTop: '3rem',
         padding: '2rem',
-        backgroundColor: 'white',
-        borderRadius: '16px',
-        border: '1px solid #e2e8f0',
-        boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
+        backgroundColor: 'var(--background-card)',
+        borderRadius: 'var(--border-radius-lg)',
+        border: '1px solid rgba(255, 140, 66, 0.2)',
+        boxShadow: 'var(--shadow-md)',
+        backdropFilter: 'blur(10px)',
+        maxWidth: '800px',
+        margin: '3rem auto 0 auto',
+        textAlign: 'center'
       }}>
         <h3 style={{
-          color: '#0056d6',
-          marginBottom: '1.5rem',
-          textAlign: 'center',
-          fontSize: '1.5rem'
+          color: 'var(--text-primary)',
+          marginBottom: '1rem',
+          fontSize: '1.4rem',
+          fontWeight: '600'
+        }}>🎯 Sistema de Progreso</h3>
+        <p style={{
+          color: 'var(--text-secondary)',
+          lineHeight: '1.6',
+          margin: '0',
+          fontSize: '1rem'
         }}>
-          📊 Resumen de Progreso General
-        </h3>
-        
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-          gap: '1.5rem'
-        }}>
-          <div style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#10b981' }}>
-              {Object.values(stats).reduce((acc, level) => acc + level.score, 0)}
-            </div>
-            <div style={{ fontSize: '14px', color: '#718096' }}>Puntos Totales</div>
-          </div>
-          
-          <div style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#3b82f6' }}>
-              {Object.values(stats).reduce((acc, level) => acc + level.total, 0)}
-            </div>
-            <div style={{ fontSize: '14px', color: '#718096' }}>Ejercicios Completados</div>
-          </div>
-          
-          <div style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#f59e0b' }}>
-              {formatTime(Object.values(stats).reduce((acc, level) => acc + level.timeSpent, 0))}
-            </div>
-            <div style={{ fontSize: '14px', color: '#718096' }}>Tiempo Total</div>
-          </div>
-          
-          <div style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#8b5cf6' }}>
-              {(() => {
-                const totalScore = Object.values(stats).reduce((acc, level) => acc + level.score, 0);
-                const totalExercises = Object.values(stats).reduce((acc, level) => acc + level.total, 0);
-                if (totalExercises === 0) return 'N/A';
-                const percentage = Math.round((totalScore / totalExercises) * 100);
-                return calculateGrade(percentage);
-              })()}
-            </div>
-            <div style={{ fontSize: '14px', color: '#718096' }}>Calificación General</div>
-          </div>
-        </div>
+          Cada nivel incluye ejercicios interactivos, teoría detallada y seguimiento de tu rendimiento. 
+          Completa los ejercicios para desbloquear contenido avanzado y mejorar tu calificación.
+        </p>
       </div>
-      
-      <SimpleFooter />
     </div>
   );
 }

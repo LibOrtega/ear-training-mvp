@@ -21,12 +21,44 @@ function Header() {
       <div className="header-content">
         <div className="logo-section">
           <div className="logo">
-            <span className="logo-icon">🎼</span>
+            {/* Logo con cara feliz */}
+            <div className="logo-icon-container">
+              <div className="logo-icon">
+                <div className="happy-face">
+                  <div className="eye left-eye"></div>
+                  <div className="eye right-eye"></div>
+                  <div className="smile"></div>
+                </div>
+              </div>
+            </div>
             <span className="logo-text">Afinapp</span>
           </div>
         </div>
         
         <div className="header-actions">
+          {/* Navegación para la página de inicio */}
+          {!showBackButton && (
+            <nav className="header-navigation">
+              <a 
+                href="/contact-simple" 
+                className="nav-link"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate('/contact-simple');
+                }}
+              >
+                Contacto
+              </a>
+              <a href="#modes" className="nav-link">
+                Modos
+              </a>
+              <button className="nav-button">
+                Entrar
+              </button>
+            </nav>
+          )}
+          
+          {/* Botón de volver para otras páginas */}
           {showBackButton && (
             <button 
               className="action-button back-button"
@@ -37,6 +69,7 @@ function Header() {
             </button>
           )}
           
+          {/* Sección de usuario cuando está autenticado */}
           {isAuthenticated && (
             <div className="user-section">
               <div className="user-profile">
