@@ -488,11 +488,11 @@ function EarTraining() {
             minHeight: '50px',
             borderRadius: '12px',
             border: 'none',
-            backgroundColor: '#ff8c42',
+            backgroundColor: '#dc2626',
             color: 'white',
             cursor: 'pointer',
             transition: 'all 0.2s ease',
-            boxShadow: '0 2px 8px rgba(255, 140, 66, 0.2)'
+            boxShadow: '0 2px 8px rgba(220, 38, 38, 0.2)'
           }}
         >
           ▶ Reproducir

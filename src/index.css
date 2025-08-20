@@ -956,3 +956,27 @@ body {
     padding: 0.15rem 0.3rem;
   }
 }
+
+/* Ocultar todas las barras de desplazamiento */
+html {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Ocultar scrollbar en todos los elementos */
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}

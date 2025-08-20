@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import SimpleFooter from '../components/SimpleFooter';
+
 
 function LoginMusico() {
   const navigate = useNavigate();
@@ -79,11 +79,9 @@ function LoginMusico() {
       if (isSignUp) {
         // Crear cuenta
         await signUp(formData.username, formData.email, formData.password, 'musico');
-        alert("¡Cuenta de músico creada exitosamente! Bienvenido a Afinapp");
       } else {
         // Iniciar sesión
         await login(formData.email, formData.password);
-        alert("¡Inicio de sesión exitoso! Bienvenido de vuelta");
       }
       
       // Redirigir al modo músico
@@ -115,7 +113,6 @@ function LoginMusico() {
   const handleClearData = () => {
     if (window.confirm('¿Estás seguro de que quieres limpiar todos los datos? Esto eliminará todas las cuentas y sesiones.')) {
       clearCorruptedData();
-      alert('Datos limpiados. Puedes crear una nueva cuenta ahora.');
       resetForm();
     }
   };
@@ -444,39 +441,15 @@ function LoginMusico() {
               textDecoration: 'underline'
             }}
             title="Limpiar todos los datos guardados (útil si hay problemas)"
-          >
-            🔧 Limpiar datos
-          </button>
+                      >
+             Limpiar datos
+           </button>
         </div>
 
-        {/* Información adicional */}
-        <div style={{
-          marginTop: '2rem',
-          padding: '1rem',
-          backgroundColor: '#f7fafc',
-          borderRadius: '8px',
-          border: '1px solid #e2e8f0'
-        }}>
-          <h3 style={{
-            color: '#38b2ac',
-            fontSize: '14px',
-            marginBottom: '0.5rem'
-          }}>🚀 Herramientas Profesionales:</h3>
-          <ul style={{
-            color: '#4a5568',
-            fontSize: '14px',
-            margin: '0',
-            paddingLeft: '1.5rem'
-          }}>
-            <li>Análisis de progresiones</li>
-            <li>Entrenamiento de ritmo</li>
-            <li>Composición avanzada</li>
-            <li>Colaboración musical</li>
-          </ul>
-        </div>
+
       </div>
       
-      <SimpleFooter />
+
     </div>
   );
 }

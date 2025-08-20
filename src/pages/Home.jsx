@@ -18,7 +18,7 @@ function Home() {
   return (
     <div className="container">
       <div className="section">
-        <h1 className="title-primary">Bienvenidx a Afinapp</h1>
+        <h1 className="title-primary">Afinapp</h1>
 
         <p className="text-primary text-center">
           Tu plataforma completa para desarrollar el oído musical. 
