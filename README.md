@@ -1,6 +1,6 @@
 # Grandalia · sitio web
 
-Sitio del salón de eventos Grandalia (carretera Rosales–Delicias, Haciendas Campestres): presenta
+Sitio del centro de eventos Grandalia (carretera Rosales–Delicias, Haciendas Campestres): presenta
 los espacios, los paquetes y una galería, y recibe solicitudes de cotización que llegan por
 WhatsApp. Está hecho con React 19, Vite y React Router, sin backend ni base de datos.
 
@@ -59,7 +59,7 @@ Las rutas ya están escritas en `src/data/venue.js`, así que solo hay que dejar
 
 | Archivo                       | Dónde se usa                         | Orientación   |
 | ----------------------------- | ------------------------------------ | ------------- |
-| `jardin-vertical.jpg`         | Sección "Quiénes somos" del inicio   | Vertical      |
+| `fachada-vertical.jpg`        | Sección "Quiénes somos" del inicio   | Vertical      |
 | `jardin.jpg`                  | Tarjeta y detalle del jardín         | Horizontal    |
 | `terraza.jpg`                 | Tarjeta y detalle de la terraza      | Horizontal    |
 | `salon-interior.jpg`          | Tarjeta y detalle del salón interior | Horizontal    |

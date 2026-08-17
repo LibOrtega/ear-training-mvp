@@ -3,14 +3,14 @@
 
 export const venue = {
   name: 'Grandalia',
-  tagline: 'Salón de eventos',
+  tagline: 'Centro de eventos',
   monogram: 'G',
   // PENDIENTE: confirmar la ciudad que quieren mostrar (se dedujo de la carretera).
   region: 'Delicias, Chihuahua',
   claim: 'El lugar donde tu celebración se vuelve inolvidable',
   // PENDIENTE: ajustar esta descripción con los espacios y servicios reales.
   intro:
-    'Un salón de eventos rodeado de campo, a unos minutos de Delicias, para bodas, XV años y celebraciones de empresa. Nos encargamos del montaje y la coordinación para que tú solo tengas que disfrutar.',
+    'Un centro de eventos rodeado de campo, a unos minutos de Delicias, para bodas, XV años y celebraciones de empresa. Nos encargamos del montaje y la coordinación para que tú solo tengas que disfrutar.',
   address: 'Carretera Rosales–Delicias, Haciendas Campestres, Chihuahua',
   // PENDIENTE: reemplazar por el enlace exacto del pin de Google Maps del salón.
   mapsUrl:
@@ -26,7 +26,7 @@ export const venue = {
     { days: 'Sábados', time: '10:00 a 13:00 h' },
   ],
   // Foto vertical que acompaña la sección "Quiénes somos" del inicio.
-  aboutPhoto: '/fotos/jardin-vertical.jpg',
+  aboutPhoto: '/fotos/fachada-vertical.jpg',
   social: [
     { name: 'Instagram', handle: '@grandaliaeventos', url: 'https://instagram.com/grandaliaeventos' },
     // PENDIENTE: confirmar la dirección exacta de la página de Facebook.

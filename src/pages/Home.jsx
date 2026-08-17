@@ -29,8 +29,8 @@ function Home() {
         <div className="container about">
           <Photo
             src={venue.aboutPhoto}
-            alt={`Jardín de ${venue.name}`}
-            label="Aquí va una foto vertical del jardín"
+            alt={`Fachada de ${venue.name}`}
+            label="Aquí va la foto vertical de la fachada"
             tone="e"
             ratio="4 / 5"
             className="about__photo"
@@ -38,7 +38,7 @@ function Home() {
           <div className="about__text">
             <SectionHead
               eyebrow="Quiénes somos"
-              title="Un salón de campo a minutos de la ciudad"
+              title="Un centro de eventos a minutos de la ciudad"
               text={`${venue.name} está sobre la carretera Rosales–Delicias, en Haciendas Campestres: lo suficientemente cerca para llegar rápido y lo suficientemente lejos para que la fiesta dure.`}
             />
             <p>
