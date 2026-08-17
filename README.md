@@ -80,5 +80,29 @@ función `handleSubmit` de `src/components/QuoteForm.jsx`.
 ## Publicación
 
 `npm run build` deja el sitio estático en `dist/`, listo para Netlify, Vercel, Cloudflare Pages o
-cualquier hosting. Como es una SPA con rutas, el servidor debe redirigir todas las peticiones a
-`index.html` (en Netlify: `/* /index.html 200`).
+cualquier hosting. La configuración ya está incluida:
+
+- `netlify.toml`: comando de build, carpeta publicada, la redirección de SPA que hace que
+  `/salones` o `/contacto` funcionen al recargar, y cabeceras de caché.
+- `vercel.json`: lo equivalente para Vercel.
+
+Como es una SPA con rutas, cualquier otro hosting necesita esa misma regla: servir `index.html`
+para todas las rutas que no correspondan a un archivo.
+
+### Conectar el dominio
+
+Una vez creado el sitio en Netlify o Vercel y apuntado a este repositorio, el dominio se conecta
+desde el panel del registrador donde se compró. Los registros DNS habituales son:
+
+| Tipo    | Nombre | Valor                                       |
+| ------- | ------ | ------------------------------------------- |
+| `A`     | `@`    | la IP que indique el hosting                |
+| `CNAME` | `www`  | el subdominio que asigne el hosting         |
+
+Los valores exactos los da el propio panel de Netlify o Vercel al agregar el dominio; conviene
+copiarlos de ahí en lugar de escribirlos de memoria. El certificado HTTPS se emite solo, unos
+minutos después de que el DNS propague.
+
+Cuando el dominio esté definido, hay que agregarlo en `index.html` como `og:url` y etiqueta
+canónica, y publicar un `sitemap.xml` en `public/`, para que el sitio aparezca bien en Google y al
+compartirlo en redes.
