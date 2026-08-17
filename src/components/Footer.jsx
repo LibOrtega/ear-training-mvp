@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { spaces, venue } from '../data/venue'
+import Logo from './Logo'
 import './footer.css'
 
 function Footer() {
@@ -7,9 +8,7 @@ function Footer() {
     <footer className="footer">
       <div className="container footer__grid">
         <div className="footer__about">
-          <span className="brand__mark" aria-hidden="true">
-            {venue.monogram}
-          </span>
+          <Logo withText={false} />
           <h3>{venue.name}</h3>
           <p>{venue.intro}</p>
           <ul className="footer__social">

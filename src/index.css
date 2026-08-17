@@ -1,11 +1,15 @@
+/* La paleta sigue el logo: dorado ámbar sobre un negro cálido, con crema para
+   las secciones claras. --gold luce sobre fondos oscuros y --gold-ink es la
+   versión legible del mismo dorado sobre fondo claro. */
 :root {
-  --ink: #16241d;
-  --ink-soft: #3d4f45;
-  --ink-muted: #6b7c72;
+  --ink: #16181c;
+  --ink-soft: #3c4046;
+  --ink-muted: #6b7079;
   --cream: #faf6ef;
-  --cream-deep: #f1e9dc;
-  --gold: #b08f4b;
-  --line: rgba(22, 36, 29, 0.12);
+  --cream-deep: #f2eadd;
+  --gold: #d8a536;
+  --gold-ink: #8f6a1c;
+  --line: rgba(22, 24, 28, 0.12);
   --white: #ffffff;
 
   --font-display: 'Cormorant Garamond', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
@@ -15,9 +19,9 @@
   --radius: 14px;
   --radius-lg: 24px;
 
-  --shadow-sm: 0 2px 10px rgba(22, 36, 29, 0.06);
-  --shadow: 0 18px 40px -24px rgba(22, 36, 29, 0.35);
-  --shadow-lg: 0 40px 80px -40px rgba(22, 36, 29, 0.45);
+  --shadow-sm: 0 2px 10px rgba(22, 24, 28, 0.07);
+  --shadow: 0 18px 40px -24px rgba(22, 24, 28, 0.35);
+  --shadow-lg: 0 40px 80px -40px rgba(22, 24, 28, 0.45);
 
   --space-section: clamp(4.5rem, 9vw, 8rem);
   --header-height: 76px;
@@ -140,6 +144,10 @@ ul {
   color: var(--cream);
 }
 
+.section--ink .eyebrow {
+  color: var(--gold);
+}
+
 .grid-3 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
@@ -170,7 +178,7 @@ ul {
   font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--gold-ink);
 }
 
 .eyebrow::before {
@@ -233,16 +241,16 @@ ul {
 }
 
 .btn--primary:hover {
-  background-color: #0e1a14;
+  background-color: #0a0b0d;
 }
 
 .btn--gold {
   background-color: var(--gold);
-  color: #241a08;
+  color: #241a06;
 }
 
 .btn--gold:hover {
-  background-color: #c39d5c;
+  background-color: #e4b449;
 }
 
 .btn--ghost {
@@ -252,7 +260,7 @@ ul {
 
 .btn--ghost:hover {
   border-color: var(--ink);
-  background-color: rgba(22, 36, 29, 0.04);
+  background-color: rgba(22, 24, 28, 0.05);
 }
 
 .btn--on-dark {
@@ -279,14 +287,14 @@ ul {
   font-weight: 500;
   letter-spacing: 0.06em;
   color: var(--ink);
-  border-bottom: 1px solid var(--gold);
+  border-bottom: 1px solid var(--gold-ink);
   padding-bottom: 2px;
   transition: gap 0.25s ease, color 0.25s ease;
 }
 
 .text-link:hover {
   gap: 0.8rem;
-  color: var(--gold);
+  color: var(--gold-ink);
 }
 
 /* Cards & bits ----------------------------------------------------------- */
@@ -302,8 +310,8 @@ ul {
   display: inline-block;
   padding: 0.3rem 0.85rem;
   border-radius: 999px;
-  background-color: rgba(176, 143, 75, 0.14);
-  color: #7d6023;
+  background-color: rgba(216, 165, 54, 0.16);
+  color: #7d5c15;
   font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.12em;
@@ -328,8 +336,8 @@ ul {
   top: 0.55rem;
   width: 0.7rem;
   height: 0.38rem;
-  border-left: 1.5px solid var(--gold);
-  border-bottom: 1.5px solid var(--gold);
+  border-left: 1.5px solid var(--gold-ink);
+  border-bottom: 1.5px solid var(--gold-ink);
   transform: rotate(-45deg);
 }
 

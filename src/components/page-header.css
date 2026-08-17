@@ -14,10 +14,14 @@
   z-index: -1;
   background-image: radial-gradient(
       ellipse 55% 70% at 85% 10%,
-      rgba(176, 143, 75, 0.28),
+      rgba(216, 165, 54, 0.26),
       transparent 60%
     ),
-    linear-gradient(160deg, #1b2c23, #101c16);
+    linear-gradient(160deg, #23252b, #0b0c0e);
+}
+
+.page-header .eyebrow {
+  color: var(--gold);
 }
 
 .page-header h1 {

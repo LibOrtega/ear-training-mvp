@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { venue } from '../data/venue'
+import Logo from './Logo'
 import './navbar.css'
 
 const links = [
@@ -38,13 +39,7 @@ function Navbar() {
     <header className={`navbar${scrolled ? ' navbar--scrolled' : ''}`}>
       <div className="navbar__inner container">
         <Link to="/" className="brand" aria-label={`${venue.name}, inicio`}>
-          <span className="brand__mark" aria-hidden="true">
-            {venue.monogram}
-          </span>
-          <span className="brand__text">
-            <strong>{venue.name}</strong>
-            <small>{venue.tagline}</small>
-          </span>
+          <Logo />
         </Link>
 
         <nav className={`navbar__nav${menuOpen ? ' is-open' : ''}`} aria-label="Navegación principal">

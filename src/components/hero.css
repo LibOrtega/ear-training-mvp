@@ -18,11 +18,11 @@
   z-index: -1;
   background-image: radial-gradient(
       ellipse 70% 55% at 78% 18%,
-      rgba(176, 143, 75, 0.34),
+      rgba(216, 165, 54, 0.32),
       transparent 65%
     ),
-    radial-gradient(ellipse 60% 60% at 12% 88%, rgba(109, 139, 116, 0.32), transparent 62%),
-    linear-gradient(155deg, #1b2c23 0%, #16241d 45%, #101c16 100%);
+    radial-gradient(ellipse 60% 60% at 12% 88%, rgba(216, 165, 54, 0.14), transparent 62%),
+    linear-gradient(155deg, #23252b 0%, #16181c 45%, #0b0c0e 100%);
 }
 
 .hero__backdrop::after {

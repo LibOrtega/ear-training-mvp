@@ -15,7 +15,7 @@
 }
 
 .package--featured {
-  border-color: rgba(176, 143, 75, 0.55);
+  border-color: rgba(216, 165, 54, 0.6);
   box-shadow: var(--shadow);
 }
 
@@ -26,7 +26,7 @@
   padding: 0.35rem 0.95rem;
   border-radius: 999px;
   background-color: var(--gold);
-  color: #241a08;
+  color: #241a06;
   font-size: 0.66rem;
   font-weight: 500;
   letter-spacing: 0.16em;

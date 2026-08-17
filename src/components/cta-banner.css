@@ -14,11 +14,11 @@
   z-index: -1;
   background-image: radial-gradient(
       ellipse 50% 80% at 15% 20%,
-      rgba(109, 139, 116, 0.35),
+      rgba(216, 165, 54, 0.18),
       transparent 60%
     ),
-    radial-gradient(ellipse 45% 75% at 90% 85%, rgba(176, 143, 75, 0.3), transparent 62%),
-    linear-gradient(150deg, #1b2c23, #101c16);
+    radial-gradient(ellipse 45% 75% at 90% 85%, rgba(216, 165, 54, 0.28), transparent 62%),
+    linear-gradient(150deg, #23252b, #0b0c0e);
 }
 
 .cta-banner__inner {
@@ -27,6 +27,10 @@
   align-items: center;
   justify-content: space-between;
   gap: 2.5rem;
+}
+
+.cta-banner .eyebrow {
+  color: var(--gold);
 }
 
 .cta-banner h2 {

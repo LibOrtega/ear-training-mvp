@@ -3,8 +3,11 @@
 
 export const venue = {
   name: 'Grandalia',
+  // El letrero de la fachada dice "Centro de eventos" y el logo "Centro social".
+  // PENDIENTE: confirmar cuál de los dos se queda.
   tagline: 'Centro de eventos',
-  monogram: 'G',
+  // Logo real. Mientras el archivo no exista se dibuja la flor en vectores.
+  logo: '/fotos/logo.png',
   // PENDIENTE: confirmar la ciudad que quieren mostrar (se dedujo de la carretera).
   region: 'Delicias, Chihuahua',
   claim: 'El lugar donde tu celebración se vuelve inolvidable',

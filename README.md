@@ -59,6 +59,7 @@ Las rutas ya están escritas en `src/data/venue.js`, así que solo hay que dejar
 
 | Archivo                       | Dónde se usa                         | Orientación   |
 | ----------------------------- | ------------------------------------ | ------------- |
+| `logo.png`                    | Encabezado y pie de página           | Horizontal    |
 | `fachada-vertical.jpg`        | Sección "Quiénes somos" del inicio   | Vertical      |
 | `jardin.jpg`                  | Tarjeta y detalle del jardín         | Horizontal    |
 | `terraza.jpg`                 | Tarjeta y detalle de la terraza      | Horizontal    |
@@ -68,6 +69,10 @@ Las rutas ya están escritas en `src/data/venue.js`, así que solo hay que dejar
 Mientras un archivo no exista, en su lugar se muestra un marcador de color: el componente `Photo`
 detecta que la imagen no cargó y no deja un hueco roto. Eso permite ir subiendo las fotos de a
 poco.
+
+El logo funciona igual: si `public/fotos/logo.png` no existe, `Logo` dibuja la flor en vectores
+junto al nombre. Conviene que el archivo sea PNG con fondo transparente (o SVG, cambiando la ruta
+en `venue.logo`), porque en el encabezado se ve sobre fondo claro y en el pie sobre fondo oscuro.
 
 Recomendaciones para que el sitio cargue rápido: JPG o WebP, máximo 1600 px de ancho y menos de
 400 kB por archivo. Los nombres no deben llevar acentos ni espacios.

@@ -59,7 +59,7 @@
   outline: none;
   background-color: var(--white);
   border-color: var(--gold);
-  box-shadow: 0 0 0 3px rgba(176, 143, 75, 0.16);
+  box-shadow: 0 0 0 3px rgba(216, 165, 54, 0.18);
 }
 
 .field input[aria-invalid='true'],

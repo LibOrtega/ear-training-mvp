@@ -58,8 +58,8 @@
 }
 
 .contact__list a:hover {
-  color: var(--gold);
-  border-bottom-color: var(--gold);
+  color: var(--gold-ink);
+  border-bottom-color: var(--gold-ink);
 }
 
 .contact__steps {
@@ -89,11 +89,11 @@
   place-items: center;
   width: 1.85rem;
   height: 1.85rem;
-  border: 1px solid var(--gold);
+  border: 1px solid var(--gold-ink);
   border-radius: 50%;
   font-family: var(--font-display);
   font-size: 0.9rem;
-  color: var(--gold);
+  color: var(--gold-ink);
 }
 
 .contact__steps strong {
