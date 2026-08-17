@@ -1,0 +1,221 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: rgba(250, 246, 239, 0.82);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.navbar--scrolled {
+  border-bottom-color: var(--line);
+  box-shadow: 0 10px 30px -22px rgba(22, 36, 29, 0.4);
+}
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-height: var(--header-height);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand__mark {
+  display: grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+}
+
+.brand__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.brand__text strong {
+  font-family: var(--font-display);
+  font-size: 1.22rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.brand__text small {
+  font-size: 0.63rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.navbar__nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.navbar__nav ul {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  margin: 0;
+}
+
+.navbar__nav a {
+  position: relative;
+  font-size: 0.86rem;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+  transition: color 0.25s ease;
+}
+
+.navbar__nav ul a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 1px;
+  background-color: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.28s ease;
+}
+
+.navbar__nav a:hover,
+.navbar__nav a.active {
+  color: var(--ink);
+}
+
+.navbar__nav ul a:hover::after,
+.navbar__nav ul a.active::after {
+  transform: scaleX(1);
+}
+
+.navbar__phone {
+  font-variant-numeric: tabular-nums;
+}
+
+.navbar__cta {
+  padding: 0.7rem 1.35rem;
+  font-size: 0.72rem;
+}
+
+.navbar__toggle {
+  display: none;
+  position: relative;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.navbar__toggle span,
+.navbar__toggle span::before,
+.navbar__toggle span::after {
+  position: absolute;
+  left: 50%;
+  width: 1.1rem;
+  height: 1.5px;
+  background-color: var(--ink);
+  transform: translateX(-50%);
+  transition: transform 0.28s ease, opacity 0.2s ease;
+}
+
+.navbar__toggle span {
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.navbar__toggle span::before,
+.navbar__toggle span::after {
+  content: '';
+  left: 0;
+  transform: none;
+}
+
+.navbar__toggle span::before {
+  top: -6px;
+}
+
+.navbar__toggle span::after {
+  top: 6px;
+}
+
+.navbar__toggle span.is-open {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.navbar__toggle span.is-open::before {
+  transform: translateY(6px) rotate(-90deg);
+}
+
+.navbar__toggle span.is-open::after {
+  opacity: 0;
+}
+
+@media (max-width: 900px) {
+  .navbar__toggle {
+    display: block;
+  }
+
+  .navbar__nav {
+    position: fixed;
+    inset: var(--header-height) 0 auto;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+    padding: 2rem 1.5rem 2.75rem;
+    background-color: var(--cream);
+    border-bottom: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    transform: translateY(-12px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+  }
+
+  .navbar__nav.is-open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .navbar__nav ul {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .navbar__nav ul li + li {
+    border-top: 1px solid var(--line);
+  }
+
+  .navbar__nav ul a {
+    display: block;
+    padding: 0.95rem 0;
+    font-size: 1.05rem;
+  }
+
+  .navbar__nav ul a::after {
+    display: none;
+  }
+
+  .navbar__phone {
+    color: var(--ink-muted);
+  }
+}

@@ -1,0 +1,32 @@
+.page-header {
+  position: relative;
+  isolation: isolate;
+  padding-block: clamp(3.5rem, 7vw, 5.5rem);
+  background-color: var(--ink);
+  color: rgba(250, 246, 239, 0.75);
+  overflow: hidden;
+}
+
+.page-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: radial-gradient(
+      ellipse 55% 70% at 85% 10%,
+      rgba(176, 143, 75, 0.28),
+      transparent 60%
+    ),
+    linear-gradient(160deg, #1b2c23, #101c16);
+}
+
+.page-header h1 {
+  font-size: clamp(2.35rem, 5.5vw, 3.75rem);
+  color: var(--cream);
+}
+
+.page-header p {
+  max-width: 44rem;
+  margin-top: 1.15rem;
+  font-size: clamp(1rem, 1.6vw, 1.14rem);
+}

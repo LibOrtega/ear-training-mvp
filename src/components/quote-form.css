@@ -1,0 +1,120 @@
+.quote {
+  padding: clamp(1.75rem, 4vw, 2.75rem);
+  background-color: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+
+.quote__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem 1.5rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.field--full {
+  grid-column: 1 / -1;
+}
+
+.field label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.field__optional {
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: none;
+  color: var(--ink-muted);
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background-color: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  font-size: 0.98rem;
+  transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 6.5rem;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  background-color: var(--white);
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(176, 143, 75, 0.16);
+}
+
+.field input[aria-invalid='true'],
+.field select[aria-invalid='true'] {
+  border-color: #b4483c;
+  background-color: rgba(180, 72, 60, 0.05);
+}
+
+.field__error {
+  font-size: 0.82rem;
+  color: #a83f34;
+}
+
+.quote__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
+  margin-top: 2rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--line);
+}
+
+.quote__note {
+  flex: 1 1 16rem;
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+}
+
+.quote--sent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.quote--sent p {
+  max-width: 46ch;
+}
+
+.quote__summary {
+  width: 100%;
+  margin: 0.5rem 0 0.75rem;
+  padding: 1.25rem 1.4rem;
+  background-color: var(--cream-deep);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 640px) {
+  .quote__grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,292 +1,137 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
-import SimpleFooter from '../components/SimpleFooter';
+import { Link } from 'react-router-dom'
+import CtaBanner from '../components/CtaBanner'
+import GalleryGrid from '../components/GalleryGrid'
+import Hero from '../components/Hero'
+import Highlights from '../components/Highlights'
+import PackageCard from '../components/PackageCard'
+import Photo from '../components/Photo'
+import SectionHead from '../components/SectionHead'
+import SpaceCard from '../components/SpaceCard'
+import Testimonials from '../components/Testimonials'
+import { gallery, packages, spaces, venue } from '../data/venue'
+import usePageTitle from '../hooks/usePageTitle'
+import './home.css'
 
 function Home() {
-  const navigate = useNavigate();
-  const { isAuthenticated } = useAuth();
-
-  const handleEarTrainingClick = () => {
-    if (isAuthenticated) {
-      navigate('/ear-training');
-    } else {
-      navigate('/login-ear-training');
-    }
-  };
+  usePageTitle()
 
   return (
-    <div className="container-with-pattern">
-      {/* Patrón de fondo moderno */}
-      <div className="background-pattern"></div>
+    <>
+      <Hero />
 
-      {/* Hero Section */}
-      <section style={{
-        position: 'relative',
-        zIndex: 10,
-        padding: '6rem 0',
-        textAlign: 'center',
-        maxWidth: '1200px',
-        margin: '0 auto',
-        paddingLeft: '2rem',
-        paddingRight: '2rem'
-      }}>
-                 <h1 style={{
-           fontSize: 'clamp(2.5rem, 5vw, 4rem)',
-           fontWeight: '700',
-           color: 'var(--text-primary)',
-           marginBottom: '1.5rem',
-           lineHeight: '1.2'
-         }}>
-           El nuevo estándar en{' '}
-           <span style={{
-             background: 'var(--primary-gradient)',
-             WebkitBackgroundClip: 'text',
-             WebkitTextFillColor: 'transparent',
-             backgroundClip: 'text'
-           }}>
-             entrenamiento auditivo
-           </span>
-         </h1>
-         
-                                                                               
-        
-        <p style={{
-          fontSize: 'clamp(1.1rem, 2.5vw, 1.3rem)',
-          color: 'var(--text-secondary)',
-          marginBottom: '3rem',
-          maxWidth: '600px',
-          marginLeft: 'auto',
-          marginRight: 'auto',
-          lineHeight: '1.6'
-        }}>
-          Usa la música para una visión de 360 grados de tu desarrollo musical. 
-          Desde principiantes hasta músicos avanzados, tenemos algo para ti.
-        </p>
-
-        <button style={{
-          background: 'var(--primary-gradient)',
-          color: 'var(--text-primary)',
-          border: 'none',
-          padding: '16px 32px',
-          borderRadius: 'var(--border-radius-md)',
-          fontSize: '1.1rem',
-          fontWeight: '600',
-          cursor: 'pointer',
-          transition: 'var(--transition-normal)',
-          boxShadow: 'var(--shadow-orange)',
-          ':hover': {
-            transform: 'translateY(-2px)',
-            boxShadow: 'var(--shadow-lg)'
-          }
-        }}>
-          Más información
-        </button>
+      <section className="section section--tight">
+        <div className="container">
+          <Highlights />
+        </div>
       </section>
 
-      {/* Sección de modos */}
-      <section id="modes" style={{
-        position: 'relative',
-        zIndex: 10,
-        padding: '4rem 0',
-        maxWidth: '1200px',
-        margin: '0 auto',
-        paddingLeft: '2rem',
-        paddingRight: '2rem'
-      }}>
-        <h2 style={{
-          fontSize: 'clamp(2rem, 4vw, 2.5rem)',
-          fontWeight: '600',
-          color: 'var(--text-primary)',
-          textAlign: 'center',
-          marginBottom: '3rem'
-        }}>
-          Haz que tu música te lleve a un nivel superior
-        </h2>
-
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-          gap: '2rem',
-          marginBottom: '4rem'
-        }}>
-          {/* Card Aficionado */}
-          <div style={{
-            background: 'var(--background-card)',
-            padding: '2rem',
-            borderRadius: 'var(--border-radius-lg)',
-            border: '1px solid rgba(255, 140, 66, 0.2)',
-            transition: 'var(--transition-normal)',
-            cursor: 'pointer',
-            ':hover': {
-              transform: 'translateY(-4px)',
-              borderColor: 'var(--primary-color)'
-            }
-          }} onClick={handleEarTrainingClick}>
-                         <div style={{
-               width: '60px',
-               height: '60px',
-               backgroundColor: 'var(--primary-color)',
-               borderRadius: 'var(--border-radius-md)',
-               display: 'flex',
-               alignItems: 'center',
-               justifyContent: 'center',
-               marginBottom: '1.5rem'
-             }}>
-               <span style={{ fontSize: '24px', color: 'white', fontWeight: 'bold' }}>A</span>
-             </div>
-            <h3 style={{
-              fontSize: '1.5rem',
-              fontWeight: '600',
-              color: 'var(--text-primary)',
-              marginBottom: '1rem'
-            }}>
-              Modo Aficionado
-            </h3>
-            <p style={{
-              color: 'var(--text-tertiary)',
-              lineHeight: '1.6'
-            }}>
-              Entrenamiento auditivo personalizado para desarrollar tu oído musical desde cero.
+      <section className="section section--cream">
+        <div className="container about">
+          <Photo
+            src={null}
+            alt={`Jardín de ${venue.name}`}
+            label="Fotografía del jardín en un montaje de boda"
+            tone="e"
+            ratio="4 / 5"
+            className="about__photo"
+          />
+          <div className="about__text">
+            <SectionHead
+              eyebrow="Quiénes somos"
+              title="Un salón familiar con oficio de más de una década"
+              text={`Abrimos en ${venue.since} con un jardín y 12 mesas prestadas. Hoy somos tres espacios, un equipo de 20 personas y más de 1,800 eventos celebrados sin cancelar ni uno.`}
+            />
+            <p>
+              Trabajamos con un número limitado de eventos por semana para poder revisar cada
+              montaje contigo. Nada de plantillas: te sentamos con la coordinadora, recorres el
+              recinto y armamos el plano de mesas antes de que firmes.
             </p>
-          </div>
-
-          {/* Card Músico */}
-          <div style={{
-            background: 'var(--background-card)',
-            padding: '2rem',
-            borderRadius: 'var(--border-radius-lg)',
-            border: '1px solid rgba(139, 92, 246, 0.2)',
-            transition: 'var(--transition-normal)',
-            cursor: 'pointer',
-            ':hover': {
-              transform: 'translateY(-4px)',
-              borderColor: 'var(--accent-purple)'
-            }
-          }} onClick={() => navigate('/musician-mode')}>
-                         <div style={{
-               width: '60px',
-               height: '60px',
-               backgroundColor: '#8b5cf6',
-               borderRadius: 'var(--border-radius-md)',
-               display: 'flex',
-               alignItems: 'center',
-               justifyContent: 'center',
-               marginBottom: '1.5rem'
-             }}>
-               <span style={{ fontSize: '24px', color: 'white', fontWeight: 'bold' }}>M</span>
-             </div>
-            <h3 style={{
-              fontSize: '1.5rem',
-              fontWeight: '600',
-              color: 'var(--text-primary)',
-              marginBottom: '1rem'
-            }}>
-              Modo Músico
-            </h3>
-            <p style={{
-              color: 'var(--text-tertiary)',
-              lineHeight: '1.6'
-            }}>
-              Herramientas avanzadas para músicos experimentados que quieren perfeccionar su técnica.
-            </p>
-          </div>
-
-          {/* Card Profesor */}
-          <div style={{
-            background: 'var(--background-card)',
-            padding: '2rem',
-            borderRadius: 'var(--border-radius-lg)',
-            border: '1px solid rgba(16, 185, 129, 0.2)',
-            transition: 'var(--transition-normal)',
-            cursor: 'pointer',
-            ':hover': {
-              transform: 'translateY(-4px)',
-              borderColor: 'var(--accent-green)'
-            }
-          }} onClick={() => navigate('/contact')}>
-                         <div style={{
-               width: '60px',
-               height: '60px',
-               backgroundColor: '#10b981',
-               borderRadius: 'var(--border-radius-md)',
-               display: 'flex',
-               alignItems: 'center',
-               justifyContent: 'center',
-               marginBottom: '1.5rem'
-             }}>
-               <span style={{ fontSize: '24px', color: 'white', fontWeight: 'bold' }}>P</span>
-             </div>
-            <h3 style={{
-              fontSize: '1.5rem',
-              fontWeight: '600',
-              color: 'var(--text-primary)',
-              marginBottom: '1rem'
-            }}>
-              Modo Profesor
-            </h3>
-            <p style={{
-              color: 'var(--text-tertiary)',
-              lineHeight: '1.6'
-            }}>
-              Recursos especializados para educadores musicales y enseñanza avanzada.
-            </p>
+            <ul className="check-list about__list">
+              <li>Contrato claro, con precios cerrados y sin cargos sorpresa</li>
+              <li>Planta de luz de respaldo y protocolo de lluvia por escrito</li>
+              <li>Proveedores propios opcionales, nunca obligatorios</li>
+              <li>Prueba de montaje e iluminación una semana antes</li>
+            </ul>
+            <div className="btn-row">
+              <Link to="/contacto" className="btn btn--primary">
+                Agendar una visita
+              </Link>
+              <Link to="/paquetes" className="btn btn--ghost">
+                Ver paquetes
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Disclaimer de construcción */}
-      <div style={{
-        position: 'relative',
-        zIndex: 10,
-        padding: '2rem 0',
-        textAlign: 'center',
-        maxWidth: '800px',
-        margin: '0 auto',
-        paddingLeft: '2rem',
-        paddingRight: '2rem'
-      }}>
-        <div style={{
-          backgroundColor: 'rgba(255, 140, 66, 0.1)',
-          border: '1px solid rgba(255, 140, 66, 0.3)',
-          borderRadius: 'var(--border-radius-md)',
-          padding: '1rem 1.5rem',
-          backdropFilter: 'blur(10px)'
-        }}>
-                     <p style={{
-             color: 'var(--text-secondary)',
-             fontSize: '0.9rem',
-             margin: '0',
-             fontStyle: 'italic'
-           }}>
-             🚧 <strong>Sitio en construcción:</strong> Algunas funcionalidades pueden no estar completamente disponibles por el momento.
-           </p>
+      <section className="section">
+        <div className="container">
+          <SectionHead
+            eyebrow="Nuestros espacios"
+            title="Tres salones para tres tamaños de fiesta"
+            text="Puedes rentarlos por separado o combinar jardín y terraza para eventos de gran formato."
+            align="center"
+          />
+          <div className="grid-3">
+            {spaces.map((space, index) => (
+              <SpaceCard key={space.id} space={space} index={index} />
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
 
-      {/* Footer simple */}
-      <footer style={{
-        position: 'relative',
-        zIndex: 10,
-        padding: '2rem 0',
-        borderTop: '1px solid rgba(255, 140, 66, 0.2)',
-        textAlign: 'center'
-      }}>
-        <div style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-          padding: '0 2rem'
-        }}>
-          <p style={{
-            color: 'var(--text-muted)',
-            fontSize: '0.9rem'
-          }}>
-            © 2024 Afinapp. Desarrollado con ❤️ para músicos de todo el mundo.
+      <section className="section section--cream">
+        <div className="container">
+          <SectionHead
+            eyebrow="Paquetes"
+            title="Precios claros desde el primer correo"
+            text="Los montos incluyen renta, mobiliario, personal y limpieza. Puedes cambiar cualquier elemento por otro de valor equivalente."
+            align="center"
+          />
+          <div className="grid-3 grid-3--packages">
+            {packages.map((pkg) => (
+              <PackageCard key={pkg.id} pkg={pkg} />
+            ))}
+          </div>
+          <p className="home__footnote">
+            Los precios varían según el día de la semana y la temporada.{' '}
+            <Link to="/paquetes" className="text-link">
+              Ver qué incluye cada paquete
+            </Link>
           </p>
         </div>
-      </footer>
-    </div>
-  );
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <SectionHead
+            eyebrow="Galería"
+            title="Cómo se ve el salón montado"
+            text="Una muestra de eventos recientes. Si quieres ver fotos de un montaje parecido al tuyo, pídelas por WhatsApp."
+          />
+          <GalleryGrid items={gallery.slice(0, 4)} />
+          <div className="home__gallery-cta">
+            <Link to="/galeria" className="btn btn--ghost">
+              Ver la galería completa
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section--ink">
+        <div className="container">
+          <SectionHead
+            eyebrow="Testimonios"
+            title="Lo que dicen quienes ya celebraron aquí"
+            align="center"
+          />
+          <Testimonials />
+        </div>
+      </section>
+
+      <CtaBanner />
+    </>
+  )
 }
 
-export default Home;
+export default Home

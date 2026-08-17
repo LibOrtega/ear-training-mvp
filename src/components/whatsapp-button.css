@@ -1,0 +1,38 @@
+.wa-button {
+  position: fixed;
+  right: clamp(1rem, 3vw, 2rem);
+  bottom: clamp(1rem, 3vw, 2rem);
+  z-index: 40;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1.3rem 0.8rem 1rem;
+  border-radius: 999px;
+  background-color: #1f7a4d;
+  color: #ffffff;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  box-shadow: 0 16px 34px -16px rgba(31, 122, 77, 0.75);
+  transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+.wa-button:hover {
+  transform: translateY(-3px);
+  background-color: #1a6742;
+}
+
+.wa-button svg {
+  width: 1.35rem;
+  height: 1.35rem;
+  fill: currentColor;
+}
+
+@media (max-width: 520px) {
+  .wa-button span {
+    display: none;
+  }
+
+  .wa-button {
+    padding: 0.9rem;
+  }
+}
