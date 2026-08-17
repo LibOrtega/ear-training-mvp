@@ -5,6 +5,11 @@ import './space-detail.css'
 const tones = ['a', 'b', 'f']
 
 function SpaceDetail({ space, index = 0 }) {
+  const specs = [
+    { label: 'Capacidad', value: space.capacity },
+    { label: 'Superficie', value: space.area },
+  ].filter((spec) => Boolean(spec.value))
+
   return (
     <article
       id={space.id}
@@ -22,16 +27,16 @@ function SpaceDetail({ space, index = 0 }) {
       <div className="space-detail__body">
         <span className="tag">{space.bestFor}</span>
         <h2>{space.name}</h2>
-        <dl className="space-detail__specs">
-          <div>
-            <dt>Capacidad</dt>
-            <dd>{space.capacity}</dd>
-          </div>
-          <div>
-            <dt>Superficie</dt>
-            <dd>{space.area}</dd>
-          </div>
-        </dl>
+        {specs.length > 0 && (
+          <dl className="space-detail__specs">
+            {specs.map((spec) => (
+              <div key={spec.label}>
+                <dt>{spec.label}</dt>
+                <dd>{spec.value}</dd>
+              </div>
+            ))}
+          </dl>
+        )}
         <p className="lead">{space.description}</p>
         <ul className="check-list">
           {space.features.map((feature) => (

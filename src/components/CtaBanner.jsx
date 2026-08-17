@@ -4,7 +4,7 @@ import './cta-banner.css'
 
 function CtaBanner({
   title = '¿Ya tienes fecha en mente?',
-  text = 'Consulta disponibilidad sin compromiso. Si tu fecha está libre la apartamos 72 horas mientras lo decides.',
+  text = 'Escríbenos por WhatsApp y te confirmamos si está libre. Cotizar no cuesta ni compromete a nada.',
 }) {
   return (
     <section className="cta-banner">

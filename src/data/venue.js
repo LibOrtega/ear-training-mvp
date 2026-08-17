@@ -1,149 +1,156 @@
-// Toda la información editable del salón vive aquí.
-// Cambia estos valores por los reales antes de publicar el sitio.
+// Toda la información editable del sitio vive aquí.
+// Lo marcado con PENDIENTE son datos de ejemplo que hay que confirmar.
 
 export const venue = {
-  name: 'Salón Jacarandá',
+  name: 'Grandalia',
   tagline: 'Salón de eventos',
+  monogram: 'G',
+  // PENDIENTE: confirmar la ciudad que quieren mostrar (se dedujo de la carretera).
+  region: 'Delicias, Chihuahua',
   claim: 'El lugar donde tu celebración se vuelve inolvidable',
+  // PENDIENTE: ajustar esta descripción con los espacios y servicios reales.
   intro:
-    'Un salón de eventos con jardín, terraza techada y capacidad para 400 invitados. Nos encargamos del montaje, la iluminación y la coordinación para que tú solo tengas que disfrutar.',
-  since: 2012,
-  address: 'Av. de los Fresnos 1450, Col. Jardines del Valle, Guadalajara, Jal.',
-  mapsUrl: 'https://maps.google.com/?q=Guadalajara+Jalisco',
-  phone: '33 1234 5678',
-  phoneLink: '+523312345678',
-  whatsapp: '523312345678',
-  email: 'contacto@salonjacaranda.mx',
-  schedule: 'Visitas guiadas de lunes a sábado, 10:00 a 19:00 h',
+    'Un salón de eventos rodeado de campo, a unos minutos de Delicias, para bodas, XV años y celebraciones de empresa. Nos encargamos del montaje y la coordinación para que tú solo tengas que disfrutar.',
+  address: 'Carretera Rosales–Delicias, Haciendas Campestres, Chihuahua',
+  // PENDIENTE: reemplazar por el enlace exacto del pin de Google Maps del salón.
+  mapsUrl:
+    'https://www.google.com/maps/search/?api=1&query=Grandalia+Haciendas+Campestres+Carretera+Rosales+Delicias+Chihuahua',
+  phone: '639 119 0106',
+  phoneLink: '+526391190106',
+  // Formato internacional sin signos ni espacios, como lo pide wa.me.
+  whatsapp: '526391190106',
+  // PENDIENTE: si tienen correo de contacto, agrégalo aquí y aparecerá en el sitio.
+  email: '',
+  hours: [
+    { days: 'Lunes a viernes', time: '10:00 a 13:00 h y 15:00 a 18:00 h' },
+    { days: 'Sábados', time: '10:00 a 13:00 h' },
+  ],
   social: [
-    { name: 'Instagram', url: 'https://instagram.com' },
-    { name: 'Facebook', url: 'https://facebook.com' },
-    { name: 'TikTok', url: 'https://tiktok.com' },
+    { name: 'Instagram', handle: '@grandaliaeventos', url: 'https://instagram.com/grandaliaeventos' },
+    // PENDIENTE: confirmar la dirección exacta de la página de Facebook.
+    { name: 'Facebook', handle: 'Grandalia Eventos', url: 'https://facebook.com/grandaliaeventos' },
   ],
 }
 
+// Datos que se muestran bajo el título de portada.
+export const heroFacts = [
+  { label: 'Dónde estamos', value: 'Haciendas Campestres' },
+  { label: 'Atención', value: 'Lunes a sábado con cita' },
+  { label: 'Cotizaciones', value: 'Por WhatsApp el mismo día' },
+]
+
+// PENDIENTE: confirmar cifras y servicios de estas cuatro tarjetas.
 export const highlights = [
   {
-    title: '400 invitados',
-    text: 'Tres espacios que se combinan según el tamaño de tu evento, desde 60 hasta 400 personas sentadas.',
+    title: 'Espacio para tu fiesta',
+    text: 'Jardín, terraza y salón que se combinan según el número de invitados que esperas.',
     icon: 'guests',
   },
   {
     title: 'Estacionamiento propio',
-    text: '120 cajones con vigilancia toda la noche y acceso independiente para proveedores.',
+    text: 'Los invitados se estacionan dentro del predio, sin buscar lugar en la carretera.',
     icon: 'parking',
   },
   {
     title: 'Cocina equipada',
-    text: 'Puedes traer tu banquete favorito o elegir alguno de nuestros menús de autor.',
+    text: 'Puedes traer tu banquete favorito o pedirnos que te recomendemos proveedores.',
     icon: 'kitchen',
   },
   {
     title: 'Coordinación incluida',
-    text: 'Una coordinadora te acompaña desde la firma del contrato hasta el último invitado.',
+    text: 'Te acompañamos desde la firma del contrato hasta que se va el último invitado.',
     icon: 'planner',
   },
 ]
 
+// PENDIENTE: nombres, capacidades, medidas y características reales de cada espacio.
 export const spaces = [
   {
-    id: 'jardin-jacaranda',
-    name: 'Jardín Jacarandá',
-    capacity: '250 a 400 invitados',
-    area: '1,200 m²',
+    id: 'jardin',
+    name: 'Jardín',
+    // PENDIENTE: capacidad y superficie reales; si quedan en null no se muestran.
+    capacity: null,
+    area: null,
     bestFor: 'Bodas y XV años',
     description:
-      'Nuestro espacio más amplio: jardín arbolado con pista central, pérgola para la ceremonia y una fuente iluminada al anochecer. Incluye carpa opcional en temporada de lluvias.',
+      'El espacio al aire libre, con pista central y zona para la ceremonia. Ideal para eventos grandes al atardecer.',
     features: [
-      'Pérgola para ceremonia civil o religiosa',
-      'Pista de baile de 90 m²',
-      'Iluminación arquitectónica y de ambiente',
-      'Carpa impermeable disponible',
-      'Suite para novios con baño privado',
+      'Pista de baile',
+      'Zona para ceremonia',
+      'Iluminación de ambiente',
+      'Área para banquete',
     ],
     photo: null,
   },
   {
-    id: 'terraza-almendro',
-    name: 'Terraza Almendro',
-    capacity: '120 a 220 invitados',
-    area: '640 m²',
+    id: 'terraza',
+    name: 'Terraza',
+    // PENDIENTE: capacidad y superficie reales; si quedan en null no se muestran.
+    capacity: null,
+    area: null,
     bestFor: 'Eventos de empresa y graduaciones',
     description:
-      'Terraza techada con vista al jardín, climatizada y lista para proyección. Funciona igual de bien para una cena de gala que para una convención con escenario.',
-    features: [
-      'Techo fijo y muros corredizos de cristal',
-      'Pantalla de 3 m, proyector y audio profesional',
-      'Wi-Fi de fibra óptica para 300 dispositivos',
-      'Escenario modular de 24 m²',
-      'Zona de registro independiente',
-    ],
+      'Terraza techada con vista al jardín, cómoda en cualquier temporada y lista para escenario o proyección.',
+    features: ['Techo fijo', 'Espacio para escenario', 'Zona de registro', 'Barra de bebidas'],
     photo: null,
   },
   {
-    id: 'salon-azahar',
-    name: 'Salón Azahar',
-    capacity: '60 a 120 invitados',
-    area: '310 m²',
+    id: 'salon-interior',
+    name: 'Salón interior',
+    // PENDIENTE: capacidad y superficie reales; si quedan en null no se muestran.
+    capacity: null,
+    area: null,
     bestFor: 'Bautizos, cumpleaños y comidas',
     description:
-      'Un salón interior cálido, perfecto para celebraciones familiares. Se renta por horas y es el favorito para eventos de mediodía.',
-    features: [
-      'Renta por bloques de 5 horas',
-      'Área de juegos infantiles a la vista',
-      'Barra de bebidas incluida',
-      'Aire acondicionado y calefacción',
-      'Acceso a nivel, sin escalones',
-    ],
+      'Un salón cerrado y cálido para celebraciones familiares y eventos de mediodía.',
+    features: ['Renta por horas', 'Climatizado', 'Acceso a nivel', 'Área infantil'],
     photo: null,
   },
 ]
 
+// PENDIENTE: definir los paquetes reales y sus precios.
 export const packages = [
   {
     id: 'esencial',
     name: 'Esencial',
-    price: 'Desde $58,000 MXN',
-    unit: 'hasta 100 invitados',
-    summary: 'Renta del salón con lo indispensable, ideal si ya tienes tus proveedores.',
+    price: 'Cotización a medida',
+    unit: 'eventos pequeños',
+    summary: 'Renta del espacio con lo indispensable, ideal si ya tienes tus proveedores.',
     includes: [
-      '6 horas de evento más 3 de montaje',
-      'Mobiliario para 100 personas',
-      'Mantelería blanca o negra',
+      'Renta del espacio con horario de montaje',
+      'Mobiliario y mantelería',
       'Iluminación general y de pista',
-      'Personal de limpieza y seguridad',
+      'Personal de limpieza',
     ],
     featured: false,
   },
   {
     id: 'celebracion',
     name: 'Celebración',
-    price: 'Desde $124,000 MXN',
-    unit: 'hasta 200 invitados',
-    summary: 'El paquete que elige la mayoría: banquete, bebidas y coordinación resueltos.',
+    price: 'Cotización a medida',
+    unit: 'el más solicitado',
+    summary: 'El paquete completo: banquete, bebidas y coordinación resueltos.',
     includes: [
-      '8 horas de evento más 4 de montaje',
-      'Menú de tres tiempos a elegir',
-      'Barra libre nacional 6 horas',
+      'Renta del espacio con horario extendido',
+      'Menú a elegir',
+      'Barra de bebidas',
       'Centros de mesa y mantelería de diseño',
-      'Coordinadora de evento y DJ',
-      'Suite para festejados',
+      'Coordinación del evento y música',
     ],
     featured: true,
   },
   {
-    id: 'gran-jacaranda',
-    name: 'Gran Jacarandá',
+    id: 'gran-evento',
+    name: 'Gran evento',
     price: 'Cotización a medida',
-    unit: 'desde 200 invitados',
+    unit: 'eventos grandes',
     summary: 'Producción completa del jardín para bodas y eventos de gran formato.',
     includes: [
       'Uso exclusivo de todo el recinto',
-      'Ceremonia en la pérgola con montaje floral',
-      'Banquete de autor y mixología de barra',
-      'Grupo versátil y show de pirotecnia fría',
-      'Prueba de menú para 6 personas',
-      'Hospedaje de cortesía para los festejados',
+      'Ceremonia con montaje floral',
+      'Banquete y mixología de barra',
+      'Música en vivo',
+      'Prueba de menú previa',
     ],
     featured: false,
   },
@@ -159,62 +166,25 @@ export const eventTypes = [
   'Otro',
 ]
 
+// PENDIENTE: sustituir por fotos reales. Guárdalas en public/fotos/ y pon la ruta
+// en `photo`, por ejemplo photo: '/fotos/jardin.jpg'.
 export const gallery = [
-  { id: 1, caption: 'Montaje de boda en el Jardín Jacarandá', tone: 'a', photo: null },
-  { id: 2, caption: 'Ceremonia civil en la pérgola', tone: 'b', photo: null },
-  { id: 3, caption: 'Cena de gala en la Terraza Almendro', tone: 'c', photo: null },
-  { id: 4, caption: 'Barra de mixología', tone: 'd', photo: null },
+  { id: 1, caption: 'Montaje de boda en el jardín', tone: 'a', photo: null },
+  { id: 2, caption: 'Ceremonia al aire libre', tone: 'b', photo: null },
+  { id: 3, caption: 'Cena montada en la terraza', tone: 'c', photo: null },
+  { id: 4, caption: 'Barra de bebidas', tone: 'd', photo: null },
   { id: 5, caption: 'Pista de baile al anochecer', tone: 'e', photo: null },
-  { id: 6, caption: 'Comida familiar en el Salón Azahar', tone: 'f', photo: null },
-  { id: 7, caption: 'Convención con escenario y pantalla', tone: 'b', photo: null },
-  { id: 8, caption: 'Fuente iluminada del jardín', tone: 'a', photo: null },
+  { id: 6, caption: 'Comida familiar en el salón interior', tone: 'f', photo: null },
+  { id: 7, caption: 'Evento de empresa con escenario', tone: 'b', photo: null },
+  { id: 8, caption: 'Vista del jardín', tone: 'a', photo: null },
 ]
 
-export const testimonials = [
-  {
-    name: 'Mariana y Diego',
-    event: 'Boda, marzo 2026',
-    quote:
-      'Nos casamos en el jardín con 320 invitados y todo salió al minuto. La coordinadora resolvió cosas que nosotros ni notamos.',
-  },
-  {
-    name: 'Grupo Ferreta',
-    event: 'Cena anual de fin de año',
-    quote:
-      'Llevamos tres años haciendo la cena de la empresa en la terraza. El audio y la proyección funcionan sin sorpresas.',
-  },
-  {
-    name: 'Familia Ordóñez',
-    event: 'XV años de Renata',
-    quote:
-      'El paquete Celebración nos ahorró contratar por separado. La comida gustó tanto que todavía nos preguntan por el salón.',
-  },
-]
+// Cuando esté vacío, la sección de testimonios no se muestra.
+// Agrega los reales así: { name: 'Mariana y Diego', event: 'Boda, marzo 2026', quote: '…' }
+export const testimonials = []
 
-export const faqs = [
-  {
-    question: '¿Cómo aparto una fecha?',
-    answer:
-      'Con el 30 % de anticipo firmamos contrato y la fecha queda bloqueada. El resto se puede pagar en mensualidades hasta 15 días antes del evento.',
-  },
-  {
-    question: '¿Puedo llevar mis propios proveedores?',
-    answer:
-      'Sí. Puedes traer banquete, música y decoración con la única condición de que entreguen sus documentos de seguridad una semana antes del montaje.',
-  },
-  {
-    question: '¿Hasta qué hora puede durar el evento?',
-    answer:
-      'El permiso municipal nos permite música hasta la 2:00 h. Después de esa hora se puede extender una hora más con volumen reducido.',
-  },
-  {
-    question: '¿Qué pasa si llueve?',
-    answer:
-      'El jardín cuenta con carpa impermeable y la terraza techada funciona como plan alterno sin costo extra si se avisa con 48 horas de anticipación.',
-  },
-  {
-    question: '¿Se puede visitar el salón antes de contratar?',
-    answer:
-      'Claro, las visitas guiadas duran unos 40 minutos y son con cita de lunes a sábado. Te mostramos el recinto montado cuando hay evento próximo.',
-  },
-]
+// Cuando esté vacío, la sección de preguntas frecuentes no se muestra.
+// Faltan las respuestas del salón para: cómo se aparta una fecha y cuánto es el
+// anticipo, si se pueden meter proveedores externos, hasta qué hora puede durar
+// el evento, qué pasa si llueve y si se puede visitar antes de contratar.
+export const faqs = []

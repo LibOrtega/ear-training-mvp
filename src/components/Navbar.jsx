@@ -39,7 +39,7 @@ function Navbar() {
       <div className="navbar__inner container">
         <Link to="/" className="brand" aria-label={`${venue.name}, inicio`}>
           <span className="brand__mark" aria-hidden="true">
-            SJ
+            {venue.monogram}
           </span>
           <span className="brand__text">
             <strong>{venue.name}</strong>

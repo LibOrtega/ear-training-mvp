@@ -8,7 +8,7 @@ import Photo from '../components/Photo'
 import SectionHead from '../components/SectionHead'
 import SpaceCard from '../components/SpaceCard'
 import Testimonials from '../components/Testimonials'
-import { gallery, packages, spaces, venue } from '../data/venue'
+import { gallery, packages, spaces, testimonials, venue } from '../data/venue'
 import usePageTitle from '../hooks/usePageTitle'
 import './home.css'
 
@@ -38,19 +38,19 @@ function Home() {
           <div className="about__text">
             <SectionHead
               eyebrow="Quiénes somos"
-              title="Un salón familiar con oficio de más de una década"
-              text={`Abrimos en ${venue.since} con un jardín y 12 mesas prestadas. Hoy somos tres espacios, un equipo de 20 personas y más de 1,800 eventos celebrados sin cancelar ni uno.`}
+              title="Un salón de campo a minutos de la ciudad"
+              text={`${venue.name} está sobre la carretera Rosales–Delicias, en Haciendas Campestres: lo suficientemente cerca para llegar rápido y lo suficientemente lejos para que la fiesta dure.`}
             />
             <p>
               Trabajamos con un número limitado de eventos por semana para poder revisar cada
-              montaje contigo. Nada de plantillas: te sentamos con la coordinadora, recorres el
-              recinto y armamos el plano de mesas antes de que firmes.
+              montaje contigo. Nada de plantillas: recorres el salón, platicamos lo que imaginas y
+              armamos el plano de mesas antes de que firmes.
             </p>
             <ul className="check-list about__list">
               <li>Contrato claro, con precios cerrados y sin cargos sorpresa</li>
-              <li>Planta de luz de respaldo y protocolo de lluvia por escrito</li>
-              <li>Proveedores propios opcionales, nunca obligatorios</li>
-              <li>Prueba de montaje e iluminación una semana antes</li>
+              <li>Estacionamiento dentro del predio para todos tus invitados</li>
+              <li>Puedes traer a tus proveedores o usar los que te recomendamos</li>
+              <li>Acompañamiento el día del evento, de principio a fin</li>
             </ul>
             <div className="btn-row">
               <Link to="/contacto" className="btn btn--primary">
@@ -84,8 +84,8 @@ function Home() {
         <div className="container">
           <SectionHead
             eyebrow="Paquetes"
-            title="Precios claros desde el primer correo"
-            text="Los montos incluyen renta, mobiliario, personal y limpieza. Puedes cambiar cualquier elemento por otro de valor equivalente."
+            title="Armamos el paquete según tu evento"
+            text="Puedes rentar solo el espacio o dejarnos el banquete, las bebidas y la coordinación. Te mandamos el desglose completo por WhatsApp."
             align="center"
           />
           <div className="grid-3 grid-3--packages">
@@ -94,7 +94,7 @@ function Home() {
             ))}
           </div>
           <p className="home__footnote">
-            Los precios varían según el día de la semana y la temporada.{' '}
+            El precio depende del día de la semana, la temporada y el número de invitados.{' '}
             <Link to="/paquetes" className="text-link">
               Ver qué incluye cada paquete
             </Link>
@@ -118,16 +118,18 @@ function Home() {
         </div>
       </section>
 
-      <section className="section section--ink">
-        <div className="container">
-          <SectionHead
-            eyebrow="Testimonios"
-            title="Lo que dicen quienes ya celebraron aquí"
-            align="center"
-          />
-          <Testimonials />
-        </div>
-      </section>
+      {testimonials.length > 0 && (
+        <section className="section section--ink">
+          <div className="container">
+            <SectionHead
+              eyebrow="Testimonios"
+              title="Lo que dicen quienes ya celebraron aquí"
+              align="center"
+            />
+            <Testimonials />
+          </div>
+        </section>
+      )}
 
       <CtaBanner />
     </>

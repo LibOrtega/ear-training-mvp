@@ -2,7 +2,7 @@ import Faq from '../components/Faq'
 import PageHeader from '../components/PageHeader'
 import QuoteForm from '../components/QuoteForm'
 import SectionHead from '../components/SectionHead'
-import { venue } from '../data/venue'
+import { faqs, venue } from '../data/venue'
 import usePageTitle from '../hooks/usePageTitle'
 import './contact.css'
 
@@ -14,7 +14,7 @@ function Contact() {
       <PageHeader
         eyebrow="Contacto"
         title="Cotiza tu evento"
-        text="Llena el formulario y te respondemos el mismo día hábil con disponibilidad y precio. Si prefieres hablar con alguien, marca o escríbenos por WhatsApp."
+        text="Llena el formulario y tu solicitud nos llega directo por WhatsApp; te respondemos con disponibilidad y precio en cuanto la veamos. Si prefieres hablar con alguien, también puedes marcarnos."
       />
 
       <section className="section">
@@ -28,23 +28,25 @@ function Contact() {
               <h3>Datos de contacto</h3>
               <ul className="contact__list">
                 <li>
-                  <span>Teléfono</span>
-                  <a href={`tel:${venue.phoneLink}`}>{venue.phone}</a>
-                </li>
-                <li>
                   <span>WhatsApp</span>
                   <a
                     href={`https://wa.me/${venue.whatsapp}`}
                     target="_blank"
                     rel="noreferrer noopener"
                   >
-                    Abrir conversación
+                    {venue.phone}
                   </a>
                 </li>
                 <li>
-                  <span>Correo</span>
-                  <a href={`mailto:${venue.email}`}>{venue.email}</a>
+                  <span>Llamada</span>
+                  <a href={`tel:${venue.phoneLink}`}>Marcar al {venue.phone}</a>
                 </li>
+                {venue.email && (
+                  <li>
+                    <span>Correo</span>
+                    <a href={`mailto:${venue.email}`}>{venue.email}</a>
+                  </li>
+                )}
                 <li>
                   <span>Dirección</span>
                   <a href={venue.mapsUrl} target="_blank" rel="noreferrer noopener">
@@ -52,8 +54,12 @@ function Contact() {
                   </a>
                 </li>
                 <li>
-                  <span>Horario</span>
-                  {venue.schedule}
+                  <span>Horario de atención</span>
+                  {venue.hours.map((item) => (
+                    <span key={item.days} className="contact__hours">
+                      {item.days}: {item.time}
+                    </span>
+                  ))}
                 </li>
               </ul>
             </div>
@@ -63,19 +69,20 @@ function Contact() {
               <ol className="contact__steps">
                 <li>
                   <strong>Cotización</strong>
-                  Recibes precio y disponibilidad por escrito el mismo día hábil.
+                  Nos llega tu solicitud por WhatsApp y te contestamos con precio y
+                  disponibilidad.
                 </li>
                 <li>
-                  <strong>Visita guiada</strong>
-                  Recorres el recinto con la coordinadora, sin costo ni compromiso.
+                  <strong>Visita</strong>
+                  Recorres el salón con nosotros, sin costo ni compromiso.
                 </li>
                 <li>
                   <strong>Apartado</strong>
-                  Con 30 % de anticipo y contrato firmado la fecha queda bloqueada.
+                  Con el anticipo y el contrato firmado, tu fecha queda bloqueada.
                 </li>
                 <li>
                   <strong>Montaje</strong>
-                  Definimos plano de mesas, menú e iluminación un mes antes.
+                  Definimos plano de mesas, menú e iluminación antes del evento.
                 </li>
               </ol>
             </div>
@@ -83,12 +90,18 @@ function Contact() {
         </div>
       </section>
 
-      <section className="section section--cream">
-        <div className="container container--narrow">
-          <SectionHead eyebrow="Preguntas frecuentes" title="Lo que más nos preguntan" align="center" />
-          <Faq />
-        </div>
-      </section>
+      {faqs.length > 0 && (
+        <section className="section section--cream">
+          <div className="container container--narrow">
+            <SectionHead
+              eyebrow="Preguntas frecuentes"
+              title="Lo que más nos preguntan"
+              align="center"
+            />
+            <Faq />
+          </div>
+        </section>
+      )}
     </>
   )
 }

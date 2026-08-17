@@ -51,10 +51,8 @@ function validate(form) {
   }
 
   const guests = Number(form.guests)
-  if (!form.guests || Number.isNaN(guests) || guests < 20) {
-    errors.guests = 'Atendemos eventos desde 20 invitados.'
-  } else if (guests > 400) {
-    errors.guests = 'Para más de 400 invitados escríbenos por teléfono.'
+  if (!form.guests || Number.isNaN(guests) || guests < 1) {
+    errors.guests = 'Indica cuántos invitados esperas, aunque sea aproximado.'
   }
 
   return errors
@@ -109,9 +107,11 @@ function QuoteForm() {
 
     const text = buildMessage(form)
     const whatsappUrl = `https://wa.me/${venue.whatsapp}?text=${encodeURIComponent(text)}`
-    const mailUrl = `mailto:${venue.email}?subject=${encodeURIComponent(
-      `Cotización de evento · ${form.name.trim()}`,
-    )}&body=${encodeURIComponent(text)}`
+    const mailUrl = venue.email
+      ? `mailto:${venue.email}?subject=${encodeURIComponent(
+          `Cotización de evento · ${form.name.trim()}`,
+        )}&body=${encodeURIComponent(text)}`
+      : null
 
     window.open(whatsappUrl, '_blank', 'noopener,noreferrer')
     setSent({ name: form.name.trim().split(' ')[0], whatsappUrl, mailUrl, text })
@@ -124,8 +124,8 @@ function QuoteForm() {
         <span className="tag">Solicitud lista</span>
         <h3>Gracias, {sent.name}</h3>
         <p>
-          Abrimos WhatsApp con tu solicitud para que solo tengas que darle enviar. Te respondemos
-          con disponibilidad y cotización el mismo día hábil.
+          Abrimos WhatsApp con tu solicitud lista para que solo le des enviar. En cuanto nos llegue
+          te contestamos con disponibilidad y cotización, dentro de nuestro horario de atención.
         </p>
         <pre className="quote__summary">{sent.text}</pre>
         <div className="btn-row">
@@ -137,9 +137,11 @@ function QuoteForm() {
           >
             Abrir WhatsApp de nuevo
           </a>
-          <a className="btn btn--ghost" href={sent.mailUrl}>
-            Enviar por correo
-          </a>
+          {sent.mailUrl && (
+            <a className="btn btn--ghost" href={sent.mailUrl}>
+              Enviar por correo
+            </a>
+          )}
           <button type="button" className="btn btn--ghost" onClick={() => setSent(null)}>
             Hacer otra solicitud
           </button>
@@ -178,7 +180,7 @@ function QuoteForm() {
             type="tel"
             inputMode="tel"
             autoComplete="tel"
-            placeholder="33 1234 5678"
+            placeholder="639 123 4567"
             value={form.phone}
             onChange={update('phone')}
             aria-invalid={Boolean(errors.phone)}
@@ -262,8 +264,7 @@ function QuoteForm() {
             name="guests"
             type="number"
             inputMode="numeric"
-            min="20"
-            max="400"
+            min="1"
             step="10"
             placeholder="150"
             value={form.guests}
@@ -286,7 +287,7 @@ function QuoteForm() {
             <option value="">Que nos recomienden según el evento</option>
             {spaces.map((space) => (
               <option key={space.id} value={space.id}>
-                {space.name} · {space.capacity}
+                {space.capacity ? `${space.name} · ${space.capacity}` : space.name}
               </option>
             ))}
           </select>
@@ -309,10 +310,11 @@ function QuoteForm() {
 
       <div className="quote__footer">
         <button type="submit" className="btn btn--primary">
-          Enviar solicitud
+          Enviar por WhatsApp
         </button>
         <p className="quote__note">
-          Te contestamos el mismo día hábil. Sin compromiso y sin costo por cotizar.
+          Al enviar se abre WhatsApp con tu solicitud escrita; solo tienes que darle enviar.
+          Cotizar no cuesta ni compromete a nada.
         </p>
       </div>
     </form>

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { venue } from '../data/venue'
+import { heroFacts, venue } from '../data/venue'
 import './hero.css'
 
 function Hero() {
@@ -8,7 +8,7 @@ function Hero() {
       <div className="hero__backdrop" aria-hidden="true" />
       <div className="container hero__inner">
         <span className="eyebrow hero__eyebrow">
-          {venue.tagline} · Guadalajara desde {venue.since}
+          {venue.tagline} · {venue.region}
         </span>
         <h1>{venue.claim}</h1>
         <p className="hero__text">{venue.intro}</p>
@@ -21,18 +21,12 @@ function Hero() {
           </Link>
         </div>
         <dl className="hero__facts">
-          <div>
-            <dt>Capacidad</dt>
-            <dd>60 a 400 invitados</dd>
-          </div>
-          <div>
-            <dt>Espacios</dt>
-            <dd>Jardín, terraza y salón</dd>
-          </div>
-          <div>
-            <dt>Eventos al año</dt>
-            <dd>Más de 180</dd>
-          </div>
+          {heroFacts.map((fact) => (
+            <div key={fact.label}>
+              <dt>{fact.label}</dt>
+              <dd>{fact.value}</dd>
+            </div>
+          ))}
         </dl>
       </div>
     </section>

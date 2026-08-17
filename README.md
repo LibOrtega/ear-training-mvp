@@ -1,8 +1,8 @@
-# Salón Jacarandá · sitio web
+# Grandalia · sitio web
 
-Sitio de un salón de eventos: presenta los espacios, los paquetes y una galería, y recibe
-solicitudes de cotización que se envían por WhatsApp o correo. Está hecho con React 19, Vite y
-React Router, sin backend ni base de datos.
+Sitio del salón de eventos Grandalia (carretera Rosales–Delicias, Haciendas Campestres): presenta
+los espacios, los paquetes y una galería, y recibe solicitudes de cotización que llegan por
+WhatsApp. Está hecho con React 19, Vite y React Router, sin backend ni base de datos.
 
 ## Requisitos
 
@@ -32,18 +32,25 @@ src/
 
 Rutas disponibles: `/`, `/salones`, `/paquetes`, `/galeria`, `/contacto`.
 
-## Qué hay que personalizar antes de publicar
+## Qué falta por completar
 
-Todo el contenido editable vive en `src/data/venue.js`. Los datos actuales son de ejemplo y hay
-que reemplazarlos:
+Todo el contenido editable vive en `src/data/venue.js`, marcado con `PENDIENTE` donde hace falta
+información real:
 
-1. **Datos del salón** (`venue`): nombre, dirección, teléfono, número de WhatsApp en formato
-   internacional sin signos (por ejemplo `523312345678`), correo, horario y redes sociales.
-2. **Espacios** (`spaces`): nombre, capacidad, superficie y características de cada salón.
-3. **Paquetes** (`packages`) y los servicios adicionales que están en `src/pages/Packages.jsx`.
-4. **Galería** (`gallery`), **testimonios** (`testimonials`) y **preguntas frecuentes** (`faqs`).
-5. El título, la descripción y las etiquetas Open Graph de `index.html`, más el favicon en
-   `public/favicon.svg`.
+1. **Ya está puesto**: nombre, dirección, WhatsApp (639 119 0106), horario de atención, Instagram
+   y Facebook.
+2. **Espacios** (`spaces`): faltan los nombres reales, la capacidad y la superficie de cada uno.
+   Si `capacity` y `area` quedan en `null`, simplemente no se muestran.
+3. **Paquetes** (`packages`): hoy los tres dicen "Cotización a medida". Si quieren publicar
+   precios, se cambian ahí, igual que los servicios adicionales de `src/pages/Packages.jsx`.
+4. **Testimonios** (`testimonials`) y **preguntas frecuentes** (`faqs`): están vacíos y sus
+   secciones no se muestran. En cuanto se llenen, aparecen solas.
+5. **Correo** (`venue.email`): está vacío, así que no aparece en el sitio. Al ponerlo se muestra
+   en el pie de página y en contacto, y el formulario ofrece enviar también por correo.
+6. **Enlace de Google Maps** (`venue.mapsUrl`): ahora es una búsqueda; conviene sustituirlo por el
+   pin exacto del salón.
+7. **Logo**: el monograma "G" y el favicon (`public/favicon.svg`) se pueden reemplazar por el logo
+   real.
 
 ## Fotografías
 
@@ -59,13 +66,16 @@ subirlas en JPG o WebP de máximo 1600 px de ancho para que el sitio cargue ráp
 
 ## Formulario de cotización
 
-`QuoteForm` valida los datos en el navegador y arma un mensaje con el resumen del evento. Al
-enviar abre WhatsApp con ese texto listo y deja también un enlace `mailto:` como alternativa. No
-se guarda nada en ningún servidor, así que no hace falta configurar nada.
+`QuoteForm` valida los datos en el navegador y arma un mensaje con el resumen del evento (nombre,
+teléfono, tipo de evento, fecha, invitados, espacio y comentarios). Al enviar abre WhatsApp en el
+teléfono o la computadora del visitante con ese texto ya escrito y dirigido al número del salón;
+el visitante solo presiona enviar. No se guarda nada en ningún servidor, así que no hay nada que
+configurar ni contraseñas que cuidar.
 
-Si más adelante quieres recibir las solicitudes por correo automáticamente o guardarlas en una
-base de datos, el único punto a cambiar es la función `handleSubmit` de
-`src/components/QuoteForm.jsx`.
+La consecuencia de este enfoque es que el mensaje sale del WhatsApp del visitante, así que si
+abandona la conversación sin enviarla, la solicitud no llega. Si más adelante quieres que las
+solicitudes lleguen solas (por correo o a una hoja de cálculo), el único punto a cambiar es la
+función `handleSubmit` de `src/components/QuoteForm.jsx`.
 
 ## Publicación
 

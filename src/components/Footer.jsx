@@ -8,7 +8,7 @@ function Footer() {
       <div className="container footer__grid">
         <div className="footer__about">
           <span className="brand__mark" aria-hidden="true">
-            SJ
+            {venue.monogram}
           </span>
           <h3>{venue.name}</h3>
           <p>{venue.intro}</p>
@@ -16,7 +16,7 @@ function Footer() {
             {venue.social.map((item) => (
               <li key={item.name}>
                 <a href={item.url} target="_blank" rel="noreferrer noopener">
-                  {item.name}
+                  {item.handle ?? item.name}
                 </a>
               </li>
             ))}
@@ -24,7 +24,7 @@ function Footer() {
         </div>
 
         <div>
-          <h4>Salones</h4>
+          <h4>Espacios</h4>
           <ul className="footer__links">
             {spaces.map((space) => (
               <li key={space.id}>
@@ -32,7 +32,7 @@ function Footer() {
               </li>
             ))}
             <li>
-              <Link to="/paquetes">Paquetes y precios</Link>
+              <Link to="/paquetes">Paquetes</Link>
             </li>
             <li>
               <Link to="/galeria">Galería</Link>
@@ -44,17 +44,28 @@ function Footer() {
           <h4>Contacto</h4>
           <ul className="footer__links">
             <li>
-              <a href={`tel:${venue.phoneLink}`}>{venue.phone}</a>
+              <a href={`https://wa.me/${venue.whatsapp}`} target="_blank" rel="noreferrer noopener">
+                WhatsApp {venue.phone}
+              </a>
             </li>
             <li>
-              <a href={`mailto:${venue.email}`}>{venue.email}</a>
+              <a href={`tel:${venue.phoneLink}`}>Llamar {venue.phone}</a>
             </li>
+            {venue.email && (
+              <li>
+                <a href={`mailto:${venue.email}`}>{venue.email}</a>
+              </li>
+            )}
             <li>
               <a href={venue.mapsUrl} target="_blank" rel="noreferrer noopener">
                 {venue.address}
               </a>
             </li>
-            <li>{venue.schedule}</li>
+            {venue.hours.map((item) => (
+              <li key={item.days}>
+                {item.days}: {item.time}
+              </li>
+            ))}
           </ul>
           <Link to="/contacto" className="btn btn--gold footer__cta">
             Agendar visita
@@ -66,7 +77,9 @@ function Footer() {
         <p>
           © {new Date().getFullYear()} {venue.name}. Todos los derechos reservados.
         </p>
-        <p>Eventos sociales y corporativos desde {venue.since}.</p>
+        <p>
+          {venue.tagline} en {venue.region}.
+        </p>
       </div>
     </footer>
   )
