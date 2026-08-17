@@ -77,6 +77,23 @@ en `venue.logo`), porque en el encabezado se ve sobre fondo claro y en el pie so
 Recomendaciones para que el sitio cargue rápido: JPG o WebP, máximo 1600 px de ancho y menos de
 400 kB por archivo. Los nombres no deben llevar acentos ni espacios.
 
+### Alternativa: imágenes en Cloudinary
+
+En lugar de archivos locales, cualquier campo `photo` (y `venue.logo`) acepta una URL completa de
+Cloudinary, pegada tal como la entrega el panel:
+
+```js
+photo: 'https://res.cloudinary.com/tu-cuenta/image/upload/v1712345678/jardin.jpg'
+```
+
+`src/lib/images.js` le agrega las transformaciones por su cuenta: `f_auto` para servir WebP o AVIF
+según el navegador, `q_auto` para la calidad y `c_limit,w_…` para no mandar una imagen más grande
+de lo que ocupa el diseño, además de una versión al doble de ancho para pantallas retina. Si la
+URL ya trae transformaciones propias, se respeta tal cual.
+
+Con esto no hace falta comprimir nada a mano ni guardar las fotos en el repositorio. La
+contrapartida es que el sitio depende de que esa cuenta de Cloudinary siga activa.
+
 Si quieres otros nombres, más fotos en la galería o cambiar los textos que acompañan cada imagen,
 todo eso se edita en `src/data/venue.js`.
 

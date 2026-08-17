@@ -33,6 +33,7 @@ function Home() {
             label="Aquí va la foto vertical de la fachada"
             tone="e"
             ratio="4 / 5"
+            width={700}
             className="about__photo"
           />
           <div className="about__text">

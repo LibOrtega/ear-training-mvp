@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { venue } from '../data/venue'
+import { optimize, retina } from '../lib/images'
 import './logo.css'
 
 const petal = 'M32 30C28 22.5 28 13.5 32 6C36 13.5 36 22.5 32 30Z'
@@ -35,7 +36,8 @@ function Logo({ withText = true }) {
     return (
       <img
         className="logo__image"
-        src={venue.logo}
+        src={optimize(venue.logo, 320)}
+        srcSet={retina(venue.logo, 320)}
         alt={`${venue.name}, ${venue.tagline}`}
         onError={() => setFailed(true)}
       />

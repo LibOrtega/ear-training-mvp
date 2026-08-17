@@ -12,6 +12,7 @@ function GalleryGrid({ items }) {
             label={item.caption}
             tone={item.tone}
             ratio={index % 5 === 0 ? '16 / 10' : '4 / 3'}
+            width={index % 5 === 0 ? 900 : 600}
           />
           <p>{item.caption}</p>
         </li>

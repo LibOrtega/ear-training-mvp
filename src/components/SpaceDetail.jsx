@@ -21,6 +21,7 @@ function SpaceDetail({ space, index = 0 }) {
         label={`Fotografía de ${space.name}`}
         tone={tones[index % tones.length]}
         ratio="5 / 4"
+        width={900}
         className="space-detail__photo"
       />
 

@@ -1,10 +1,11 @@
 import { useState } from 'react'
+import { optimize, retina } from '../lib/images'
 import './photo.css'
 
 // Mientras no exista la fotografía se dibuja un marcador decorativo con el mismo
 // encuadre que tendrá la imagen final. Si el archivo aún no está en public/fotos/
 // la imagen falla y también cae en el marcador, para no dejar un hueco roto.
-function Photo({ src, alt, tone = 'a', ratio = '4 / 3', label, className = '' }) {
+function Photo({ src, alt, tone = 'a', ratio = '4 / 3', label, width = 1200, className = '' }) {
   const [failed, setFailed] = useState(false)
   const classes = ['photo', `photo--${tone}`, className].filter(Boolean).join(' ')
   const showImage = Boolean(src) && !failed
@@ -13,7 +14,8 @@ function Photo({ src, alt, tone = 'a', ratio = '4 / 3', label, className = '' })
     <figure className={classes} style={{ aspectRatio: ratio }}>
       {showImage ? (
         <img
-          src={src}
+          src={optimize(src, width)}
+          srcSet={retina(src, width)}
           alt={alt}
           loading="lazy"
           decoding="async"

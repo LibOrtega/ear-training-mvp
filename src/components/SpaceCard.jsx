@@ -16,6 +16,7 @@ function SpaceCard({ space, index = 0 }) {
         label={`Fotografía de ${space.name}`}
         tone={tones[index % tones.length]}
         ratio="3 / 2"
+        width={700}
         className="space-card__photo"
       />
       <div className="space-card__body">
