@@ -28,9 +28,9 @@ function Home() {
       <section className="section section--cream">
         <div className="container about">
           <Photo
-            src={null}
+            src={venue.aboutPhoto}
             alt={`Jardín de ${venue.name}`}
-            label="Fotografía del jardín en un montaje de boda"
+            label="Aquí va una foto vertical del jardín"
             tone="e"
             ratio="4 / 5"
             className="about__photo"

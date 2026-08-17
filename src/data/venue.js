@@ -25,6 +25,8 @@ export const venue = {
     { days: 'Lunes a viernes', time: '10:00 a 13:00 h y 15:00 a 18:00 h' },
     { days: 'Sábados', time: '10:00 a 13:00 h' },
   ],
+  // Foto vertical que acompaña la sección "Quiénes somos" del inicio.
+  aboutPhoto: '/fotos/jardin-vertical.jpg',
   social: [
     { name: 'Instagram', handle: '@grandaliaeventos', url: 'https://instagram.com/grandaliaeventos' },
     // PENDIENTE: confirmar la dirección exacta de la página de Facebook.
@@ -80,7 +82,7 @@ export const spaces = [
       'Iluminación de ambiente',
       'Área para banquete',
     ],
-    photo: null,
+    photo: '/fotos/jardin.jpg',
   },
   {
     id: 'terraza',
@@ -92,7 +94,7 @@ export const spaces = [
     description:
       'Terraza techada con vista al jardín, cómoda en cualquier temporada y lista para escenario o proyección.',
     features: ['Techo fijo', 'Espacio para escenario', 'Zona de registro', 'Barra de bebidas'],
-    photo: null,
+    photo: '/fotos/terraza.jpg',
   },
   {
     id: 'salon-interior',
@@ -104,7 +106,7 @@ export const spaces = [
     description:
       'Un salón cerrado y cálido para celebraciones familiares y eventos de mediodía.',
     features: ['Renta por horas', 'Climatizado', 'Acceso a nivel', 'Área infantil'],
-    photo: null,
+    photo: '/fotos/salon-interior.jpg',
   },
 ]
 
@@ -166,17 +168,17 @@ export const eventTypes = [
   'Otro',
 ]
 
-// PENDIENTE: sustituir por fotos reales. Guárdalas en public/fotos/ y pon la ruta
-// en `photo`, por ejemplo photo: '/fotos/jardin.jpg'.
+// Las rutas ya están puestas: basta con guardar los archivos en public/fotos/ con
+// estos nombres. Mientras no existan, se muestra un marcador de color.
 export const gallery = [
-  { id: 1, caption: 'Montaje de boda en el jardín', tone: 'a', photo: null },
-  { id: 2, caption: 'Ceremonia al aire libre', tone: 'b', photo: null },
-  { id: 3, caption: 'Cena montada en la terraza', tone: 'c', photo: null },
-  { id: 4, caption: 'Barra de bebidas', tone: 'd', photo: null },
-  { id: 5, caption: 'Pista de baile al anochecer', tone: 'e', photo: null },
-  { id: 6, caption: 'Comida familiar en el salón interior', tone: 'f', photo: null },
-  { id: 7, caption: 'Evento de empresa con escenario', tone: 'b', photo: null },
-  { id: 8, caption: 'Vista del jardín', tone: 'a', photo: null },
+  { id: 1, photo: '/fotos/galeria-1.jpg', caption: 'Montaje de boda en el jardín', tone: 'a' },
+  { id: 2, photo: '/fotos/galeria-2.jpg', caption: 'Ceremonia al aire libre', tone: 'b' },
+  { id: 3, photo: '/fotos/galeria-3.jpg', caption: 'Cena montada en la terraza', tone: 'c' },
+  { id: 4, photo: '/fotos/galeria-4.jpg', caption: 'Barra de bebidas', tone: 'd' },
+  { id: 5, photo: '/fotos/galeria-5.jpg', caption: 'Pista de baile al anochecer', tone: 'e' },
+  { id: 6, photo: '/fotos/galeria-6.jpg', caption: 'Comida familiar en el salón interior', tone: 'f' },
+  { id: 7, photo: '/fotos/galeria-7.jpg', caption: 'Evento de empresa con escenario', tone: 'b' },
+  { id: 8, photo: '/fotos/galeria-8.jpg', caption: 'Vista del jardín', tone: 'a' },
 ]
 
 // Cuando esté vacío, la sección de testimonios no se muestra.

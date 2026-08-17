@@ -1,14 +1,24 @@
+import { useState } from 'react'
 import './photo.css'
 
-// Mientras no haya fotografías reales, `src` puede venir vacío y se dibuja
-// un marcador decorativo con el mismo encuadre que tendrá la imagen final.
+// Mientras no exista la fotografía se dibuja un marcador decorativo con el mismo
+// encuadre que tendrá la imagen final. Si el archivo aún no está en public/fotos/
+// la imagen falla y también cae en el marcador, para no dejar un hueco roto.
 function Photo({ src, alt, tone = 'a', ratio = '4 / 3', label, className = '' }) {
+  const [failed, setFailed] = useState(false)
   const classes = ['photo', `photo--${tone}`, className].filter(Boolean).join(' ')
+  const showImage = Boolean(src) && !failed
 
   return (
     <figure className={classes} style={{ aspectRatio: ratio }}>
-      {src ? (
-        <img src={src} alt={alt} loading="lazy" decoding="async" />
+      {showImage ? (
+        <img
+          src={src}
+          alt={alt}
+          loading="lazy"
+          decoding="async"
+          onError={() => setFailed(true)}
+        />
       ) : (
         <span className="photo__placeholder">
           <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false">

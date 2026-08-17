@@ -54,15 +54,26 @@ información real:
 
 ## Fotografías
 
-Los espacios y la galería se muestran con marcadores de color mientras no haya fotos reales. Para
-poner las tuyas, guarda las imágenes en `public/fotos/` y apunta el campo `photo` al archivo:
+Las rutas ya están escritas en `src/data/venue.js`, así que solo hay que dejar los archivos en
+`public/fotos/` con estos nombres exactos y aparecen solos:
 
-```js
-{ id: 'jardin-jacaranda', photo: '/fotos/jardin.jpg', /* … */ }
-```
+| Archivo                       | Dónde se usa                         | Orientación   |
+| ----------------------------- | ------------------------------------ | ------------- |
+| `jardin-vertical.jpg`         | Sección "Quiénes somos" del inicio   | Vertical      |
+| `jardin.jpg`                  | Tarjeta y detalle del jardín         | Horizontal    |
+| `terraza.jpg`                 | Tarjeta y detalle de la terraza      | Horizontal    |
+| `salon-interior.jpg`          | Tarjeta y detalle del salón interior | Horizontal    |
+| `galeria-1.jpg` … `galeria-8.jpg` | Galería                          | Horizontal    |
 
-El componente `Photo` se encarga del recorte, la relación de aspecto y la carga diferida. Conviene
-subirlas en JPG o WebP de máximo 1600 px de ancho para que el sitio cargue rápido.
+Mientras un archivo no exista, en su lugar se muestra un marcador de color: el componente `Photo`
+detecta que la imagen no cargó y no deja un hueco roto. Eso permite ir subiendo las fotos de a
+poco.
+
+Recomendaciones para que el sitio cargue rápido: JPG o WebP, máximo 1600 px de ancho y menos de
+400 kB por archivo. Los nombres no deben llevar acentos ni espacios.
+
+Si quieres otros nombres, más fotos en la galería o cambiar los textos que acompañan cada imagen,
+todo eso se edita en `src/data/venue.js`.
 
 ## Formulario de cotización
 
