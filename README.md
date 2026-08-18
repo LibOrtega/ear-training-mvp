@@ -114,16 +114,21 @@ función `handleSubmit` de `src/components/QuoteForm.jsx`.
 
 ## Publicación
 
-### La forma más rápida (Netlify, gratis)
+### Con Vercel
 
-1. Entrar a [netlify.com](https://netlify.com) e iniciar sesión con la cuenta de GitHub.
-2. **Add new site → Import an existing project**, elegir este repositorio y la rama que se quiera
-   publicar.
-3. No hay nada que configurar: `netlify.toml` ya define el comando de build, la carpeta `dist` y
-   la redirección de rutas. Dar en **Deploy**.
+1. En [vercel.com](https://vercel.com): **Add New → Project**, importar este repositorio.
+2. No hay que configurar nada: `vercel.json` ya define el framework, el comando de build, la carpeta
+   `dist` y la redirección de rutas que necesita una SPA. Dar en **Deploy**.
+3. Vercel publica en producción la rama por defecto del repositorio (`main`). Los cambios que estén
+   en otra rama salen como *preview deployment*, con su propia dirección, hasta que se fusionen.
 
-En un par de minutos queda en línea en una dirección `*.netlify.app`. Cada cambio que se suba a esa
-rama se vuelve a publicar solo.
+Para conectar el dominio: **Project → Settings → Domains**, agregar el dominio y copiar de ahí los
+registros DNS al panel del registrador donde se compró.
+
+### Alternativa (Netlify)
+
+Funciona igual con `netlify.toml`: **Add new site → Import an existing project**, elegir el
+repositorio y la rama, y **Deploy**.
 
 ### Detalles técnicos
 
