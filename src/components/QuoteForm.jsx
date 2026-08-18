@@ -127,7 +127,8 @@ function QuoteForm() {
         <h3>Gracias, {sent.name}</h3>
         <p>
           Abrimos WhatsApp con tu solicitud lista para que solo le des enviar. En cuanto nos llegue
-          te contestamos con disponibilidad y cotización, dentro de nuestro horario de atención.
+          te confirmamos la disponibilidad de tu fecha y agendamos la cita, dentro de nuestro
+          horario de atención.
         </p>
         <pre className="quote__summary">{sent.text}</pre>
         <div className="btn-row">

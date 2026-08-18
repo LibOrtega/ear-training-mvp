@@ -3,12 +3,11 @@ import CtaBanner from '../components/CtaBanner'
 import GalleryGrid from '../components/GalleryGrid'
 import Hero from '../components/Hero'
 import Highlights from '../components/Highlights'
-import PackageCard from '../components/PackageCard'
 import Photo from '../components/Photo'
 import SectionHead from '../components/SectionHead'
 import SpaceCard from '../components/SpaceCard'
 import Testimonials from '../components/Testimonials'
-import { gallery, packages, spaces, testimonials, venue } from '../data/venue'
+import { gallery, providers, spaces, testimonials, venue } from '../data/venue'
 import usePageTitle from '../hooks/usePageTitle'
 import './home.css'
 
@@ -48,7 +47,7 @@ function Home() {
               armamos el plano de mesas antes de que firmes.
             </p>
             <ul className="check-list about__list">
-              <li>Contrato claro, con precios cerrados y sin cargos sorpresa</li>
+              <li>Cotización clara y por escrito, sin cargos sorpresa</li>
               <li>Estacionamiento dentro del predio para todos tus invitados</li>
               <li>Puedes traer a tus proveedores o usar los que te recomendamos</li>
               <li>Acompañamiento el día del evento, de principio a fin</li>
@@ -57,9 +56,14 @@ function Home() {
               <Link to="/contacto" className="btn btn--primary">
                 Agendar una visita
               </Link>
-              <Link to="/paquetes" className="btn btn--ghost">
-                Ver paquetes
-              </Link>
+              <a
+                href={`https://wa.me/${venue.whatsapp}`}
+                className="btn btn--ghost"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                Escribir por WhatsApp
+              </a>
             </div>
           </div>
         </div>
@@ -82,24 +86,41 @@ function Home() {
       </section>
 
       <section className="section section--cream">
-        <div className="container">
-          <SectionHead
-            eyebrow="Paquetes"
-            title="Armamos el paquete según tu evento"
-            text="Puedes rentar solo el espacio o dejarnos el banquete, las bebidas y la coordinación. Te mandamos el desglose completo por WhatsApp."
-            align="center"
-          />
-          <div className="grid-3 grid-3--packages">
-            {packages.map((pkg) => (
-              <PackageCard key={pkg.id} pkg={pkg} />
-            ))}
+        <div className="container quoting">
+          <div>
+            <SectionHead
+              eyebrow="Cotizaciones"
+              title="Cada evento se cotiza en una cita"
+              text="No manejamos paquetes cerrados. Agendas una cita, conoces el salón, nos cuentas cómo imaginas tu evento y ahí mismo te explicamos todo lo que incluye y cuánto costaría."
+            />
+            <div className="btn-row">
+              <Link to="/contacto" className="btn btn--primary">
+                Agendar una cita
+              </Link>
+              <a
+                href={`https://wa.me/${venue.whatsapp}`}
+                className="btn btn--ghost"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                Preguntar por WhatsApp
+              </a>
+            </div>
           </div>
-          <p className="home__footnote">
-            El precio depende del día de la semana, la temporada y el número de invitados.{' '}
-            <Link to="/paquetes" className="text-link">
-              Ver qué incluye cada paquete
-            </Link>
-          </p>
+
+          <div className="card quoting__providers">
+            <h3>Contamos con los mejores proveedores de la ciudad</h3>
+            <p>
+              Ya trabajamos con gente de confianza para cada parte del evento, así que no tienes
+              que salir a buscar por tu cuenta. Si ya tienes a tu proveedor favorito, también
+              puedes traerlo.
+            </p>
+            <ul className="check-list">
+              {providers.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 

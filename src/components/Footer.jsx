@@ -31,9 +31,6 @@ function Footer() {
               </li>
             ))}
             <li>
-              <Link to="/paquetes">Paquetes</Link>
-            </li>
-            <li>
               <Link to="/galeria">Galería</Link>
             </li>
           </ul>

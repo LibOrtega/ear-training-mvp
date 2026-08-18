@@ -7,7 +7,6 @@ import './navbar.css'
 const links = [
   { to: '/', label: 'Inicio' },
   { to: '/salones', label: 'Salones' },
-  { to: '/paquetes', label: 'Paquetes' },
   { to: '/galeria', label: 'Galería' },
   { to: '/contacto', label: 'Contacto' },
 ]

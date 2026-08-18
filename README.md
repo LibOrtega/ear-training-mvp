@@ -1,7 +1,7 @@
 # Grandalia · sitio web
 
 Sitio del centro de eventos Grandalia (carretera Rosales–Delicias, Haciendas Campestres): presenta
-los espacios, los paquetes y una galería, y recibe solicitudes de cotización que llegan por
+los espacios y una galería, y recibe solicitudes de cotización que llegan por
 WhatsApp. Está hecho con React 19, Vite y React Router, sin backend ni base de datos.
 
 ## Requisitos
@@ -25,12 +25,13 @@ npm run lint     # revisa el código con ESLint
 src/
   data/venue.js      Todos los textos, precios y datos de contacto del salón
   components/        Piezas reutilizables (navbar, tarjetas, formulario, galería…)
-  pages/             Una vista por ruta: inicio, salones, paquetes, galería, contacto
+  pages/             Una vista por ruta: inicio, salones, galería, contacto
   hooks/             usePageTitle, para el título de cada página
   index.css          Sistema de diseño: colores, tipografías, botones y utilidades
 ```
 
-Rutas disponibles: `/`, `/salones`, `/paquetes`, `/galeria`, `/contacto`.
+Rutas disponibles: `/`, `/salones`, `/galeria`, `/contacto`. La antigua `/paquetes` redirige a
+`/contacto`, porque no se publican paquetes: todo se cotiza en la cita.
 
 ## Qué falta por completar
 
@@ -42,8 +43,8 @@ información real:
 2. **Espacios** (`spaces`): son dos, el salón principal y el jardín. Falta la foto y la descripción
    real del jardín, y la superficie en metros de cada uno. Si `capacity` y `area` quedan en `null`,
    simplemente no se muestran.
-3. **Paquetes** (`packages`): hoy los tres dicen "Cotización a medida". Si quieren publicar
-   precios, se cambian ahí, igual que los servicios adicionales de `src/pages/Packages.jsx`.
+3. **Proveedores** (`providers`): la lista de servicios con los que se trabaja, que aparece en la
+   sección de cotizaciones del inicio. No se publican paquetes ni precios.
 4. **Testimonios** (`testimonials`) y **preguntas frecuentes** (`faqs`): están vacíos y sus
    secciones no se muestran. En cuanto se llenen, aparecen solas.
 5. **Correo** (`venue.email`): está vacío, así que no aparece en el sitio. Al ponerlo se muestra

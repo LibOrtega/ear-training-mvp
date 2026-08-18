@@ -11,7 +11,7 @@ function NotFound() {
         <h1>Esta página no existe</h1>
         <p className="lead" style={{ marginBlock: '1.25rem 2rem' }}>
           Quizá cambiamos la dirección o el enlace venía incompleto. Desde el inicio puedes llegar a
-          los salones, los paquetes y la galería.
+          los salones, la galería y el contacto.
         </p>
         <div className="btn-row" style={{ justifyContent: 'center' }}>
           <Link to="/" className="btn btn--primary">

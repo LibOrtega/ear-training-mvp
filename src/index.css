@@ -154,11 +154,6 @@ ul {
   gap: 1.75rem;
 }
 
-.grid-3--packages {
-  align-items: stretch;
-  gap: 1.5rem;
-}
-
 .section-head {
   max-width: 46rem;
   margin-bottom: clamp(2.5rem, 5vw, 3.75rem);

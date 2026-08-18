@@ -48,7 +48,7 @@ export const venue = {
 export const heroFacts = [
   { label: 'Capacidad', value: 'Hasta 400 invitados' },
   { label: 'Dónde estamos', value: 'Haciendas Campestres' },
-  { label: 'Cotizaciones', value: 'Por WhatsApp' },
+  { label: 'Cotizaciones', value: 'En cita, sin costo' },
 ]
 
 // PENDIENTE: confirmar cifras y servicios de estas cuatro tarjetas.
@@ -118,51 +118,15 @@ export const spaces = [
   },
 ]
 
-export const packages = [
-  {
-    id: 'esencial',
-    name: 'Esencial',
-    price: 'Cotización a medida',
-    unit: 'eventos pequeños',
-    summary: 'Renta del espacio con lo indispensable, ideal si ya tienes tus proveedores.',
-    includes: [
-      'Renta del espacio con horario de montaje',
-      'Mobiliario y mantelería',
-      'Iluminación general y de pista',
-      'Personal de limpieza',
-    ],
-    featured: false,
-  },
-  {
-    id: 'celebracion',
-    name: 'Celebración',
-    price: 'Cotización a medida',
-    unit: 'el más solicitado',
-    summary: 'El paquete completo: banquete, bebidas y coordinación resueltos.',
-    includes: [
-      'Renta del espacio con horario extendido',
-      'Menú a elegir',
-      'Barra de bebidas',
-      'Centros de mesa y mantelería de diseño',
-      'Coordinación del evento y música',
-    ],
-    featured: true,
-  },
-  {
-    id: 'gran-evento',
-    name: 'Gran evento',
-    price: 'Cotización a medida',
-    unit: 'eventos grandes',
-    summary: 'Producción completa del jardín para bodas y eventos de gran formato.',
-    includes: [
-      'Uso exclusivo de todo el recinto',
-      'Ceremonia con montaje floral',
-      'Banquete y mixología de barra',
-      'Música en vivo',
-      'Prueba de menú previa',
-    ],
-    featured: false,
-  },
+// Con qué proveedores se trabaja. PENDIENTE: ajustar la lista a los servicios
+// que de verdad se ofrecen o se consiguen.
+export const providers = [
+  'Banquete y servicio de meseros',
+  'Música, DJ y grupo versátil',
+  'Decoración y arreglos florales',
+  'Fotografía y video',
+  'Mesa de postres y repostería',
+  'Mobiliario y mantelería especial',
 ]
 
 export const eventTypes = [

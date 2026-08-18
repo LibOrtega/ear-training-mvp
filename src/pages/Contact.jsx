@@ -14,7 +14,7 @@ function Contact() {
       <PageHeader
         eyebrow="Contacto"
         title="Cotiza tu evento"
-        text="Llena el formulario y tu solicitud nos llega directo por WhatsApp; te respondemos con disponibilidad y precio en cuanto la veamos. Si prefieres hablar con alguien, también puedes marcarnos."
+        text="Llena el formulario y tu solicitud nos llega directo por WhatsApp; te respondemos con la disponibilidad de tu fecha y agendamos una cita, donde te explicamos todo y armamos la cotización. Si prefieres hablar con alguien, también puedes marcarnos."
       />
 
       <section className="section">
@@ -68,13 +68,13 @@ function Contact() {
               <h3>Cómo trabajamos</h3>
               <ol className="contact__steps">
                 <li>
-                  <strong>Cotización</strong>
-                  Nos llega tu solicitud por WhatsApp y te contestamos con precio y
-                  disponibilidad.
+                  <strong>Solicitud</strong>
+                  Nos llega tu mensaje por WhatsApp y te confirmamos si tu fecha está libre.
                 </li>
                 <li>
-                  <strong>Visita</strong>
-                  Recorres el salón con nosotros, sin costo ni compromiso.
+                  <strong>Cita en el salón</strong>
+                  Recorres el recinto, platicamos tu evento y ahí te cotizamos. Sin costo ni
+                  compromiso.
                 </li>
                 <li>
                   <strong>Apartado</strong>
