@@ -1,34 +1,33 @@
-import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import './index.css'
-import { AuthProvider } from './context/AuthContext'
-import Header from './assets/Header/Header.jsx'
-import Home from './pages/Home.jsx'
-import EarTraining from './pages/EarTraining.jsx'
-import Contact from './pages/Contact.jsx'
-import ContactSimple from './pages/ContactSimple.jsx'
-import LoginEarTraining from './pages/LoginEarTraining.jsx'
-import LoginMusico from './pages/LoginMusico.jsx'
-import MusicianMode from './pages/MusicianMode.jsx'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import Footer from './components/Footer'
+import Navbar from './components/Navbar'
+import ScrollManager from './components/ScrollManager'
+import WhatsAppButton from './components/WhatsAppButton'
+import Contact from './pages/Contact'
+import GalleryPage from './pages/GalleryPage'
+import Home from './pages/Home'
+import NotFound from './pages/NotFound'
+import Spaces from './pages/Spaces'
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
-        <div>
-          <Header />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/ear-training" element={<EarTraining />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/contact-simple" element={<ContactSimple />} />
-            <Route path="/login-ear-training" element={<LoginEarTraining />} />
-            <Route path="/login-musico" element={<LoginMusico />} />
-            <Route path="/musician-mode" element={<MusicianMode />} />
-          </Routes>
-        </div>
-      </Router>
-    </AuthProvider>
+    <BrowserRouter>
+      <ScrollManager />
+      <Navbar />
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/salones" element={<Spaces />} />
+          {/* La página de paquetes se retiró: todo se cotiza en la cita. */}
+          <Route path="/paquetes" element={<Navigate to="/contacto" replace />} />
+          <Route path="/galeria" element={<GalleryPage />} />
+          <Route path="/contacto" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
+      <Footer />
+      <WhatsAppButton />
+    </BrowserRouter>
   )
 }
 

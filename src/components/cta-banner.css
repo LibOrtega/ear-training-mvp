@@ -1,0 +1,50 @@
+.cta-banner {
+  position: relative;
+  isolation: isolate;
+  padding-block: clamp(3.5rem, 7vw, 5.5rem);
+  background-color: var(--ink);
+  color: rgba(250, 246, 239, 0.78);
+  overflow: hidden;
+}
+
+.cta-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: radial-gradient(
+      ellipse 50% 80% at 15% 20%,
+      rgba(216, 165, 54, 0.18),
+      transparent 60%
+    ),
+    radial-gradient(ellipse 45% 75% at 90% 85%, rgba(216, 165, 54, 0.28), transparent 62%),
+    linear-gradient(150deg, #23252b, #0b0c0e);
+}
+
+.cta-banner__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
+}
+
+.cta-banner .eyebrow {
+  color: var(--gold);
+}
+
+.cta-banner h2 {
+  max-width: 26ch;
+  color: var(--cream);
+}
+
+.cta-banner p {
+  max-width: 44ch;
+  margin-top: 1rem;
+}
+
+.cta-banner__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
