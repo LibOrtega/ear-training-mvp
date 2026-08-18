@@ -191,6 +191,14 @@ export const gallery = [
     wide: true,
     tone: 'e',
   },
+  {
+    id: 'recepcion',
+    photo:
+      'https://res.cloudinary.com/dozhrm24l/image/upload/v1787014694/f471d113-da6c-4bf2-9ee9-191be0135df3_bagwt1.jpg',
+    caption: 'La recepción, de doble altura y con candelabros',
+    ratio: '3 / 4',
+    tone: 'f',
+  },
 ]
 
 // Cuando esté vacío, la sección de testimonios no se muestra.
