@@ -17,9 +17,13 @@ export const venue = {
   intro:
     'Un salón para hasta 400 invitados con jardín, a unos minutos de Delicias, para bodas, XV años y celebraciones de empresa. Nos encargamos del montaje y la coordinación para que tú solo tengas que disfrutar.',
   address: 'Carretera Rosales–Delicias, Haciendas Campestres, Chihuahua',
-  // PENDIENTE: reemplazar por el enlace exacto del pin de Google Maps del salón.
-  mapsUrl:
-    'https://www.google.com/maps/search/?api=1&query=Grandalia+Haciendas+Campestres+Carretera+Rosales+Delicias+Chihuahua',
+  mapsUrl: 'https://maps.app.goo.gl/NfiDvbXxc3t9UoJ3A',
+  coordinates: '28.1831918, -105.5380766',
+  // Mapa embebido en la página de contacto. Queda apagado porque no se pudo
+  // comprobar que cargue; para activarlo, pega aquí la URL del iframe que da
+  // Google en Compartir > Insertar un mapa y revisa que se vea en el navegador:
+  // 'https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1s28.1831918,-105.5380766!6i15'
+  mapEmbed: null,
   phone: '639 119 0106',
   phoneLink: '+526391190106',
   // Formato internacional sin signos ni espacios, como lo pide wa.me.

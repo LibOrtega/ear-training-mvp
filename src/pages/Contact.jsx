@@ -90,6 +90,58 @@ function Contact() {
         </div>
       </section>
 
+      <section className="section section--tight section--cream">
+        <div className="container">
+          <SectionHead
+            eyebrow="Cómo llegar"
+            title="Estamos sobre la carretera Rosales–Delicias"
+            text="En Haciendas Campestres, con acceso y estacionamiento dentro del predio. Abre la ubicación en tu aplicación de mapas y te lleva directo a la entrada."
+          />
+
+          {venue.mapEmbed && (
+            <div className="map">
+              <iframe
+                src={venue.mapEmbed}
+                title={`Ubicación de ${venue.name} en Google Maps`}
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
+            </div>
+          )}
+
+          <div className="directions">
+            <div>
+              <span>Dirección</span>
+              <p>{venue.address}</p>
+            </div>
+            <div>
+              <span>Coordenadas</span>
+              <p>{venue.coordinates}</p>
+            </div>
+            <div className="btn-row directions__actions">
+              <a
+                className="btn btn--primary"
+                href={venue.mapsUrl}
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                Abrir en Google Maps
+              </a>
+              <a
+                className="btn btn--ghost"
+                href={`https://waze.com/ul?ll=${encodeURIComponent(
+                  venue.coordinates.replace(/\s/g, ''),
+                )}&navigate=yes`}
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                Abrir en Waze
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {faqs.length > 0 && (
         <section className="section section--cream">
           <div className="container container--narrow">

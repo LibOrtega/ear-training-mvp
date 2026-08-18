@@ -16,6 +16,62 @@
   padding: 1.9rem 1.75rem;
 }
 
+.map {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background-color: var(--cream-deep);
+}
+
+.map iframe {
+  display: block;
+  width: 100%;
+  height: clamp(300px, 45vw, 460px);
+  border: 0;
+}
+
+.directions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.75rem 3rem;
+  padding: 1.9rem 1.75rem;
+  background-color: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.map + .directions {
+  margin-top: 1.25rem;
+}
+
+.directions span {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.directions p {
+  max-width: 32ch;
+  font-size: 0.98rem;
+  color: var(--ink);
+}
+
+.directions__actions {
+  margin-left: auto;
+}
+
+@media (max-width: 700px) {
+  .directions__actions {
+    margin-left: 0;
+  }
+}
+
 .contact__card h3 {
   margin-bottom: 1.35rem;
   font-size: 1.35rem;
