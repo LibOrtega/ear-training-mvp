@@ -15,7 +15,7 @@ export const venue = {
   region: 'Delicias, Chihuahua',
   claim: 'El lugar donde tu celebración se vuelve inolvidable',
   intro:
-    'Un salón para hasta 400 invitados con jardín, a unos minutos de Delicias, para bodas, XV años y celebraciones de empresa. Nos encargamos del montaje y la coordinación para que tú solo tengas que disfrutar.',
+    'Un salón para hasta 400 invitados, con jardín para la ceremonia, a unos minutos de Delicias. La pista de baile, el escenario y el audio ya están instalados, y el estacionamiento es dentro del predio.',
   address: 'Carretera Rosales–Delicias, Haciendas Campestres, Chihuahua',
   mapsUrl: 'https://maps.app.goo.gl/NfiDvbXxc3t9UoJ3A',
   coordinates: '28.1831918, -105.5380766',
@@ -51,27 +51,26 @@ export const heroFacts = [
   { label: 'Cotizaciones', value: 'En cita, sin costo' },
 ]
 
-// PENDIENTE: confirmar cifras y servicios de estas cuatro tarjetas.
 export const highlights = [
   {
     title: 'Hasta 400 invitados',
-    text: 'Un salón amplio con pista de baile, escenario y audio profesional ya instalados.',
+    text: 'El salón recibe hasta 400 personas sentadas, con montaje de mesas redondas alrededor de la pista.',
     icon: 'guests',
   },
   {
     title: 'Estacionamiento propio',
-    text: 'Los invitados se estacionan dentro del predio, sin buscar lugar en la carretera.',
+    text: 'Tus invitados se estacionan dentro del predio, sin buscar lugar sobre la carretera.',
     icon: 'parking',
   },
   {
-    title: 'Cocina equipada',
-    text: 'Puedes traer tu banquete favorito o pedirnos que te recomendemos proveedores.',
-    icon: 'kitchen',
+    title: 'Pista, escenario y audio',
+    text: 'La pista de baile de madera, el escenario con pantallas y el equipo de audio ya están instalados.',
+    icon: 'audio',
   },
   {
-    title: 'Coordinación incluida',
-    text: 'Te acompañamos desde la firma del contrato hasta que se va el último invitado.',
-    icon: 'planner',
+    title: 'Jardín para la ceremonia',
+    text: 'El área exterior se monta con pasillo, sillas y altar, para que la ceremonia sea aquí mismo.',
+    icon: 'garden',
   },
 ]
 

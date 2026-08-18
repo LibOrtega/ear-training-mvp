@@ -47,10 +47,10 @@ function Home() {
               armamos el plano de mesas antes de que firmes.
             </p>
             <ul className="check-list about__list">
-              <li>Cotización clara y por escrito, sin cargos sorpresa</li>
+              <li>Cotización sin costo y sin compromiso, en una cita en el salón</li>
               <li>Estacionamiento dentro del predio para todos tus invitados</li>
               <li>Puedes traer a tus proveedores o usar los que te recomendamos</li>
-              <li>Acompañamiento el día del evento, de principio a fin</li>
+              <li>Salón y jardín en el mismo lugar: ceremonia y fiesta sin traslados</li>
             </ul>
             <div className="btn-row">
               <Link to="/contacto" className="btn btn--primary">
