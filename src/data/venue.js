@@ -16,7 +16,7 @@ export const venue = {
   claim: 'El lugar donde tu celebración se vuelve inolvidable',
   // PENDIENTE: ajustar esta descripción con los espacios y servicios reales.
   intro:
-    'Un centro de eventos rodeado de campo, a unos minutos de Delicias, para bodas, XV años y celebraciones de empresa. Nos encargamos del montaje y la coordinación para que tú solo tengas que disfrutar.',
+    'Un salón para hasta 400 invitados con jardín, a unos minutos de Delicias, para bodas, XV años y celebraciones de empresa. Nos encargamos del montaje y la coordinación para que tú solo tengas que disfrutar.',
   address: 'Carretera Rosales–Delicias, Haciendas Campestres, Chihuahua',
   // PENDIENTE: reemplazar por el enlace exacto del pin de Google Maps del salón.
   mapsUrl:
@@ -42,15 +42,15 @@ export const venue = {
 
 // Datos que se muestran bajo el título de portada.
 export const heroFacts = [
+  { label: 'Capacidad', value: 'Hasta 400 invitados' },
   { label: 'Dónde estamos', value: 'Haciendas Campestres' },
-  { label: 'Atención', value: 'Lunes a sábado con cita' },
   { label: 'Cotizaciones', value: 'Por WhatsApp' },
 ]
 
 // PENDIENTE: confirmar cifras y servicios de estas cuatro tarjetas.
 export const highlights = [
   {
-    title: 'Espacio para tu fiesta',
+    title: 'Hasta 400 invitados',
     text: 'Un salón amplio con pista de baile, escenario y audio profesional ya instalados.',
     icon: 'guests',
   },
@@ -71,14 +71,14 @@ export const highlights = [
   },
 ]
 
-// El salón principal ya tiene foto y descripción reales.
-// PENDIENTE: confirmar si existen la terraza y el jardín, o borrarlos de esta
-// lista, y agregar la capacidad y la superficie de cada espacio.
+// El salón principal ya tiene foto, capacidad y descripción reales.
+// PENDIENTE: foto y descripción del jardín.
 export const spaces = [
   {
     id: 'salon-principal',
     name: 'Salón principal',
-    capacity: null,
+    capacity: 'Hasta 400 invitados',
+    // PENDIENTE: superficie en metros cuadrados, si la tienen a mano.
     area: null,
     bestFor: 'Bodas y XV años',
     description:
@@ -92,17 +92,6 @@ export const spaces = [
     ],
     photo:
       'https://res.cloudinary.com/dozhrm24l/image/upload/v1787011836/RET07413_nln8qr.jpg',
-  },
-  {
-    id: 'terraza',
-    name: 'Terraza',
-    capacity: null,
-    area: null,
-    bestFor: 'Eventos de empresa y graduaciones',
-    description:
-      'Terraza techada, cómoda en cualquier temporada y lista para escenario o proyección.',
-    features: ['Techo fijo', 'Espacio para escenario', 'Zona de registro', 'Barra de bebidas'],
-    photo: '/fotos/terraza.jpg',
   },
   {
     id: 'jardin',
@@ -183,11 +172,11 @@ export const eventTypes = [
 export const gallery = [
   { id: 1, photo: '/fotos/galeria-1.jpg', caption: 'Montaje de boda en el jardín', tone: 'a' },
   { id: 2, photo: '/fotos/galeria-2.jpg', caption: 'Ceremonia al aire libre', tone: 'b' },
-  { id: 3, photo: '/fotos/galeria-3.jpg', caption: 'Cena montada en la terraza', tone: 'c' },
+  { id: 3, photo: '/fotos/galeria-3.jpg', caption: 'Montaje de mesas y centros', tone: 'c' },
   { id: 4, photo: '/fotos/galeria-4.jpg', caption: 'Barra de bebidas', tone: 'd' },
   { id: 5, photo: '/fotos/galeria-5.jpg', caption: 'Pista de baile al anochecer', tone: 'e' },
-  { id: 6, photo: '/fotos/galeria-6.jpg', caption: 'Comida familiar en el salón interior', tone: 'f' },
-  { id: 7, photo: '/fotos/galeria-7.jpg', caption: 'Evento de empresa con escenario', tone: 'b' },
+  { id: 6, photo: '/fotos/galeria-6.jpg', caption: 'El salón visto desde la entrada', tone: 'f' },
+  { id: 7, photo: '/fotos/galeria-7.jpg', caption: 'Escenario y pantallas del salón', tone: 'b' },
   { id: 8, photo: '/fotos/galeria-8.jpg', caption: 'Vista del jardín', tone: 'a' },
 ]
 

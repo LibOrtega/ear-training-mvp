@@ -11,8 +11,8 @@ function Spaces() {
     <>
       <PageHeader
         eyebrow="Espacios"
-        title="Elige el salón según tu evento"
-        text="Puedes rentar cada espacio por separado o combinarlos cuando el evento es grande. Todos incluyen mobiliario, estacionamiento dentro del predio y limpieza."
+        title="El salón y el jardín"
+        text="El salón recibe hasta 400 invitados sentados, con pista de baile, escenario y audio ya instalados. El jardín se suma para la ceremonia o el coctel de bienvenida."
       />
 
       <section className="section">

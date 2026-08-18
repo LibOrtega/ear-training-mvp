@@ -69,8 +69,8 @@ function Home() {
         <div className="container">
           <SectionHead
             eyebrow="Nuestros espacios"
-            title="Tres salones para tres tamaños de fiesta"
-            text="Puedes rentarlos por separado o combinar jardín y terraza para eventos de gran formato."
+            title="Un salón para la fiesta y un jardín para la ceremonia"
+            text="El salón recibe hasta 400 invitados sentados. El jardín se usa para la ceremonia o el coctel de bienvenida, antes de pasar adentro."
             align="center"
           />
           <div className="grid-3">

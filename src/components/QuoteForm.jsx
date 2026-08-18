@@ -53,6 +53,8 @@ function validate(form) {
   const guests = Number(form.guests)
   if (!form.guests || Number.isNaN(guests) || guests < 1) {
     errors.guests = 'Indica cuántos invitados esperas, aunque sea aproximado.'
+  } else if (guests > 400) {
+    errors.guests = 'El salón recibe hasta 400 invitados. Para más, márcanos y lo vemos.'
   }
 
   return errors
@@ -265,6 +267,7 @@ function QuoteForm() {
             type="number"
             inputMode="numeric"
             min="1"
+            max="400"
             step="10"
             placeholder="150"
             value={form.guests}

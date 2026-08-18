@@ -37,10 +37,11 @@ Rutas disponibles: `/`, `/salones`, `/paquetes`, `/galeria`, `/contacto`.
 Todo el contenido editable vive en `src/data/venue.js`, marcado con `PENDIENTE` donde hace falta
 información real:
 
-1. **Ya está puesto**: nombre, dirección, WhatsApp (639 119 0106), horario de atención, Instagram
-   y Facebook.
-2. **Espacios** (`spaces`): faltan los nombres reales, la capacidad y la superficie de cada uno.
-   Si `capacity` y `area` quedan en `null`, simplemente no se muestran.
+1. **Ya está puesto**: nombre, dirección, WhatsApp (639 119 0106), horario de atención, Instagram,
+   Facebook, la capacidad del salón (400 invitados) y la foto del salón montado.
+2. **Espacios** (`spaces`): son dos, el salón principal y el jardín. Falta la foto y la descripción
+   real del jardín, y la superficie en metros de cada uno. Si `capacity` y `area` quedan en `null`,
+   simplemente no se muestran.
 3. **Paquetes** (`packages`): hoy los tres dicen "Cotización a medida". Si quieren publicar
    precios, se cambian ahí, igual que los servicios adicionales de `src/pages/Packages.jsx`.
 4. **Testimonios** (`testimonials`) y **preguntas frecuentes** (`faqs`): están vacíos y sus
@@ -49,8 +50,10 @@ información real:
    en el pie de página y en contacto, y el formulario ofrece enviar también por correo.
 6. **Enlace de Google Maps** (`venue.mapsUrl`): ahora es una búsqueda; conviene sustituirlo por el
    pin exacto del salón.
-7. **Logo**: el monograma "G" y el favicon (`public/favicon.svg`) se pueden reemplazar por el logo
-   real.
+7. **Logo**: mientras `venue.logo` no exista, el encabezado dibuja la flor en vectores. El favicon
+   (`public/favicon.svg`) también se puede reemplazar por el logo real.
+8. **Giro**: el letrero de la fachada dice "Centro de eventos" y el logo "Centro social"; el sitio
+   usa el primero.
 
 ## Fotografías
 
@@ -62,8 +65,6 @@ Las rutas ya están escritas en `src/data/venue.js`, así que solo hay que dejar
 | `logo.png`                    | Encabezado y pie de página           | Horizontal    |
 | `fachada-vertical.jpg`        | Sección "Quiénes somos" del inicio   | Vertical      |
 | `jardin.jpg`                  | Tarjeta y detalle del jardín         | Horizontal    |
-| `terraza.jpg`                 | Tarjeta y detalle de la terraza      | Horizontal    |
-| `salon-interior.jpg`          | Tarjeta y detalle del salón interior | Horizontal    |
 | `galeria-1.jpg` … `galeria-8.jpg` | Galería                          | Horizontal    |
 
 Mientras un archivo no exista, en su lugar se muestra un marcador de color: el componente `Photo`
