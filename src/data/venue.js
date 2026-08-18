@@ -99,15 +99,20 @@ export const spaces = [
     name: 'Jardín',
     capacity: null,
     area: null,
-    bestFor: 'Ceremonias y recepciones al aire libre',
+    bestFor: 'Ceremonias y coctel de bienvenida',
     description:
-      'El área al aire libre, para la ceremonia o el coctel de bienvenida antes de pasar al salón.',
+      'El área al aire libre, con pasto, palmeras iluminadas y salas exteriores. Es donde se recibe a los invitados al atardecer, antes de pasar al salón.',
     features: [
-      'Zona para ceremonia',
-      'Área para coctel de bienvenida',
-      'Iluminación de ambiente',
+      'Salas exteriores para la bienvenida',
+      'Palmeras y jardineras iluminadas',
+      'Espacio para el letrero y la mesa de recibimiento',
+      'Zona para ceremonia o coctel',
     ],
-    photo: '/fotos/jardin.jpg',
+    photo:
+      'https://res.cloudinary.com/dozhrm24l/image/upload/v1787014802/e5ab70f8-139c-48d7-8b6e-3ed6173bafee_c2mszu.jpg',
+    // La foto es vertical: en la ficha se muestra así y en la tarjeta del inicio
+    // Cloudinary la recorta a 3:2 eligiendo la zona relevante.
+    ratio: '4 / 5',
   },
 ]
 
@@ -190,6 +195,14 @@ export const gallery = [
     ratio: '3 / 2',
     wide: true,
     tone: 'e',
+  },
+  {
+    id: 'jardin-atardecer',
+    photo:
+      'https://res.cloudinary.com/dozhrm24l/image/upload/v1787014802/e5ab70f8-139c-48d7-8b6e-3ed6173bafee_c2mszu.jpg',
+    caption: 'El jardín al atardecer, con las salas exteriores',
+    ratio: '3 / 4',
+    tone: 'a',
   },
   {
     id: 'recepcion',

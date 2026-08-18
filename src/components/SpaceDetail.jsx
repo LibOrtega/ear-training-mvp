@@ -20,7 +20,7 @@ function SpaceDetail({ space, index = 0 }) {
         alt={space.name}
         label={`Fotografía de ${space.name}`}
         tone={tones[index % tones.length]}
-        ratio="5 / 4"
+        ratio={space.ratio ?? '5 / 4'}
         width={900}
         className="space-detail__photo"
       />

@@ -1,11 +1,22 @@
 import { useState } from 'react'
-import { optimize, retina } from '../lib/images'
+import { fill, optimize, retina } from '../lib/images'
 import './photo.css'
 
 // Mientras no exista la fotografía se dibuja un marcador decorativo con el mismo
 // encuadre que tendrá la imagen final. Si el archivo aún no está en public/fotos/
 // la imagen falla y también cae en el marcador, para no dejar un hueco roto.
-function Photo({ src, alt, tone = 'a', ratio = '4 / 3', label, width = 1200, className = '' }) {
+// `crop` (por ejemplo '3:2') pide el recorte a Cloudinary en los huecos donde la
+// proporción es fija y la foto puede venir en cualquier orientación.
+function Photo({
+  src,
+  alt,
+  tone = 'a',
+  ratio = '4 / 3',
+  label,
+  width = 1200,
+  crop,
+  className = '',
+}) {
   const [failed, setFailed] = useState(false)
   const classes = ['photo', `photo--${tone}`, className].filter(Boolean).join(' ')
   const showImage = Boolean(src) && !failed
@@ -14,8 +25,8 @@ function Photo({ src, alt, tone = 'a', ratio = '4 / 3', label, width = 1200, cla
     <figure className={classes} style={{ aspectRatio: ratio }}>
       {showImage ? (
         <img
-          src={optimize(src, width)}
-          srcSet={retina(src, width)}
+          src={crop ? fill(src, width, crop) : optimize(src, width)}
+          srcSet={retina(src, width, crop)}
           alt={alt}
           loading="lazy"
           decoding="async"
