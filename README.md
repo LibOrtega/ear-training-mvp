@@ -114,6 +114,19 @@ función `handleSubmit` de `src/components/QuoteForm.jsx`.
 
 ## Publicación
 
+### La forma más rápida (Netlify, gratis)
+
+1. Entrar a [netlify.com](https://netlify.com) e iniciar sesión con la cuenta de GitHub.
+2. **Add new site → Import an existing project**, elegir este repositorio y la rama que se quiera
+   publicar.
+3. No hay nada que configurar: `netlify.toml` ya define el comando de build, la carpeta `dist` y
+   la redirección de rutas. Dar en **Deploy**.
+
+En un par de minutos queda en línea en una dirección `*.netlify.app`. Cada cambio que se suba a esa
+rama se vuelve a publicar solo.
+
+### Detalles técnicos
+
 `npm run build` deja el sitio estático en `dist/`, listo para Netlify, Vercel, Cloudflare Pages o
 cualquier hosting. La configuración ya está incluida:
 
@@ -141,3 +154,18 @@ minutos después de que el DNS propague.
 Cuando el dominio esté definido, hay que agregarlo en `index.html` como `og:url` y etiqueta
 canónica, y publicar un `sitemap.xml` en `public/`, para que el sitio aparezca bien en Google y al
 compartirlo en redes.
+
+## Para publicidad
+
+`index.html` ya trae lo que usan las redes y Google al mostrar el sitio:
+
+- Título y descripción propios, más `og:title`, `og:description` y `og:image` (la foto del salón
+  recortada a 1200 × 630), que es lo que aparece al pegar el enlace en WhatsApp, Facebook o
+  Instagram.
+- Datos estructurados de tipo `EventVenue` con nombre, dirección, coordenadas, teléfono, capacidad,
+  horario de atención y redes sociales. Si esos datos cambian en `src/data/venue.js`, hay que
+  actualizarlos también en el bloque `application/ld+json` de `index.html`.
+
+Aparte del sitio, conviene revisar en el perfil de Google Business que la categoría principal del
+negocio sea "centro de eventos" o "salón de fiestas": la ficha actual está clasificada como club
+nocturno, lo que reduce las apariciones en búsquedas como "salón de eventos en Delicias".
