@@ -2,10 +2,10 @@ import CtaBanner from '../components/CtaBanner'
 import GalleryGrid from '../components/GalleryGrid'
 import PageHeader from '../components/PageHeader'
 import { gallery } from '../data/venue'
-import usePageTitle from '../hooks/usePageTitle'
+import usePageMeta from '../hooks/usePageMeta'
 
 function GalleryPage() {
-  usePageTitle('Galería')
+  usePageMeta('Galería')
 
   return (
     <>

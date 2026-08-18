@@ -8,11 +8,11 @@ import SectionHead from '../components/SectionHead'
 import SpaceCard from '../components/SpaceCard'
 import Testimonials from '../components/Testimonials'
 import { gallery, providers, spaces, testimonials, venue } from '../data/venue'
-import usePageTitle from '../hooks/usePageTitle'
+import usePageMeta from '../hooks/usePageMeta'
 import './home.css'
 
 function Home() {
-  usePageTitle()
+  usePageMeta()
 
   return (
     <>

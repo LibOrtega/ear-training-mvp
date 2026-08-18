@@ -2,10 +2,10 @@ import CtaBanner from '../components/CtaBanner'
 import PageHeader from '../components/PageHeader'
 import SpaceDetail from '../components/SpaceDetail'
 import { spaces } from '../data/venue'
-import usePageTitle from '../hooks/usePageTitle'
+import usePageMeta from '../hooks/usePageMeta'
 
 function Spaces() {
-  usePageTitle('Salones')
+  usePageMeta('Salones')
 
   return (
     <>

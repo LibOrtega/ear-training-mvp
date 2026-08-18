@@ -122,8 +122,20 @@ función `handleSubmit` de `src/components/QuoteForm.jsx`.
 3. Vercel publica en producción la rama por defecto del repositorio (`main`). Los cambios que estén
    en otra rama salen como *preview deployment*, con su propia dirección, hasta que se fusionen.
 
-Para conectar el dominio: **Project → Settings → Domains**, agregar el dominio y copiar de ahí los
-registros DNS al panel del registrador donde se compró.
+### Conectar el dominio grandaliaeventos.com
+
+1. En Vercel: **Project → Settings → Domains → Add**, escribir `grandaliaeventos.com`. Conviene
+   agregar también `www.grandaliaeventos.com`, que Vercel redirige al dominio principal.
+2. Vercel muestra los registros DNS exactos que hay que dar de alta. Hay que copiarlos **de ahí**,
+   no de memoria, porque los valores cambian con el tiempo: normalmente un registro `A` para el
+   dominio raíz y un `CNAME` para `www`.
+3. Pegarlos en el panel del registrador donde se compró el dominio, en su sección de DNS.
+4. Esperar la propagación, que suele tardar entre unos minutos y un par de horas. El certificado
+   HTTPS lo emite Vercel automáticamente en cuanto detecta el DNS.
+
+El dominio ya está escrito en el código: `venue.siteUrl`, la etiqueta canónica y `og:url` de
+`index.html`, `public/sitemap.xml` y `public/robots.txt`. Si algún día cambia, hay que actualizarlo
+en esos cuatro lugares.
 
 ### Alternativa (Netlify)
 

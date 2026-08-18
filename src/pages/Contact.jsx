@@ -3,11 +3,11 @@ import PageHeader from '../components/PageHeader'
 import QuoteForm from '../components/QuoteForm'
 import SectionHead from '../components/SectionHead'
 import { faqs, venue } from '../data/venue'
-import usePageTitle from '../hooks/usePageTitle'
+import usePageMeta from '../hooks/usePageMeta'
 import './contact.css'
 
 function Contact() {
-  usePageTitle('Contacto y cotización')
+  usePageMeta('Contacto y cotización')
 
   return (
     <>

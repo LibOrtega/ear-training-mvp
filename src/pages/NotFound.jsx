@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
-import usePageTitle from '../hooks/usePageTitle'
+import usePageMeta from '../hooks/usePageMeta'
 
 function NotFound() {
-  usePageTitle('Página no encontrada')
+  usePageMeta('Página no encontrada')
 
   return (
     <section className="section">

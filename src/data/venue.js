@@ -3,6 +3,7 @@
 
 export const venue = {
   name: 'Grandalia',
+  siteUrl: 'https://grandaliaeventos.com',
   // El letrero de la fachada dice "Centro de eventos" y el logo "Centro social".
   // PENDIENTE: confirmar cuál de los dos se queda.
   tagline: 'Centro de eventos',
