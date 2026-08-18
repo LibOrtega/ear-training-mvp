@@ -39,7 +39,7 @@ Todo el contenido editable vive en `src/data/venue.js`, marcado con `PENDIENTE` 
 información real:
 
 1. **Ya está puesto**: nombre, dirección, WhatsApp (639 119 0106), horario de atención, Instagram,
-   Facebook, la capacidad del salón (400 invitados) y la foto del salón montado.
+   Facebook, la capacidad del salón (500 invitados) y las fotos del salón, el jardín y la recepción.
 2. **Espacios** (`spaces`): son dos, el salón principal y el jardín. Falta la foto y la descripción
    real del jardín, y la superficie en metros de cada uno. Si `capacity` y `area` quedan en `null`,
    simplemente no se muestran.

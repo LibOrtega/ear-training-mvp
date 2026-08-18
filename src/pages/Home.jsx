@@ -73,8 +73,8 @@ function Home() {
         <div className="container">
           <SectionHead
             eyebrow="Nuestros espacios"
-            title="Un salón para la fiesta y un jardín para la ceremonia"
-            text="El salón recibe hasta 400 invitados sentados. El jardín se usa para la ceremonia o el coctel de bienvenida, antes de pasar adentro."
+            title="Un salón y un jardín, para lo que tú decidas"
+            text="El salón recibe hasta 500 invitados sentados. El jardín se monta para una ceremonia, un coctel o el evento completo al aire libre."
             align="center"
           />
           <div className="grid-3">

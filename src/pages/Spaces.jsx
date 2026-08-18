@@ -12,7 +12,7 @@ function Spaces() {
       <PageHeader
         eyebrow="Espacios"
         title="El salón y el jardín"
-        text="El salón recibe hasta 400 invitados sentados, con pista de baile, escenario y audio ya instalados. El jardín se suma para la ceremonia o el coctel de bienvenida."
+        text="El salón recibe hasta 500 invitados sentados, con pista de baile y escenario ya montados. El jardín se usa para ceremonias, cocteles o eventos completos al aire libre, y los dos se pueden combinar."
       />
 
       <section className="section">

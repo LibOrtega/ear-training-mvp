@@ -16,7 +16,7 @@ export const venue = {
   region: 'Delicias, Chihuahua',
   claim: 'El lugar donde tu celebración se vuelve inolvidable',
   intro:
-    'Un salón para hasta 400 invitados, con jardín para la ceremonia, a unos minutos de Delicias. La pista de baile, el escenario y el audio ya están instalados, y el estacionamiento es dentro del predio.',
+    'Aquí la celebración empieza al cruzar la puerta: una recepción que se luce, un jardín que se transforma según lo que imagines y un salón donde se baila hasta el final. Todo en un mismo lugar, a unos minutos de Delicias.',
   address: 'Carretera Rosales–Delicias, Haciendas Campestres, Chihuahua',
   mapsUrl: 'https://maps.app.goo.gl/NfiDvbXxc3t9UoJ3A',
   coordinates: '28.1831918, -105.5380766',
@@ -47,15 +47,15 @@ export const venue = {
 
 // Datos que se muestran bajo el título de portada.
 export const heroFacts = [
-  { label: 'Capacidad', value: 'Hasta 400 invitados' },
+  { label: 'Capacidad', value: 'Hasta 500 invitados' },
   { label: 'Dónde estamos', value: 'Haciendas Campestres' },
   { label: 'Cotizaciones', value: 'En cita, sin costo' },
 ]
 
 export const highlights = [
   {
-    title: 'Hasta 400 invitados',
-    text: 'El salón recibe hasta 400 personas sentadas, con montaje de mesas redondas alrededor de la pista.',
+    title: 'Hasta 500 invitados',
+    text: 'El salón recibe hasta 500 personas sentadas, con montaje de mesas redondas alrededor de la pista.',
     icon: 'guests',
   },
   {
@@ -64,8 +64,8 @@ export const highlights = [
     icon: 'parking',
   },
   {
-    title: 'Pista, escenario y audio',
-    text: 'La pista de baile de madera, el escenario con pantallas y el equipo de audio ya están instalados.',
+    title: 'Pista y escenario listos',
+    text: 'La pista de baile de madera y el escenario con pantallas ya están montados. El audio va en nuestros paquetes, o puedes traer el tuyo.',
     icon: 'audio',
   },
   {
@@ -81,15 +81,16 @@ export const spaces = [
   {
     id: 'salon-principal',
     name: 'Salón principal',
-    capacity: 'Hasta 400 invitados',
+    capacity: 'Hasta 500 invitados',
     // PENDIENTE: superficie en metros cuadrados, si la tienen a mano.
     area: null,
     bestFor: 'Bodas y XV años',
     description:
-      'El corazón del centro de eventos: pista de baile de madera al centro, escenario con pantallas y audio profesional, y cortinas de luces cálidas que envuelven el área de mesas.',
+      'El corazón del centro de eventos: pista de baile de madera al centro, escenario con pantallas y cortinas de luces cálidas que envuelven el área de mesas.',
     features: [
       'Pista de baile amplia',
-      'Escenario con pantallas y audio profesional',
+      'Escenario con pantallas',
+      'Audio incluido en nuestros paquetes, o puedes traer el tuyo',
       'Iluminación de ambiente y juego de luces en pista',
       'Techo decorado con telas e iluminación',
       'Montaje de mesas redondas con mantelería',
@@ -102,14 +103,14 @@ export const spaces = [
     name: 'Jardín',
     capacity: null,
     area: null,
-    bestFor: 'Ceremonias y coctel de bienvenida',
+    bestFor: 'Eventos al aire libre',
     description:
-      'El área exterior donde se montan las ceremonias al atardecer: pasillo con alfombra, sillas, carpa para el altar y letras iluminadas, con el jardín y la fachada como fondo. También funciona para el coctel de bienvenida antes de pasar al salón.',
+      'El área exterior se monta como lo necesites: una ceremonia al atardecer, un coctel de bienvenida, una comida o el evento completo bajo el cielo. Pasillo con alfombra, sillas, carpa, letras iluminadas y salas exteriores, con el jardín y la fachada como fondo.',
     features: [
-      'Montaje de ceremonia con pasillo y sillas',
-      'Carpa para el altar',
+      'Montaje a medida: ceremonia, coctel, comida o fiesta completa',
+      'Carpa disponible',
       'Letras y palmeras iluminadas',
-      'Salas exteriores para la bienvenida',
+      'Salas exteriores',
       'Piso firme, sin escalones',
     ],
     photo:
