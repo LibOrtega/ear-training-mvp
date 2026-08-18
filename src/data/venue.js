@@ -8,6 +8,9 @@ export const venue = {
   tagline: 'Centro de eventos',
   // Logo real. Mientras el archivo no exista se dibuja la flor en vectores.
   logo: '/fotos/logo.png',
+  // Foto de fondo de la portada; se muestra oscurecida detrás del título.
+  heroPhoto:
+    'https://res.cloudinary.com/dozhrm24l/image/upload/v1787011836/RET07413_nln8qr.jpg',
   // PENDIENTE: confirmar la ciudad que quieren mostrar (se dedujo de la carretera).
   region: 'Delicias, Chihuahua',
   claim: 'El lugar donde tu celebración se vuelve inolvidable',
@@ -41,14 +44,14 @@ export const venue = {
 export const heroFacts = [
   { label: 'Dónde estamos', value: 'Haciendas Campestres' },
   { label: 'Atención', value: 'Lunes a sábado con cita' },
-  { label: 'Cotizaciones', value: 'Por WhatsApp el mismo día' },
+  { label: 'Cotizaciones', value: 'Por WhatsApp' },
 ]
 
 // PENDIENTE: confirmar cifras y servicios de estas cuatro tarjetas.
 export const highlights = [
   {
     title: 'Espacio para tu fiesta',
-    text: 'Jardín, terraza y salón que se combinan según el número de invitados que esperas.',
+    text: 'Un salón amplio con pista de baile, escenario y audio profesional ya instalados.',
     icon: 'guests',
   },
   {
@@ -68,52 +71,56 @@ export const highlights = [
   },
 ]
 
-// PENDIENTE: nombres, capacidades, medidas y características reales de cada espacio.
+// El salón principal ya tiene foto y descripción reales.
+// PENDIENTE: confirmar si existen la terraza y el jardín, o borrarlos de esta
+// lista, y agregar la capacidad y la superficie de cada espacio.
 export const spaces = [
   {
-    id: 'jardin',
-    name: 'Jardín',
-    // PENDIENTE: capacidad y superficie reales; si quedan en null no se muestran.
+    id: 'salon-principal',
+    name: 'Salón principal',
     capacity: null,
     area: null,
     bestFor: 'Bodas y XV años',
     description:
-      'El espacio al aire libre, con pista central y zona para la ceremonia. Ideal para eventos grandes al atardecer.',
+      'El corazón del centro de eventos: pista de baile de madera al centro, escenario con pantallas y audio profesional, y cortinas de luces cálidas que envuelven el área de mesas.',
     features: [
-      'Pista de baile',
-      'Zona para ceremonia',
-      'Iluminación de ambiente',
-      'Área para banquete',
+      'Pista de baile amplia',
+      'Escenario con pantallas y audio profesional',
+      'Iluminación de ambiente y juego de luces en pista',
+      'Techo decorado con telas e iluminación',
+      'Montaje de mesas redondas con mantelería',
     ],
-    photo: '/fotos/jardin.jpg',
+    photo:
+      'https://res.cloudinary.com/dozhrm24l/image/upload/v1787011836/RET07413_nln8qr.jpg',
   },
   {
     id: 'terraza',
     name: 'Terraza',
-    // PENDIENTE: capacidad y superficie reales; si quedan en null no se muestran.
     capacity: null,
     area: null,
     bestFor: 'Eventos de empresa y graduaciones',
     description:
-      'Terraza techada con vista al jardín, cómoda en cualquier temporada y lista para escenario o proyección.',
+      'Terraza techada, cómoda en cualquier temporada y lista para escenario o proyección.',
     features: ['Techo fijo', 'Espacio para escenario', 'Zona de registro', 'Barra de bebidas'],
     photo: '/fotos/terraza.jpg',
   },
   {
-    id: 'salon-interior',
-    name: 'Salón interior',
-    // PENDIENTE: capacidad y superficie reales; si quedan en null no se muestran.
+    id: 'jardin',
+    name: 'Jardín',
     capacity: null,
     area: null,
-    bestFor: 'Bautizos, cumpleaños y comidas',
+    bestFor: 'Ceremonias y recepciones al aire libre',
     description:
-      'Un salón cerrado y cálido para celebraciones familiares y eventos de mediodía.',
-    features: ['Renta por horas', 'Climatizado', 'Acceso a nivel', 'Área infantil'],
-    photo: '/fotos/salon-interior.jpg',
+      'El área al aire libre, para la ceremonia o el coctel de bienvenida antes de pasar al salón.',
+    features: [
+      'Zona para ceremonia',
+      'Área para coctel de bienvenida',
+      'Iluminación de ambiente',
+    ],
+    photo: '/fotos/jardin.jpg',
   },
 ]
 
-// PENDIENTE: definir los paquetes reales y sus precios.
 export const packages = [
   {
     id: 'esencial',
