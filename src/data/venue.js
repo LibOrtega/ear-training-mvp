@@ -32,7 +32,8 @@ export const venue = {
     { days: 'Sábados', time: '10:00 a 13:00 h' },
   ],
   // Foto vertical que acompaña la sección "Quiénes somos" del inicio.
-  aboutPhoto: '/fotos/fachada-vertical.jpg',
+  aboutPhoto:
+    'https://res.cloudinary.com/dozhrm24l/image/upload/v1787013363/8752fbf6-7ceb-47c2-8665-1fed229cc978_qfwmwd.jpg',
   social: [
     { name: 'Instagram', handle: '@grandaliaeventos', url: 'https://instagram.com/grandaliaeventos' },
     // PENDIENTE: confirmar la dirección exacta de la página de Facebook.
@@ -167,17 +168,29 @@ export const eventTypes = [
   'Otro',
 ]
 
-// Las rutas ya están puestas: basta con guardar los archivos en public/fotos/ con
-// estos nombres. Mientras no existan, se muestra un marcador de color.
+// La galería solo muestra las fotos que existen; si queda vacía, la sección no
+// aparece. Para agregar más, pega la URL de Cloudinary y escribe el pie de foto.
+// `ratio` conserva la orientación de cada foto ('3 / 4' vertical, '4 / 3' u
+// '3 / 2' horizontal), `wide` la extiende a dos columnas y `tone` solo define el
+// color del marcador en caso de que la imagen no cargara.
 export const gallery = [
-  { id: 1, photo: '/fotos/galeria-1.jpg', caption: 'Montaje de boda en el jardín', tone: 'a' },
-  { id: 2, photo: '/fotos/galeria-2.jpg', caption: 'Ceremonia al aire libre', tone: 'b' },
-  { id: 3, photo: '/fotos/galeria-3.jpg', caption: 'Montaje de mesas y centros', tone: 'c' },
-  { id: 4, photo: '/fotos/galeria-4.jpg', caption: 'Barra de bebidas', tone: 'd' },
-  { id: 5, photo: '/fotos/galeria-5.jpg', caption: 'Pista de baile al anochecer', tone: 'e' },
-  { id: 6, photo: '/fotos/galeria-6.jpg', caption: 'El salón visto desde la entrada', tone: 'f' },
-  { id: 7, photo: '/fotos/galeria-7.jpg', caption: 'Escenario y pantallas del salón', tone: 'b' },
-  { id: 8, photo: '/fotos/galeria-8.jpg', caption: 'Vista del jardín', tone: 'a' },
+  {
+    id: 'fachada',
+    photo:
+      'https://res.cloudinary.com/dozhrm24l/image/upload/v1787013363/8752fbf6-7ceb-47c2-8665-1fed229cc978_qfwmwd.jpg',
+    caption: 'La entrada, sobre la carretera Rosales–Delicias',
+    ratio: '3 / 4',
+    tone: 'f',
+  },
+  {
+    id: 'salon-montado',
+    photo:
+      'https://res.cloudinary.com/dozhrm24l/image/upload/v1787011836/RET07413_nln8qr.jpg',
+    caption: 'El salón montado, con la pista de baile al centro',
+    ratio: '3 / 2',
+    wide: true,
+    tone: 'e',
+  },
 ]
 
 // Cuando esté vacío, la sección de testimonios no se muestra.

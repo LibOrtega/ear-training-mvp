@@ -1,12 +1,17 @@
+/* Pistas de ancho fijo y centradas: así la cuadrícula se ve intencional tanto
+   con dos fotos como con veinte. */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  justify-content: center;
+  align-items: start;
   gap: 1.35rem;
   margin: 0;
 }
 
 .gallery li {
   display: grid;
+  align-content: start;
   gap: 0.7rem;
 }
 

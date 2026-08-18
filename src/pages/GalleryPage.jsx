@@ -11,8 +11,8 @@ function GalleryPage() {
     <>
       <PageHeader
         eyebrow="Galería"
-        title="Eventos que ya pasaron por aquí"
-        text="Bodas, XV años, cenas de empresa y comidas familiares. Todas las fotos son de eventos reales celebrados en el recinto."
+        title="El recinto y los eventos que pasan por aquí"
+        text="Fotos reales del salón y sus áreas. Vamos agregando más conforme se celebran los eventos; si quieres ver un montaje parecido al que imaginas, pídenoslo por WhatsApp."
       />
 
       <section className="section">
