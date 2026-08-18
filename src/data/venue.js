@@ -69,8 +69,8 @@ export const highlights = [
     icon: 'audio',
   },
   {
-    title: 'Jardín para la ceremonia',
-    text: 'El área exterior se monta con pasillo, sillas y altar, para que la ceremonia sea aquí mismo.',
+    title: 'Jardín para todo evento',
+    text: 'El área exterior se monta como la necesites: ceremonia, coctel, comida o la fiesta completa bajo el cielo.',
     icon: 'garden',
   },
 ]
