@@ -14,7 +14,6 @@ export const venue = {
   // PENDIENTE: confirmar la ciudad que quieren mostrar (se dedujo de la carretera).
   region: 'Delicias, Chihuahua',
   claim: 'El lugar donde tu celebración se vuelve inolvidable',
-  // PENDIENTE: ajustar esta descripción con los espacios y servicios reales.
   intro:
     'Un salón para hasta 400 invitados con jardín, a unos minutos de Delicias, para bodas, XV años y celebraciones de empresa. Nos encargamos del montaje y la coordinación para que tú solo tengas que disfrutar.',
   address: 'Carretera Rosales–Delicias, Haciendas Campestres, Chihuahua',
@@ -72,8 +71,8 @@ export const highlights = [
   },
 ]
 
-// El salón principal ya tiene foto, capacidad y descripción reales.
-// PENDIENTE: foto y descripción del jardín.
+// Los dos espacios ya tienen foto, descripción y características reales.
+// PENDIENTE: la superficie en metros de cada uno, si la tienen a mano.
 export const spaces = [
   {
     id: 'salon-principal',
@@ -101,18 +100,17 @@ export const spaces = [
     area: null,
     bestFor: 'Ceremonias y coctel de bienvenida',
     description:
-      'El área al aire libre, con pasto, palmeras iluminadas y salas exteriores. Es donde se recibe a los invitados al atardecer, antes de pasar al salón.',
+      'El área exterior donde se montan las ceremonias al atardecer: pasillo con alfombra, sillas, carpa para el altar y letras iluminadas, con el jardín y la fachada como fondo. También funciona para el coctel de bienvenida antes de pasar al salón.',
     features: [
+      'Montaje de ceremonia con pasillo y sillas',
+      'Carpa para el altar',
+      'Letras y palmeras iluminadas',
       'Salas exteriores para la bienvenida',
-      'Palmeras y jardineras iluminadas',
-      'Espacio para el letrero y la mesa de recibimiento',
-      'Zona para ceremonia o coctel',
+      'Piso firme, sin escalones',
     ],
     photo:
-      'https://res.cloudinary.com/dozhrm24l/image/upload/v1787014802/e5ab70f8-139c-48d7-8b6e-3ed6173bafee_c2mszu.jpg',
-    // La foto es vertical: en la ficha se muestra así y en la tarjeta del inicio
-    // Cloudinary la recorta a 3:2 eligiendo la zona relevante.
-    ratio: '4 / 5',
+      'https://res.cloudinary.com/dozhrm24l/image/upload/v1787014953/7d45afc0-3746-4f94-af6c-148b349afa76_w9aox0.jpg',
+    ratio: '4 / 3',
   },
 ]
 
@@ -195,6 +193,15 @@ export const gallery = [
     ratio: '3 / 2',
     wide: true,
     tone: 'e',
+  },
+  {
+    id: 'ceremonia-jardin',
+    photo:
+      'https://res.cloudinary.com/dozhrm24l/image/upload/v1787014953/7d45afc0-3746-4f94-af6c-148b349afa76_w9aox0.jpg',
+    caption: 'Ceremonia montada en el jardín, al atardecer',
+    ratio: '4 / 3',
+    wide: true,
+    tone: 'b',
   },
   {
     id: 'jardin-atardecer',
